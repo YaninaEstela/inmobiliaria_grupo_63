@@ -1,27 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package inmobiliaria_grupo_63;
 
 import AccesoDatos.InquilinoData;
+import AccesoDatos.PropietarioData;
 import Entidades.Inquilino;
+import Entidades.Propietario;
 
-/**
- *
- * @author USUARIO
- */
+
 public class Inmobiliaria_grupo_63 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
         
         InquilinoData inquilinoData = new InquilinoData();
         
-        Inquilino inquilino = new Inquilino ();
+        PropietarioData propietarioData = new PropietarioData();
+        
+        Inquilino inquilino = new Inquilino();
+        
+        Propietario propietario = new Propietario();
         
         //-------------------------------------------------------------
         
@@ -94,6 +90,79 @@ public class Inmobiliaria_grupo_63 {
         //-------------------------------------------------------------
         
         
+        // MÉTODO GUARDAR PROPIETARIO
+        
+        /*
+        
+        propietario.setNombrePropietario("Carlos");
+        propietario.setApellidoPropietario("Estela");
+        propietario.setDniPropietario(1234);
+        propietario.setDomicilioPropietario("Uriburu 684");
+        propietario.setTelefonoPropietario(562458);
+        propietario.setEstadoPropietario(true);
+        
+        propietarioData.guardarPropietario(propietario);
+        
+        */
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO MODIFICAR PROPIETARIO
+        
+        /*
+        
+        propietario.setIdPropietario(1);
+        propietario.setNombrePropietario("Rodrigo");
+        propietario.setApellidoPropietario("Estela");
+        propietario.setDniPropietario(1234);
+        propietario.setDomicilioPropietario("Uriburu 684");
+        propietario.setTelefonoPropietario(562458);
+        
+        propietarioData.modificarPropietario(propietario);
+        
+        */
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO CAMBIAR ESTADO PROPIETARIO
+        
+        /*
+        
+        propietario.setIdPropietario(1);
+        
+        propietarioData.cambiarEstadoPropietario(1);
+        
+        */
+        
+        //-------------------------------------------------------------
+        
+        // MÉTODO BUSCAR PROPIETARIO POR ID
+        
+        /*
+        
+        System.out.println(propietarioData.buscarPropietarioPorId(2).toString());
+        
+        */
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO LISTAR PROPIETARIOS
+        
+        /*
+        
+        for (Propietario prop: propietarioData.listarPropietarios()) {
+            System.out.println(prop.toString());
+        }
+        
+        */
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO GUARDAR PROPIEDAD
+        
+        
+        
+        //-------------------------------------------------------------
     }
     
 }
