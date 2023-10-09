@@ -145,8 +145,8 @@ public class InquilinoData {
                  inquilino.setTipoInquilino(resultado.getString("tipoInquilino"));
                  inquilino.setEstadoInquilino(resultado.getBoolean("estadoInquilino"));
              }else {
-                JOptionPane.showMessageDialog(null,"No existe un inquilino con ese id");
-            }
+                //JOptionPane.showMessageDialog(null,"No existe un inquilino con ese id");
+             }
             ps.close();
              
          } catch (SQLException ex) {

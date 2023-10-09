@@ -2,8 +2,10 @@
 package inmobiliaria_grupo_63;
 
 import AccesoDatos.InquilinoData;
+import AccesoDatos.PropiedadData;
 import AccesoDatos.PropietarioData;
 import Entidades.Inquilino;
+import Entidades.Propiedad;
 import Entidades.Propietario;
 
 
@@ -15,9 +17,13 @@ public class Inmobiliaria_grupo_63 {
         
         PropietarioData propietarioData = new PropietarioData();
         
+        PropiedadData propiedadData = new PropiedadData();
+        
         Inquilino inquilino = new Inquilino();
         
         Propietario propietario = new Propietario();
+        
+        Propiedad propiedad = new Propiedad();
         
         //-------------------------------------------------------------
         
@@ -160,9 +166,90 @@ public class Inmobiliaria_grupo_63 {
         
         // MÉTODO GUARDAR PROPIEDAD
         
+        /*
+        
+        propiedad.setPropietario(propietarioData.buscarPropietarioPorId(1));
+        propiedad.setTipoPropiedad("Casa");
+        propiedad.setPrecioTasadoPropiedad(80000);
+        propiedad.setZonaPropiedad("Casco urbano");
+        propiedad.setSuperficiePropiedad(300);
+        propiedad.setDireccionPropiedad("Mitre 666");
+        propiedad.setDisponibilidadPropiedad(true);
+        propiedad.setCantidadAmbientes(4);
+        propiedad.setCantidadBanios(1);
+        propiedad.setAmueblado(true);
+        propiedad.setDescripcionPropiedad("Amplia");
+        propiedad.setEstadoPropiedad(true);
         
         
+        propiedadData.guardarPropiedad(propiedad);
+        
+        */
+
         //-------------------------------------------------------------
+        
+        // MÉTODO MODIFICAR PROPIEDAD
+        
+        /*
+        
+        propiedad.setIdPropiedad(3);
+        propiedad.setPropietario(propietarioData.buscarPropietarioPorId(1));
+        propiedad.setInquilino(inquilinoData.buscarInquilinoPorId(1));
+        propiedad.setTipoPropiedad("Departamento");
+        propiedad.setPrecioTasadoPropiedad(80000);
+        propiedad.setZonaPropiedad("Casco urbano");
+        propiedad.setSuperficiePropiedad(300);
+        propiedad.setDireccionPropiedad("Mitre 666");
+        propiedad.setDisponibilidadPropiedad(true);
+        propiedad.setCantidadAmbientes(4);
+        propiedad.setCantidadBanios(1);
+        propiedad.setAmueblado(true);
+        propiedad.setDescripcionPropiedad("Amplia");
+        propiedad.setEstadoPropiedad(true);
+        
+        propiedadData.modificarPropiedad(propiedad);
+        
+        */
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO CAMBIAR ESTADO PROPIEDAD
+        
+        //propiedad.setIdPropiedad(3);
+        
+        /*
+        
+        propiedad = propiedadData.buscarPropiedadPorId(3);
+        
+        propiedadData.cambiarEstadoPropiedad(3);
+        
+        */
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO BUSCAR PROPIEDAD POR ID
+        
+        /*
+        
+        System.out.println(propiedadData.buscarPropiedadPorId(3).toString());
+        
+        */
+
+        //-------------------------------------------------------------
+       
+        // MÉTODO LISTAR PROPIEDADES
+        
+        /*
+        
+        for (Propiedad propi: propiedadData.listarPropiedades()) {
+            System.out.println(propi.toString());
+        }
+        
+        */
+
+        //-------------------------------------------------------------
+        
+        
     }
     
 }

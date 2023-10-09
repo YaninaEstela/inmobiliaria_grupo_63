@@ -151,7 +151,7 @@ public class PropietarioData {
         return propietario;  
      }
     
-     // MÉTODO LISTAR INQUILINOS
+     // MÉTODO LISTAR PROPIETARIOS
      
      public ArrayList<Propietario> listarPropietarios(){
         
