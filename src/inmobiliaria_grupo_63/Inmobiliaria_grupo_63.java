@@ -1,12 +1,16 @@
 
 package inmobiliaria_grupo_63;
 
+import AccesoDatos.ContratoData;
 import AccesoDatos.InquilinoData;
 import AccesoDatos.PropiedadData;
 import AccesoDatos.PropietarioData;
+import Entidades.Contrato;
 import Entidades.Inquilino;
 import Entidades.Propiedad;
 import Entidades.Propietario;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class Inmobiliaria_grupo_63 {
@@ -19,11 +23,15 @@ public class Inmobiliaria_grupo_63 {
         
         PropiedadData propiedadData = new PropiedadData();
         
+        ContratoData contratoData = new ContratoData();
+        
         Inquilino inquilino = new Inquilino();
         
         Propietario propietario = new Propietario();
         
         Propiedad propiedad = new Propiedad();
+        
+        Contrato contrato = new Contrato();
         
         //-------------------------------------------------------------
         
@@ -100,11 +108,11 @@ public class Inmobiliaria_grupo_63 {
         
         /*
         
-        propietario.setNombrePropietario("Carlos");
-        propietario.setApellidoPropietario("Estela");
-        propietario.setDniPropietario(1234);
-        propietario.setDomicilioPropietario("Uriburu 684");
-        propietario.setTelefonoPropietario(562458);
+        propietario.setNombrePropietario("Francisco");
+        propietario.setApellidoPropietario("Martínez");
+        propietario.setDniPropietario(9987);
+        propietario.setDomicilioPropietario("José M. Moreno 1444");
+        propietario.setTelefonoPropietario(888555);
         propietario.setEstadoPropietario(true);
         
         propietarioData.guardarPropietario(propietario);
@@ -117,12 +125,12 @@ public class Inmobiliaria_grupo_63 {
         
         /*
         
-        propietario.setIdPropietario(1);
-        propietario.setNombrePropietario("Rodrigo");
-        propietario.setApellidoPropietario("Estela");
-        propietario.setDniPropietario(1234);
-        propietario.setDomicilioPropietario("Uriburu 684");
-        propietario.setTelefonoPropietario(562458);
+        propietario.setIdPropietario(4);
+        propietario.setNombrePropietario("Alberto");
+        propietario.setApellidoPropietario("Taylor");
+        propietario.setDniPropietario(6682);
+        propietario.setDomicilioPropietario("Rivadavia 226");
+        propietario.setTelefonoPropietario(114562);
         
         propietarioData.modificarPropietario(propietario);
         
@@ -134,9 +142,9 @@ public class Inmobiliaria_grupo_63 {
         
         /*
         
-        propietario.setIdPropietario(1);
+        propietario.setIdPropietario(4);
         
-        propietarioData.cambiarEstadoPropietario(1);
+        propietarioData.cambiarEstadoPropietario(4);
         
         */
         
@@ -249,6 +257,62 @@ public class Inmobiliaria_grupo_63 {
 
         //-------------------------------------------------------------
         
+        // MÉTODO LISTAR PROPIEDADES POR PROPIETARIO
+    
+        /*
+        
+        for (Propiedad propi: propiedadData.listarPropiedadesPorPropietario(1)) {
+            System.out.println(propi.toString());
+        }
+        
+        */
+        
+        //-------------------------------------------------------------
+        
+        // MÉTODO GUARDAR CONTRATO
+        
+        /*
+        
+        contrato.setInquilino(inquilinoData.buscarInquilinoPorId(1));
+        contrato.setPropiedad(propiedadData.buscarPropiedadPorId(3));
+        contrato.setFechaInicio(LocalDate.of(2023, 10, 20));
+        contrato.setFechaFinal(LocalDate.parse("2023-12-20"));
+        contrato.setFechaRealizacion(LocalDate.now());
+        
+        contratoData.guardarContrato(contrato);
+        
+        */
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO MODIFICAR CONTRATO
+        
+        /*
+        
+        contrato.setIdContrato(1);
+        contrato.setInquilino(inquilinoData.buscarInquilinoPorId(1));
+        contrato.setPropiedad(propiedadData.buscarPropiedadPorId(3));
+        contrato.setFechaInicio(LocalDate.of(2023, 10, 20));
+        contrato.setFechaFinal(LocalDate.of(2024, 01, 20));
+        contrato.setFechaRealizacion(LocalDate.now());
+        
+        contratoData.modificarContrato(contrato);
+        
+        */
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO CAMBIAR ESTADO CONTRATO
+        
+        
+        
+        //-------------------------------------------------------------
+        
+        // MÉTODO BUSCAR CONTRATO POR ID
+        
+        
+        
+        //-------------------------------------------------------------
         
     }
     

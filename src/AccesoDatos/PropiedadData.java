@@ -189,7 +189,7 @@ public class PropiedadData {
      
      public ArrayList<Propiedad> listarPropiedades(){
          
-         String sql = "SELECT * FROM propiedad" ;
+        String sql = "SELECT * FROM propiedad" ;
         
         ArrayList<Propiedad> listaPropiedades = new ArrayList<>();
          
@@ -198,8 +198,8 @@ public class PropiedadData {
             
             ResultSet resultado = ps.executeQuery();
              
-             while(resultado.next()){ 
-                Propiedad propiedad = new Propiedad();
+            while(resultado.next()){ 
+                 Propiedad propiedad = new Propiedad();
                  propiedad.setIdPropiedad(resultado.getInt("idPropiedad"));
                  propiedad.setPropietario((Propietario)propietarioData.buscarPropietarioPorId(resultado.getInt("idPropietario")));
                  propiedad.setInquilino((Inquilino)inquilinoData.buscarInquilinoPorId(resultado.getInt("idInquilino")));
@@ -226,5 +226,41 @@ public class PropiedadData {
         return listaPropiedades;
      }
      
+     // MÉTODO LISTAR PROPIEDADES POR PROPIETARIO
      
+     public ArrayList<Propiedad> listarPropiedadesPorPropietario(int idPropietario){
+     
+         String sql = "SELECT * FROM propiedad WHERE idPropietario=?";
+         
+         ArrayList <Propiedad> listaPropiedadesPorPropietario = new ArrayList<>();
+         
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPropietario);
+            ResultSet resultado = ps.executeQuery();
+            while (resultado.next()){
+                Propiedad propiedad = new Propiedad();
+                 propiedad.setIdPropiedad(resultado.getInt("idPropiedad"));
+                 propiedad.setPropietario(propietarioData.buscarPropietarioPorId(idPropietario));
+                 propiedad.setInquilino((Inquilino)inquilinoData.buscarInquilinoPorId(resultado.getInt("idInquilino")));
+                 propiedad.setTipoPropiedad(resultado.getString("tipoPropiedad"));
+                 propiedad.setPrecioTasadoPropiedad(resultado.getDouble("precioTasadoPropiedad"));
+                 propiedad.setZonaPropiedad(resultado.getString("zonaPropiedad"));
+                 propiedad.setSuperficiePropiedad(resultado.getDouble("superficiePropiedad"));
+                 propiedad.setDireccionPropiedad(resultado.getString("direccionPropiedad"));
+                 propiedad.setDisponibilidadPropiedad(resultado.getBoolean("disponibilidadPropiedad"));
+                 propiedad.setCantidadAmbientes(resultado.getInt("cantidadAmbientes"));
+                 propiedad.setCantidadBanios(resultado.getInt("cantidadBanios"));
+                 propiedad.setAmueblado(resultado.getBoolean("amueblado"));
+                 propiedad.setDescripcionPropiedad(resultado.getString("descripcionPropiedad"));
+                 propiedad.setEstadoPropiedad(resultado.getBoolean("estadoPropiedad"));
+                
+                listaPropiedadesPorPropietario.add(propiedad);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propiedad");
+        }
+        return listaPropiedadesPorPropietario;
+     }
 }
