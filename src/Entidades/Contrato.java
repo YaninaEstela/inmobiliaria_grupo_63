@@ -12,26 +12,28 @@ public class Contrato {
     private LocalDate fechaInicio;
     private LocalDate fechaFinal;
     private LocalDate fechaRealizacion;
+    private boolean estadoContrato;
 
-    
     public Contrato() {
     }
 
-    public Contrato(int idContrato, Inquilino inquilino, Propiedad propiedad, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion) {
+    public Contrato(Inquilino inquilino, Propiedad propiedad, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, boolean estadoContrato) {
+        this.inquilino = inquilino;
+        this.propiedad = propiedad;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinal = fechaFinal;
+        this.fechaRealizacion = fechaRealizacion;
+        this.estadoContrato = estadoContrato;
+    }
+
+    public Contrato(int idContrato, Inquilino inquilino, Propiedad propiedad, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, boolean estadoContrato) {
         this.idContrato = idContrato;
         this.inquilino = inquilino;
         this.propiedad = propiedad;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
         this.fechaRealizacion = fechaRealizacion;
-    }
-
-    public Contrato(Inquilino inquilino, Propiedad propiedad, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion) {
-        this.inquilino = inquilino;
-        this.propiedad = propiedad;
-        this.fechaInicio = fechaInicio;
-        this.fechaFinal = fechaFinal;
-        this.fechaRealizacion = fechaRealizacion;
+        this.estadoContrato = estadoContrato;
     }
 
     public int getIdContrato() {
@@ -82,11 +84,19 @@ public class Contrato {
         this.fechaRealizacion = fechaRealizacion;
     }
 
+    public boolean isEstadoContrato() {
+        return estadoContrato;
+    }
+
+    public void setEstadoContrato(boolean estadoContrato) {
+        this.estadoContrato = estadoContrato;
+    }
+
     @Override
     public String toString() {
-        return "Contrato{" + "idContrato=" + idContrato + ", inquilino=" + inquilino + ", propiedad=" + propiedad + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", fechaRealizacion=" + fechaRealizacion + '}';
+        return "Contrato{" + "idContrato=" + idContrato + ", inquilino=" + inquilino + ", propiedad=" + propiedad + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", fechaRealizacion=" + fechaRealizacion + ", estadoContrato=" + estadoContrato + '}';
     }
-    
+
     
     
     

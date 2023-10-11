@@ -278,6 +278,7 @@ public class Inmobiliaria_grupo_63 {
         contrato.setFechaInicio(LocalDate.of(2023, 10, 20));
         contrato.setFechaFinal(LocalDate.parse("2023-12-20"));
         contrato.setFechaRealizacion(LocalDate.now());
+        contrato.setEstadoContrato(true);
         
         contratoData.guardarContrato(contrato);
         
@@ -289,12 +290,13 @@ public class Inmobiliaria_grupo_63 {
         
         /*
         
-        contrato.setIdContrato(1);
+        contrato.setIdContrato(5);
         contrato.setInquilino(inquilinoData.buscarInquilinoPorId(1));
         contrato.setPropiedad(propiedadData.buscarPropiedadPorId(3));
         contrato.setFechaInicio(LocalDate.of(2023, 10, 20));
         contrato.setFechaFinal(LocalDate.of(2024, 01, 20));
         contrato.setFechaRealizacion(LocalDate.now());
+        contrato.setEstadoContrato(true);
         
         contratoData.modificarContrato(contrato);
         
@@ -304,13 +306,74 @@ public class Inmobiliaria_grupo_63 {
         
         // MÉTODO CAMBIAR ESTADO CONTRATO
         
+        /*
         
+        //contrato.setIdContrato(5);
         
+        contrato = contratoData.buscarContratoPorId(5);
+        
+        contratoData.cambiarEstadoContrato(5);
+        
+        */
+
         //-------------------------------------------------------------
         
         // MÉTODO BUSCAR CONTRATO POR ID
         
+        /*
         
+        if (contratoData.buscarContratoPorId(5)!=null) {
+            System.out.println(contratoData.buscarContratoPorId(5).toString());
+        }
+        
+        */
+        
+        //-------------------------------------------------------------
+        
+        // MÉTODO LISTAR CONTRATOS
+        
+        
+        /*
+        
+        for (Contrato cont: contratoData.listarContratos()) {
+            System.out.println(cont.toString());
+        }
+        
+        */
+        
+        /*
+        
+        for (Contrato cont: contratoData.listarContratos()) {
+            if (cont.getInquilino().getIdInquilino()==2) {
+                System.out.println(cont.toString());
+            }
+        }
+        
+        */
+
+        //-------------------------------------------------------------
+
+        // MÉTODO LISTAR CONTRATOS POR INQUILINO
+        
+        /*
+        
+        for (Contrato cont: contratoData.listarContratosPorInquilino(2)) {
+            System.out.println(cont.toString());
+        }
+
+        */
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO LISTAR CONTRATOS POR PROPIEDAD
+        
+        /*
+        
+        for (Contrato cont: contratoData.listarContratosPorPropiedad(5)) {
+            System.out.println(cont.toString());
+        }
+        
+        */
         
         //-------------------------------------------------------------
         
