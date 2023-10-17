@@ -37,7 +37,7 @@ public class PanelSuperior extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -51,7 +51,7 @@ public class PanelSuperior extends javax.swing.JPanel {
 
         jTextField1.setText("jTextField1");
 
-        jLabel3.setText("BUSCAR");
+        btnBuscar.setText("BUSCAR");
 
         jLabel4.setText("INGRESAR");
 
@@ -68,13 +68,13 @@ public class PanelSuperior extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(48, 48, 48)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel3)
-                .addGap(80, 80, 80)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel4)
                 .addGap(44, 44, 44)
                 .addComponent(jLabel5)
-                .addContainerGap(437, Short.MAX_VALUE))
+                .addContainerGap(432, Short.MAX_VALUE))
         );
         jPanelSuperiorLayout.setVerticalGroup(
             jPanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +84,7 @@ public class PanelSuperior extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addGap(15, 15, 15))
@@ -106,9 +106,9 @@ public class PanelSuperior extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanelSuperior;
@@ -116,7 +116,8 @@ public class PanelSuperior extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void aplicarTemas() {
-        temaPanelSuperior.aplicarPanel(jPanelSuperior);
+        temaPanelSuperior.aplicarPanel(jPanelSuperior,btnBuscar);
+        
     }
 
 }
