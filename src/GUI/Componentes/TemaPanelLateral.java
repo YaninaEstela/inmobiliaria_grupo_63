@@ -38,6 +38,7 @@ public class TemaPanelLateral {
         filter.setForeground(Color.decode("#000000"));
         filter.setText(text);
       } 
+      
       private void textFieldType(JTextField field,Color color,int width, int height){
       field.setBackground(color);
       field.setBorder(null);
