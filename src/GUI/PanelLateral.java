@@ -42,7 +42,7 @@ public class PanelLateral extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabelFiltrosResultados = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextTipoPropiedad = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -85,26 +85,26 @@ public class PanelLateral extends javax.swing.JPanel {
         jLabelFiltrosResultados.setText("FILTROS RESULTADOS");
         jPanelLateral.add(jLabelFiltrosResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextTipoPropiedad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextTipoPropiedadActionPerformed(evt);
             }
         });
-        jPanelLateral.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-        jPanelLateral.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
-        jPanelLateral.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
-        jPanelLateral.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
-        jPanelLateral.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+        jPanelLateral.add(jTextTipoPropiedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, -1));
+        jPanelLateral.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 130, -1));
+        jPanelLateral.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 130, -1));
+        jPanelLateral.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 130, -1));
+        jPanelLateral.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 130, -1));
         jPanelLateral.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
         jPanelLateral.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
         jLabel10.setText("DESDE");
         jPanelLateral.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
-        jPanelLateral.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
+        jPanelLateral.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
         jLabel11.setText("HASTA");
         jPanelLateral.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, -1));
-        jPanelLateral.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
+        jPanelLateral.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
 
         jLabel12.setText("APLICAR FILTROS");
         jPanelLateral.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
@@ -121,9 +121,9 @@ public class PanelLateral extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextTipoPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTipoPropiedadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextTipoPropiedadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -142,16 +142,16 @@ public class PanelLateral extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelFiltrosResultados;
     private javax.swing.JLabel jLabelTipoPropiedad;
     private javax.swing.JPanel jPanelLateral;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextTipoPropiedad;
     // End of variables declaration//GEN-END:variables
 
     public void aplicarTemas() {
-        temaPanelLateral.aplicarPanel(jPanelLateral, jLabelFiltrosResultados, jLabelTipoPropiedad, jLabelCantidadAmbientes, jLabelCantBanios);
+        temaPanelLateral.aplicarPanel(jPanelLateral, jLabelFiltrosResultados, jLabelTipoPropiedad, jLabelCantidadAmbientes, jLabelCantBanios,jTextTipoPropiedad);
     }
 }
