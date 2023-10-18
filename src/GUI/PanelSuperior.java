@@ -12,6 +12,7 @@ import GUI.Componentes.TemaPanelSuperior;
  */
 public class PanelSuperior extends javax.swing.JPanel {
 
+    // SE CREA UNA INSTANCIA DE LA CLASE TemaPanelSuperior
     TemaPanelSuperior temaPanelSuperior = new TemaPanelSuperior();
     
     
@@ -35,60 +36,32 @@ public class PanelSuperior extends javax.swing.JPanel {
 
         jPanelSuperior = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1280, 100));
 
         jPanelSuperior.setBackground(new java.awt.Color(51, 102, 255));
+        jPanelSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/IMG/Logo.png"))); // NOI18N
         jLabel1.setText("LOGO");
+        jPanelSuperior.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 19, 200, -1));
 
-        jLabel2.setText("INMOBILIARIA 63");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanelSuperior.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 283, 20));
 
-        jTextField1.setText("jTextField1");
+        btnBuscar.setText("boton buscar");
+        jPanelSuperior.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, 106, 29));
 
-        btnBuscar.setText("BUSCAR");
-
-        jLabel4.setText("INGRESAR");
-
-        jLabel5.setText("REGISTRARSE");
-
-        javax.swing.GroupLayout jPanelSuperiorLayout = new javax.swing.GroupLayout(jPanelSuperior);
-        jPanelSuperior.setLayout(jPanelSuperiorLayout);
-        jPanelSuperiorLayout.setHorizontalGroup(
-            jPanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSuperiorLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(48, 48, 48)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jLabel4)
-                .addGap(44, 44, 44)
-                .addComponent(jLabel5)
-                .addContainerGap(432, Short.MAX_VALUE))
-        );
-        jPanelSuperiorLayout.setVerticalGroup(
-            jPanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSuperiorLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(15, 15, 15))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/IMG/Loginuser.png"))); // NOI18N
+        jLabel4.setText("USUARIO");
+        jPanelSuperior.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,18 +77,22 @@ public class PanelSuperior extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnBuscar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanelSuperior;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     public void aplicarTemas() {
+        // PARA PODER INVOCAR LOS MÉTODOS QUE CREÉ EN LA CLASE TemaPanelSuperior LLAMAR A LA INSTANCIA, PUNTO Y EL MÉTODO
+        // aplicarPanel ES PUBLIC POR ESO SE PUEDE INVOCAR
         temaPanelSuperior.aplicarPanel(jPanelSuperior,btnBuscar);
         
     }

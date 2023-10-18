@@ -20,8 +20,10 @@ import javax.swing.border.LineBorder;
  */
 public class TemaPanelSuperior {
     
+    // ESTE MÉTODO ES UN INVOCADOR DE LOS MÉTODOS QUE ESCRIBÍ EN ESTA CLASE TemaPanelSuperior
+    // SE JUNTAN TODOS LOS MÉTODOS PARA APLICARSE
     public void aplicarPanel(JPanel panelSuperior,JLabel button){
-        setPanelBackground(panelSuperior, Color.decode("#736d62"));
+        setPanelBackground(panelSuperior, Color.decode("#ffffff"));
         setButtonFontType(button);
         setButtonStyles(button,"Buscar");
         setButtonTextPosition(button, SwingConstants.CENTER, SwingConstants.CENTER);
@@ -35,21 +37,23 @@ public class TemaPanelSuperior {
         Font font = new Font("Tw Cen Mt Condensed Extra Bold", Font.BOLD, 30);
         button.setFont(font);
     }
+    
     private void setButtonStyles(JLabel button, String text) {
         button.setOpaque(true);
-        button.setBackground(Color.decode("#171514"));
+        button.setBackground(Color.decode("#CCAB7A"));
         button.setForeground(Color.decode("#ffffff"));
 
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                button.setBackground(Color.decode("#cdc7c3"));
+                // SE CARGA EN EL EVENTO, EL MÉTODO
+                button.setBackground(Color.decode("#836F50"));
                 
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                button.setBackground(Color.decode("#171514"));
+                button.setBackground(Color.decode("#CCAB7A"));
                 
             }
         });
