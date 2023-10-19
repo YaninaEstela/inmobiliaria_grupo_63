@@ -1,25 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package GUI;
 
 import GUI.Componentes.TemaPanelSuperior;
 
-/**
- *
- * @author USUARIO
- */
+
 public class PanelSuperior extends javax.swing.JPanel {
 
     // SE CREA UNA INSTANCIA DE LA CLASE TemaPanelSuperior
     TemaPanelSuperior temaPanelSuperior = new TemaPanelSuperior();
     
-    
-    
-    /**
-     * Creates new form Menu
-     */
+   
     public PanelSuperior() {
         initComponents();
         aplicarTemas();

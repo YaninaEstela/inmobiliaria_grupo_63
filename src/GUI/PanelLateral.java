@@ -35,25 +35,25 @@ public class PanelLateral extends javax.swing.JPanel {
         jPanelLateral = new javax.swing.JPanel();
         jLabelTipoPropiedad = new javax.swing.JLabel();
         jLabelCantidadAmbientes = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelCochera = new javax.swing.JLabel();
+        jLabelSuperficie = new javax.swing.JLabel();
+        jLabelAmueblado = new javax.swing.JLabel();
         jLabelCantBanios = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabelZona = new javax.swing.JLabel();
+        jLabelPrecio = new javax.swing.JLabel();
         jLabelFiltrosResultados = new javax.swing.JLabel();
-        jTextTipoPropiedad = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        jTextFieldTipoPropiedad = new javax.swing.JTextField();
+        jTextFieldCantAmbientes = new javax.swing.JTextField();
+        jTextFieldCantBanios = new javax.swing.JTextField();
+        jTextFieldZona = new javax.swing.JTextField();
+        jTextFieldSuperficie = new javax.swing.JTextField();
+        jCheckBoxAmueblado = new javax.swing.JCheckBox();
+        jCheckBoxCochera = new javax.swing.JCheckBox();
+        jLabelPrecioDesde = new javax.swing.JLabel();
+        jTextFieldPrecioDesde = new javax.swing.JTextField();
+        jLabelPrecioHasta = new javax.swing.JLabel();
+        jTextFieldPrecioHasta = new javax.swing.JTextField();
+        jLabelAplicarFiltros = new javax.swing.JLabel();
 
         jPanelLateral.setBackground(new java.awt.Color(0, 102, 102));
         jPanelLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,50 +64,53 @@ public class PanelLateral extends javax.swing.JPanel {
         jLabelCantidadAmbientes.setText("CANTIDAD DE AMBIENTES");
         jPanelLateral.add(jLabelCantidadAmbientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        jLabel3.setText("COCHERA");
-        jPanelLateral.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+        jLabelCochera.setText("COCHERA");
+        jPanelLateral.add(jLabelCochera, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
-        jLabel4.setText("SUPERFICIE (m²)");
-        jPanelLateral.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        jLabelSuperficie.setText("SUPERFICIE (m²)");
+        jPanelLateral.add(jLabelSuperficie, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
-        jLabel5.setText("AMUEBLADO");
-        jPanelLateral.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        jLabelAmueblado.setText("AMUEBLADO");
+        jPanelLateral.add(jLabelAmueblado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         jLabelCantBanios.setText("CANTIDAD DE BAÑOS");
         jPanelLateral.add(jLabelCantBanios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        jLabel7.setText("ZONA");
-        jPanelLateral.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        jLabelZona.setText("ZONA");
+        jPanelLateral.add(jLabelZona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
-        jLabel8.setText("PRECIO");
-        jPanelLateral.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        jLabelPrecio.setText("PRECIO");
+        jPanelLateral.add(jLabelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         jLabelFiltrosResultados.setText("FILTROS RESULTADOS");
         jPanelLateral.add(jLabelFiltrosResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jTextTipoPropiedad.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldTipoPropiedad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextTipoPropiedadActionPerformed(evt);
+                jTextFieldTipoPropiedadActionPerformed(evt);
             }
         });
-        jPanelLateral.add(jTextTipoPropiedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, -1));
-        jPanelLateral.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 130, -1));
-        jPanelLateral.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 130, -1));
-        jPanelLateral.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 130, -1));
-        jPanelLateral.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 130, -1));
-        jPanelLateral.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
-        jPanelLateral.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        jPanelLateral.add(jTextFieldTipoPropiedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, -1));
+        jPanelLateral.add(jTextFieldCantAmbientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 130, -1));
+        jPanelLateral.add(jTextFieldCantBanios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 130, -1));
+        jPanelLateral.add(jTextFieldZona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 130, -1));
+        jPanelLateral.add(jTextFieldSuperficie, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 130, -1));
 
-        jLabel10.setText("DESDE");
-        jPanelLateral.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
-        jPanelLateral.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+        jCheckBoxAmueblado.setBackground(new java.awt.Color(102, 102, 255));
+        jCheckBoxAmueblado.setForeground(new java.awt.Color(255, 102, 255));
+        jPanelLateral.add(jCheckBoxAmueblado, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
+        jPanelLateral.add(jCheckBoxCochera, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
-        jLabel11.setText("HASTA");
-        jPanelLateral.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, -1));
-        jPanelLateral.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
+        jLabelPrecioDesde.setText("DESDE");
+        jPanelLateral.add(jLabelPrecioDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
+        jPanelLateral.add(jTextFieldPrecioDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
-        jLabel12.setText("APLICAR FILTROS");
-        jPanelLateral.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
+        jLabelPrecioHasta.setText("HASTA");
+        jPanelLateral.add(jLabelPrecioHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, -1));
+        jPanelLateral.add(jTextFieldPrecioHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
+
+        jLabelAplicarFiltros.setText("APLICAR FILTROS");
+        jPanelLateral.add(jLabelAplicarFiltros, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 150, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -121,37 +124,59 @@ public class PanelLateral extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextTipoPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTipoPropiedadActionPerformed
+    private void jTextFieldTipoPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTipoPropiedadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextTipoPropiedadActionPerformed
+    }//GEN-LAST:event_jTextFieldTipoPropiedadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JCheckBox jCheckBoxAmueblado;
+    private javax.swing.JCheckBox jCheckBoxCochera;
+    private javax.swing.JLabel jLabelAmueblado;
+    private javax.swing.JLabel jLabelAplicarFiltros;
     private javax.swing.JLabel jLabelCantBanios;
     private javax.swing.JLabel jLabelCantidadAmbientes;
+    private javax.swing.JLabel jLabelCochera;
     private javax.swing.JLabel jLabelFiltrosResultados;
+    private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JLabel jLabelPrecioDesde;
+    private javax.swing.JLabel jLabelPrecioHasta;
+    private javax.swing.JLabel jLabelSuperficie;
     private javax.swing.JLabel jLabelTipoPropiedad;
+    private javax.swing.JLabel jLabelZona;
     private javax.swing.JPanel jPanelLateral;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextTipoPropiedad;
+    private javax.swing.JTextField jTextFieldCantAmbientes;
+    private javax.swing.JTextField jTextFieldCantBanios;
+    private javax.swing.JTextField jTextFieldPrecioDesde;
+    private javax.swing.JTextField jTextFieldPrecioHasta;
+    private javax.swing.JTextField jTextFieldSuperficie;
+    private javax.swing.JTextField jTextFieldTipoPropiedad;
+    private javax.swing.JTextField jTextFieldZona;
     // End of variables declaration//GEN-END:variables
 
     public void aplicarTemas() {
-        temaPanelLateral.aplicarPanel(jPanelLateral, jLabelFiltrosResultados, jLabelTipoPropiedad, jLabelCantidadAmbientes, jLabelCantBanios,jTextTipoPropiedad);
+        temaPanelLateral.aplicarPanel(jPanelLateral, 
+                jLabelFiltrosResultados, 
+                jLabelTipoPropiedad, 
+                jLabelCantidadAmbientes,
+                jLabelCantBanios, 
+                jLabelZona, 
+                jLabelSuperficie, 
+                jLabelAmueblado,
+                jLabelCochera,
+                jLabelPrecio,
+                jLabelPrecioDesde,
+                jLabelPrecioHasta,
+                jTextFieldTipoPropiedad,
+                jTextFieldCantAmbientes,
+                jTextFieldCantBanios,
+                jTextFieldZona,
+                jTextFieldSuperficie,
+                jTextFieldPrecioDesde,
+                jTextFieldPrecioHasta,
+                jLabelAplicarFiltros,
+                jCheckBoxAmueblado,
+                jCheckBoxCochera
+                );
     }
 }
