@@ -67,8 +67,8 @@ public class TemaPanelLateral {
         setButtonStyles(buttonAplicarFiltros, "APLICAR FILTROS");
         setButtonTextPosition(buttonAplicarFiltros, SwingConstants.CENTER, SwingConstants.CENTER);       
         
-        //setCheckBox(checkBoxAmueblado, Color.decode("#CCAB7A"));
-        //setCheckBox(checkBoxCochera, Color.decode("#CCAB7A"));
+        setCheckBox(checkBoxAmueblado, Color.decode("#CCAB7A"));
+        setCheckBox(checkBoxCochera, Color.decode("#CCAB7A"));
         
     }
     
@@ -134,9 +134,9 @@ public class TemaPanelLateral {
      
     
     // PARA CHECKBOXS DE AMUEBLADO Y COCHERA
-    /*
+    
     private void setCheckBox(JCheckBox checkBox, Color color) {
         checkBox.setForeground(color);
     }
-    */
+    
 }
