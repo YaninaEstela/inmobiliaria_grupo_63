@@ -25,7 +25,20 @@ public class PanelCentral extends javax.swing.JPanel {
 
         jPanelCentral = new javax.swing.JPanel();
 
-        jPanelCentral.setBackground(new java.awt.Color(255, 51, 51));
+        jPanelCentral.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelCentral.setMinimumSize(new java.awt.Dimension(1060, 635));
+        jPanelCentral.setPreferredSize(new java.awt.Dimension(1060, 635));
+
+        javax.swing.GroupLayout jPanelCentralLayout = new javax.swing.GroupLayout(jPanelCentral);
+        jPanelCentral.setLayout(jPanelCentralLayout);
+        jPanelCentralLayout.setHorizontalGroup(
+            jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1060, Short.MAX_VALUE)
+        );
+        jPanelCentralLayout.setVerticalGroup(
+            jPanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 635, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

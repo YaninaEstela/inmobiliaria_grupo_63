@@ -56,6 +56,8 @@ public class PanelLateral extends javax.swing.JPanel {
         jLabelAplicarFiltros = new javax.swing.JLabel();
 
         jPanelLateral.setBackground(new java.awt.Color(0, 102, 102));
+        jPanelLateral.setMinimumSize(new java.awt.Dimension(213, 635));
+        jPanelLateral.setPreferredSize(new java.awt.Dimension(213, 635));
         jPanelLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelTipoPropiedad.setText(" PROPIEDAD");
@@ -110,7 +112,7 @@ public class PanelLateral extends javax.swing.JPanel {
         jPanelLateral.add(jTextFieldPrecioHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
 
         jLabelAplicarFiltros.setText("APLICAR FILTROS");
-        jPanelLateral.add(jLabelAplicarFiltros, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 150, 30));
+        jPanelLateral.add(jLabelAplicarFiltros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 210, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

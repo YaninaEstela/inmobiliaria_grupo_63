@@ -26,7 +26,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanelSuperior.repaint();
         
         PanelLateral menulat = new PanelLateral();
-        menulat.setSize(213, 635);
+        menulat.setSize(220, 635);
         menulat.setLocation(0, 0);
         jPanelLateral.removeAll();
         jPanelLateral.add(menulat);
@@ -34,7 +34,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanelLateral.repaint();
         
         PanelCentral menucent = new PanelCentral();
-        menucent.setSize(1055, 635);
+        menucent.setSize(1060, 635);
         menucent.setLocation(0, 0);
         jPanelCentral.removeAll();
         jPanelCentral.add(menucent);
@@ -60,6 +60,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelLateral.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -67,12 +68,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanelLateral.setLayout(jPanelLateralLayout);
         jPanelLateralLayout.setHorizontalGroup(
             jPanelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 213, Short.MAX_VALUE)
+            .addGap(0, 220, Short.MAX_VALUE)
         );
         jPanelLateralLayout.setVerticalGroup(
             jPanelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 635, Short.MAX_VALUE)
         );
+
+        jPanel1.add(jPanelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 106, 220, -1));
 
         jPanelCentral.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -87,7 +90,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel1.add(jPanelCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 106, 1060, 635));
+
         jPanelSuperior.setBackground(new java.awt.Color(204, 204, 204));
+        jPanelSuperior.setPreferredSize(new java.awt.Dimension(1280, 100));
 
         javax.swing.GroupLayout jPanelSuperiorLayout = new javax.swing.GroupLayout(jPanelSuperior);
         jPanelSuperior.setLayout(jPanelSuperiorLayout);
@@ -97,35 +103,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         jPanelSuperiorLayout.setVerticalGroup(
             jPanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 110, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanelLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanelSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelCentral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jPanel1.add(jPanelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
