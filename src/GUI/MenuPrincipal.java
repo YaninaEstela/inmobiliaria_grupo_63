@@ -33,13 +33,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanelLateral.revalidate();
         jPanelLateral.repaint();
         
-        PanelCentral menucent = new PanelCentral();
-        menucent.setSize(1060, 635);
-        menucent.setLocation(0, 0);
-        jPanelCentral.removeAll();
-        jPanelCentral.add(menucent);
-        jPanelCentral.revalidate();
-        jPanelCentral.repaint();
+        panelCentral();
+        
+        
         
     }
 
@@ -165,4 +161,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLateral;
     private javax.swing.JPanel jPanelSuperior;
     // End of variables declaration//GEN-END:variables
+    public void panelCentral(){
+        PanelCentral menucent = new PanelCentral();
+        menucent.setSize(1060, 635);
+        menucent.setLocation(0, 0);
+        jPanelCentral.removeAll();
+        jPanelCentral.add(menucent);
+        jPanelCentral.revalidate();
+        jPanelCentral.repaint();
+    }
 }

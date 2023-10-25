@@ -3,6 +3,7 @@ package GUI.Componentes;
 
 import AccesoDatos.PropiedadData;
 import Entidades.Propiedad;
+import GUI.PanelLateral;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -22,9 +24,9 @@ public class TemaPanelCentral {
     Propiedad propiedad = new Propiedad();
     
     // CREACIÓN DE PANELES
-    public void panelAutomaticCreation(JPanel panelPrincipal){
+    public void panelAutomaticCreation(JPanel panelPrincipal, ArrayList <Propiedad> listaProp){
       
-       ArrayList <Propiedad> listaPropiedades = propiedadData.listarPropiedades();
+       ArrayList <Propiedad> listaPropiedades = listaProp;
        
        panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
      
@@ -150,5 +152,53 @@ public class TemaPanelCentral {
         
     }
     
+    public ArrayList <Propiedad> filtrarPropiedad(JTextField tfTipo, JTextField tfAmbientes,
+            JTextField tfBanios, JTextField tfZona, JTextField tfSuperficie, 
+            JTextField tfPrecioDesde, JTextField tfPrecioHasta){
+        
+ 
+        String tipo = tfTipo.getText().toLowerCase();
+        String ambientes = tfAmbientes.getText().toLowerCase();
+        String banios = tfBanios.getText().toLowerCase();
+        String zona = tfZona.getText().toLowerCase();
+        String sup = tfSuperficie.getText().toLowerCase();
+        String precioDesde = tfPrecioDesde.getText();
+        String precioHasta = tfPrecioHasta.getText();
+  
+        
+        ArrayList <Propiedad> listaFiltrada = new ArrayList();
+        
+        System.out.println("entro a la linea metodo");
+        
+        for (Propiedad prop : propiedadData.listarPropiedades()) {
+         
+            System.out.println("entro al for each");
+            
+            /*if (tipo!=null && ambientes!=null && banios!=null && zona!=null && sup!=null) {
+                System.out.println("entro al primer if");
+                if (prop.getTipoPropiedad().toLowerCase().startsWith(tipo) &&
+                    String.valueOf(prop.getCantidadAmbientes()).toLowerCase().startsWith(ambientes)&&
+                    String.valueOf(prop.getCantidadBanios()).toLowerCase().startsWith(banios)&&
+                    prop.getZonaPropiedad().toLowerCase().startsWith(zona)&&
+                    String.valueOf(prop.getSuperficiePropiedad()).toLowerCase().startsWith(sup)) {
+                listaFiltrada.add(prop);
+                    System.out.println("filtro por atributos");
+                }
+            }*/
+            if (tfPrecioDesde!=null || tfPrecioHasta!=null) {
+                System.out.println("entro a precio");
+                double intPrecioDesde = Double.parseDouble(precioDesde);
+                double intPrecioHasta = Double.parseDouble(precioHasta);
+                System.out.println("la excepcion estan en el if");
+                if (prop.getPrecioTasadoPropiedad()>=intPrecioDesde && prop.getPrecioTasadoPropiedad()<=intPrecioHasta) {
+                 listaFiltrada.add(prop);
+                    System.out.println(prop);
+                    System.out.println("filtro propiedad");
+                } 
+            }  
+        }
+        System.out.println("deberia mostrar listra filtrada");
+        return listaFiltrada;  
+    }
     
 }

@@ -1,17 +1,30 @@
-
-
 package GUI;
 
+import AccesoDatos.PropiedadData;
+import Entidades.Propiedad;
 import GUI.Componentes.TemaPanelCentral;
-
+import java.awt.BorderLayout;
+import java.util.ArrayList;
+import javax.swing.JScrollPane;
 
 public class PanelCentral extends javax.swing.JPanel {
-    
+
     TemaPanelCentral temaPanelCentral = new TemaPanelCentral();
-    
+
+    PropiedadData propiedadData = new PropiedadData();
+
     public PanelCentral() {
         initComponents();
-        aplicarTemas();
+        aplicarTemas(propiedadData.listarPropiedades());
+
+        // BARRA DE SCROLL
+        JScrollPane scrollPane = new JScrollPane(jPanelCentral);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        // Establece el diseño del panel principal (this) para mostrar el JScrollPane
+        this.setLayout(new BorderLayout());
+        this.add(scrollPane, BorderLayout.CENTER);
+
     }
 
     /**
@@ -57,7 +70,7 @@ public class PanelCentral extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelCentral;
     // End of variables declaration//GEN-END:variables
 
-    private void aplicarTemas() {
-        temaPanelCentral.panelAutomaticCreation(jPanelCentral);
+    public void aplicarTemas(ArrayList <Propiedad> listaPropiedades) {
+        temaPanelCentral.panelAutomaticCreation(jPanelCentral, listaPropiedades);
     }
 }

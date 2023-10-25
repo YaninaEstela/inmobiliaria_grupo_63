@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import AccesoDatos.PropiedadData;
+import GUI.Componentes.TemaPanelCentral;
 import GUI.Componentes.TemaPanelLateral;
 
 /**
@@ -17,6 +19,9 @@ public class PanelLateral extends javax.swing.JPanel {
      */
     
     TemaPanelLateral temaPanelLateral = new TemaPanelLateral();
+    TemaPanelCentral temaPanelCentral = new TemaPanelCentral(); 
+    PanelCentral panelCentral = new PanelCentral();
+    PropiedadData propiedadData = new PropiedadData();
     
     public PanelLateral() {
         initComponents();
@@ -54,6 +59,7 @@ public class PanelLateral extends javax.swing.JPanel {
         jLabelPrecioHasta = new javax.swing.JLabel();
         jTextFieldPrecioHasta = new javax.swing.JTextField();
         jLabelAplicarFiltros = new javax.swing.JLabel();
+        jLabelLimpiarFiltros = new javax.swing.JLabel();
 
         jPanelLateral.setBackground(new java.awt.Color(0, 102, 102));
         jPanelLateral.setMinimumSize(new java.awt.Dimension(213, 635));
@@ -112,7 +118,20 @@ public class PanelLateral extends javax.swing.JPanel {
         jPanelLateral.add(jTextFieldPrecioHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
 
         jLabelAplicarFiltros.setText("APLICAR FILTROS");
-        jPanelLateral.add(jLabelAplicarFiltros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 210, 40));
+        jLabelAplicarFiltros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAplicarFiltrosMouseClicked(evt);
+            }
+        });
+        jPanelLateral.add(jLabelAplicarFiltros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 210, 40));
+
+        jLabelLimpiarFiltros.setText("LIMPIAR FILTROS");
+        jLabelLimpiarFiltros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelLimpiarFiltrosMouseClicked(evt);
+            }
+        });
+        jPanelLateral.add(jLabelLimpiarFiltros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 210, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,6 +149,25 @@ public class PanelLateral extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTipoPropiedadActionPerformed
 
+    private void jLabelAplicarFiltrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplicarFiltrosMouseClicked
+        // TODO add your handling code here:
+        MenuPrincipal mp = new MenuPrincipal();
+        mp.panelCentral();
+        panelCentral.aplicarTemas(temaPanelCentral.filtrarPropiedad(jTextFieldTipoPropiedad, jTextFieldCantAmbientes, jTextFieldCantBanios, jTextFieldZona, jTextFieldSuperficie, jTextFieldPrecioDesde, jTextFieldPrecioHasta));
+    }//GEN-LAST:event_jLabelAplicarFiltrosMouseClicked
+
+    private void jLabelLimpiarFiltrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLimpiarFiltrosMouseClicked
+        // TODO add your handling code here:
+        panelCentral.aplicarTemas(propiedadData.listarPropiedades());
+        jTextFieldTipoPropiedad.setText("");
+        jTextFieldCantAmbientes.setText("");
+        jTextFieldCantBanios.setText("");
+        jTextFieldZona.setText("");  
+        jTextFieldSuperficie.setText("");  
+        jTextFieldPrecioDesde.setText("");  
+        jTextFieldPrecioHasta.setText(""); 
+    }//GEN-LAST:event_jLabelLimpiarFiltrosMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBoxAmueblado;
@@ -140,6 +178,7 @@ public class PanelLateral extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelCantidadAmbientes;
     private javax.swing.JLabel jLabelCochera;
     private javax.swing.JLabel jLabelFiltrosResultados;
+    private javax.swing.JLabel jLabelLimpiarFiltros;
     private javax.swing.JLabel jLabelPrecio;
     private javax.swing.JLabel jLabelPrecioDesde;
     private javax.swing.JLabel jLabelPrecioHasta;

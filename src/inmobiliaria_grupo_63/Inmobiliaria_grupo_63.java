@@ -11,6 +11,7 @@ import Entidades.Propiedad;
 import Entidades.Propietario;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 
 public class Inmobiliaria_grupo_63 {
@@ -376,6 +377,8 @@ public class Inmobiliaria_grupo_63 {
         */
         
         //-------------------------------------------------------------
+        
+        
         
         
     }
