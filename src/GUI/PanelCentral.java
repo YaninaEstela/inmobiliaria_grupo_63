@@ -4,6 +4,7 @@ import AccesoDatos.PropiedadData;
 import Entidades.Propiedad;
 import GUI.Componentes.TemaPanelCentral;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JScrollPane;
 
@@ -24,7 +25,8 @@ public class PanelCentral extends javax.swing.JPanel {
         // Establece el diseño del panel principal (this) para mostrar el JScrollPane
         this.setLayout(new BorderLayout());
         this.add(scrollPane, BorderLayout.CENTER);
-
+        int multiplicador = 250*temaPanelCentral.getMultiplicador();
+        jPanelCentral.setPreferredSize(new Dimension(1060, multiplicador));
     }
 
     /**

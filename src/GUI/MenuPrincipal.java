@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import GUI.Componentes.TemaPanelCentral;
+import java.awt.Dimension;
+
 /**
  *
  * @author USUARIO
@@ -163,7 +166,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     public void panelCentral(){
         PanelCentral menucent = new PanelCentral();
+        TemaPanelCentral temaPanelCentral = new TemaPanelCentral();
+        int multiplicador = 250*temaPanelCentral.getMultiplicador();
         menucent.setSize(1060, 635);
+        menucent.setPreferredSize(new Dimension(1060, multiplicador));
         menucent.setLocation(0, 0);
         jPanelCentral.removeAll();
         jPanelCentral.add(menucent);

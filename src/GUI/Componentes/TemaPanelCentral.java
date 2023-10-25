@@ -22,11 +22,19 @@ public class TemaPanelCentral {
     
     PropiedadData propiedadData = new PropiedadData();
     Propiedad propiedad = new Propiedad();
+    private int multiplicador;
+
+    public int getMultiplicador() {
+        return multiplicador;
+    }
+    
     
     // CREACIÓN DE PANELES
     public void panelAutomaticCreation(JPanel panelPrincipal, ArrayList <Propiedad> listaProp){
       
        ArrayList <Propiedad> listaPropiedades = listaProp;
+       
+       multiplicador = listaProp.size();
        
        panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
      
@@ -156,7 +164,8 @@ public class TemaPanelCentral {
             JTextField tfBanios, JTextField tfZona, JTextField tfSuperficie, 
             JTextField tfPrecioDesde, JTextField tfPrecioHasta){
         
- 
+        
+                
         String tipo = tfTipo.getText().toLowerCase();
         String ambientes = tfAmbientes.getText().toLowerCase();
         String banios = tfBanios.getText().toLowerCase();
@@ -198,6 +207,7 @@ public class TemaPanelCentral {
             }  
         }
         System.out.println("deberia mostrar listra filtrada");
+        multiplicador = listaFiltrada.size();
         return listaFiltrada;  
     }
     
