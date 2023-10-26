@@ -5,8 +5,11 @@
 package GUI;
 
 import AccesoDatos.PropiedadData;
+import Entidades.Propiedad;
 import GUI.Componentes.TemaPanelCentral;
 import GUI.Componentes.TemaPanelLateral;
+import java.util.ArrayList;
+import javax.swing.JTextField;
 
 /**
  *
@@ -151,21 +154,21 @@ public class PanelLateral extends javax.swing.JPanel {
 
     private void jLabelAplicarFiltrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplicarFiltrosMouseClicked
         // TODO add your handling code here:
-        MenuPrincipal mp = new MenuPrincipal();
-        mp.panelCentral();
-        panelCentral.aplicarTemas(temaPanelCentral.filtrarPropiedad(jTextFieldTipoPropiedad, jTextFieldCantAmbientes, jTextFieldCantBanios, jTextFieldZona, jTextFieldSuperficie, jTextFieldPrecioDesde, jTextFieldPrecioHasta));
+        ArrayList<Propiedad> lista = filtrarPropiedad();
+        panelCentral.aplicarTemas(lista);
     }//GEN-LAST:event_jLabelAplicarFiltrosMouseClicked
 
     private void jLabelLimpiarFiltrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLimpiarFiltrosMouseClicked
-        // TODO add your handling code here:
-        panelCentral.aplicarTemas(propiedadData.listarPropiedades());
-        jTextFieldTipoPropiedad.setText("");
-        jTextFieldCantAmbientes.setText("");
-        jTextFieldCantBanios.setText("");
-        jTextFieldZona.setText("");  
-        jTextFieldSuperficie.setText("");  
-        jTextFieldPrecioDesde.setText("");  
-        jTextFieldPrecioHasta.setText(""); 
+
+//        panelCentral.aplicarTemas(propiedadData.listarPropiedades());
+//        jTextFieldTipoPropiedad.setText("");
+//        jTextFieldCantAmbientes.setText("");
+//        jTextFieldCantBanios.setText("");
+//        jTextFieldZona.setText("");  
+//        jTextFieldSuperficie.setText("");  
+//        jTextFieldPrecioDesde.setText("");  
+//        jTextFieldPrecioHasta.setText(""); 
+        
     }//GEN-LAST:event_jLabelLimpiarFiltrosMouseClicked
 
 
@@ -219,5 +222,50 @@ public class PanelLateral extends javax.swing.JPanel {
                 jCheckBoxAmueblado,
                 jCheckBoxCochera
                 );
+    }
+    
+    
+    
+    public ArrayList <Propiedad> filtrarPropiedad(){
+      
+        String tipo = jTextFieldTipoPropiedad.getText().toLowerCase();
+        String ambientes = jTextFieldCantAmbientes.getText().toLowerCase();
+        String banios = jTextFieldCantBanios.getText();
+        String zona = jTextFieldZona.getText().toLowerCase();
+        String sup = jTextFieldSuperficie.getText();
+        String precioDesde = jTextFieldPrecioDesde.getText();
+        String precioHasta = jTextFieldPrecioHasta.getText();
+  
+        
+        ArrayList <Propiedad> listaFiltrada = new ArrayList();
+        
+        System.out.println("entro a la linea metodo filtrarPropiedad en PanelLateral");
+        
+        for (Propiedad prop : propiedadData.listarPropiedades()) {
+            
+            /*if (tipo!=null && ambientes!=null && banios!=null && zona!=null && sup!=null) {
+                System.out.println("entro al primer if");
+                if (prop.getTipoPropiedad().toLowerCase().startsWith(tipo) &&
+                    String.valueOf(prop.getCantidadAmbientes()).toLowerCase().startsWith(ambientes)&&
+                    String.valueOf(prop.getCantidadBanios()).toLowerCase().startsWith(banios)&&
+                    prop.getZonaPropiedad().toLowerCase().startsWith(zona)&&
+                    String.valueOf(prop.getSuperficiePropiedad()).toLowerCase().startsWith(sup)) {
+                listaFiltrada.add(prop);
+                    System.out.println("filtro por atributos");
+                }
+            }*/
+            if (precioDesde!=null || precioHasta!=null) {
+                double intPrecioDesde = Double.parseDouble(precioDesde);
+                double intPrecioHasta = Double.parseDouble(precioHasta);
+                
+                if (prop.getPrecioTasadoPropiedad()>=intPrecioDesde && prop.getPrecioTasadoPropiedad()<=intPrecioHasta) {
+                    listaFiltrada.add(prop);
+                    System.out.println(prop);
+                } 
+            }  
+        }
+        
+        temaPanelCentral.setMultiplicador(listaFiltrada.size());
+        return listaFiltrada;  
     }
 }

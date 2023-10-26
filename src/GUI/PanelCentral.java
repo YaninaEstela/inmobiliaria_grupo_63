@@ -25,6 +25,7 @@ public class PanelCentral extends javax.swing.JPanel {
         // Establece el diseño del panel principal (this) para mostrar el JScrollPane
         this.setLayout(new BorderLayout());
         this.add(scrollPane, BorderLayout.CENTER);
+        
         int multiplicador = 250*temaPanelCentral.getMultiplicador();
         jPanelCentral.setPreferredSize(new Dimension(1060, multiplicador));
     }
@@ -73,6 +74,7 @@ public class PanelCentral extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void aplicarTemas(ArrayList <Propiedad> listaPropiedades) {
+        jPanelCentral.removeAll();
         temaPanelCentral.panelAutomaticCreation(jPanelCentral, listaPropiedades);
     }
 }
