@@ -165,14 +165,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelSuperior;
     // End of variables declaration//GEN-END:variables
     public void panelCentral(){
-        PanelCentral menucent = new PanelCentral();
+        PanelCentral panelCentral = new PanelCentral();
         TemaPanelCentral temaPanelCentral = new TemaPanelCentral();
+        
         int multiplicador = 250*temaPanelCentral.getMultiplicador();
-        menucent.setSize(1060, 635);
-        menucent.setPreferredSize(new Dimension(1060, multiplicador));
-        menucent.setLocation(0, 0);
+        panelCentral.setSize(1060, 635);
+        panelCentral.setPreferredSize(new Dimension(1060, multiplicador));
+        
+        panelCentral.setLocation(0, 0);
+        
         jPanelCentral.removeAll();
-        jPanelCentral.add(menucent);
+        jPanelCentral.add(panelCentral);
         jPanelCentral.revalidate();
         jPanelCentral.repaint();
     }
