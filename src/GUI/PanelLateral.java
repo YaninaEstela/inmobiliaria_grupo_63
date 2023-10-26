@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package GUI;
 
 import AccesoDatos.PropiedadData;
@@ -11,16 +7,8 @@ import GUI.Componentes.TemaPanelLateral;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 
-/**
- *
- * @author USUARIO
- */
 public class PanelLateral extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelLateral
-     */
-    
     TemaPanelLateral temaPanelLateral = new TemaPanelLateral();
     TemaPanelCentral temaPanelCentral = new TemaPanelCentral(); 
     PanelCentral panelCentral = new PanelCentral();

@@ -1,4 +1,3 @@
-
 package GUI.Componentes;
 
 import AccesoDatos.PropiedadData;
