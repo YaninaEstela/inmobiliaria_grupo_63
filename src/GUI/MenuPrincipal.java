@@ -27,8 +27,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         panelCentral();
         
-        
-        
     }
 
     /**
@@ -153,6 +151,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLateral;
     private javax.swing.JPanel jPanelSuperior;
     // End of variables declaration//GEN-END:variables
+    
     public void panelCentral(){
         PanelCentral panelCentral = new PanelCentral();
         TemaPanelCentral temaPanelCentral = new TemaPanelCentral();

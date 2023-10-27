@@ -11,7 +11,7 @@ public class PanelLateral extends javax.swing.JPanel {
 
     TemaPanelLateral temaPanelLateral = new TemaPanelLateral();
     TemaPanelCentral temaPanelCentral = new TemaPanelCentral(); 
-    PanelCentral panelCentral = new PanelCentral();
+    //
     PropiedadData propiedadData = new PropiedadData();
     
     public PanelLateral() {
@@ -142,7 +142,11 @@ public class PanelLateral extends javax.swing.JPanel {
 
     private void jLabelAplicarFiltrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplicarFiltrosMouseClicked
         // TODO add your handling code here:
+        PanelCentral panelCentral = new PanelCentral();
         ArrayList<Propiedad> lista = filtrarPropiedad();
+        panelCentral.limpiarLista();
+        
+        panelCentral.setListaProp(lista);
         panelCentral.aplicarTemas(lista);
     }//GEN-LAST:event_jLabelAplicarFiltrosMouseClicked
 
@@ -227,8 +231,6 @@ public class PanelLateral extends javax.swing.JPanel {
         
         ArrayList <Propiedad> listaFiltrada = new ArrayList();
         
-        System.out.println("entro a la linea metodo filtrarPropiedad en PanelLateral");
-        
         for (Propiedad prop : propiedadData.listarPropiedades()) {
             
             /*if (tipo!=null && ambientes!=null && banios!=null && zona!=null && sup!=null) {
@@ -248,7 +250,6 @@ public class PanelLateral extends javax.swing.JPanel {
                 
                 if (prop.getPrecioTasadoPropiedad()>=intPrecioDesde && prop.getPrecioTasadoPropiedad()<=intPrecioHasta) {
                     listaFiltrada.add(prop);
-                    System.out.println(prop);
                 } 
             }  
         }

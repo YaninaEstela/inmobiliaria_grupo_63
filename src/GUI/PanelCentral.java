@@ -6,17 +6,28 @@ import GUI.Componentes.TemaPanelCentral;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JScrollPane;
 
 public class PanelCentral extends javax.swing.JPanel {
 
     TemaPanelCentral temaPanelCentral = new TemaPanelCentral();
-
     PropiedadData propiedadData = new PropiedadData();
+    
+    ArrayList<Propiedad> listaProp = propiedadData.listarPropiedades();
 
+    public void setListaProp(ArrayList<Propiedad> listaProp) {
+        this.listaProp = listaProp;
+    }
+    
     public PanelCentral() {
         initComponents();
-        aplicarTemas(propiedadData.listarPropiedades());
+        
+        for(Propiedad prop : listaProp){
+            System.out.println(prop);
+        }
+        
+        aplicarTemas(listaProp);
 
         // BARRA DE SCROLL
         JScrollPane scrollPane = new JScrollPane(jPanelCentral);
@@ -74,7 +85,14 @@ public class PanelCentral extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void aplicarTemas(ArrayList <Propiedad> listaPropiedades) {
-        jPanelCentral.removeAll();
         temaPanelCentral.panelAutomaticCreation(jPanelCentral, listaPropiedades);
+    }
+    
+    public void limpiarLista(){
+        Iterator<Propiedad> iterador = listaProp.iterator();
+        while (iterador.hasNext()) {
+            iterador.next();
+            iterador.remove();
+        }
     }
 }

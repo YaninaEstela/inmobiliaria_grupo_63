@@ -125,12 +125,6 @@ public class TemaPanelCentral {
             panelPrincipal.add(panelCompleto);
             panelPrincipal.add(panelGap);
        }
-       
-        Iterator<Propiedad> iterador = listaPropiedades.iterator();
-        while (iterador.hasNext()) {
-            iterador.next();
-            iterador.remove();
-        }
 
        
     }
