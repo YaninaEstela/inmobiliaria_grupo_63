@@ -15,17 +15,15 @@ public class PanelCentral extends javax.swing.JPanel {
     PropiedadData propiedadData = new PropiedadData();
     
     ArrayList<Propiedad> listaProp = propiedadData.listarPropiedades();
+    //ArrayList<Propiedad> listaProp = new ArrayList<>();
 
     public void setListaProp(ArrayList<Propiedad> listaProp) {
         this.listaProp = listaProp;
+        System.out.println("Lista Seteada");
     }
     
     public PanelCentral() {
         initComponents();
-        
-        for(Propiedad prop : listaProp){
-            System.out.println(prop);
-        }
         
         aplicarTemas(listaProp);
 

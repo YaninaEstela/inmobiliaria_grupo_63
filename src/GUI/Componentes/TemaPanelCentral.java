@@ -22,6 +22,7 @@ public class TemaPanelCentral {
     
     PropiedadData propiedadData = new PropiedadData();
     Propiedad propiedad = new Propiedad();
+    
     private int multiplicador;
 
     public int getMultiplicador() {
@@ -41,13 +42,18 @@ public class TemaPanelCentral {
        
        multiplicador = listaProp.size();
        
+       panelPrincipal.removeAll();
+       
        panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
      
        JPanel gap = createPanelGap(Color.decode("#ffffff"), 900, 30);
        
        panelPrincipal.add(gap);
        
-       panelPrincipal.removeAll();
+       
+       for(Propiedad prop : listaPropiedades){
+            System.out.println(prop);
+        }
        
        // PARA EL CONTENEDOR QUE TIENE LA IMAGEN Y LA DESCRIPCIÓN DE CADA PROPIEDAD
        for (Propiedad propiedad : listaPropiedades) {

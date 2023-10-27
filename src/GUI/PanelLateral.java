@@ -11,7 +11,6 @@ public class PanelLateral extends javax.swing.JPanel {
 
     TemaPanelLateral temaPanelLateral = new TemaPanelLateral();
     TemaPanelCentral temaPanelCentral = new TemaPanelCentral(); 
-    //
     PropiedadData propiedadData = new PropiedadData();
     
     public PanelLateral() {
@@ -143,11 +142,8 @@ public class PanelLateral extends javax.swing.JPanel {
     private void jLabelAplicarFiltrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplicarFiltrosMouseClicked
         // TODO add your handling code here:
         PanelCentral panelCentral = new PanelCentral();
-        ArrayList<Propiedad> lista = filtrarPropiedad();
-        panelCentral.limpiarLista();
-        
-        panelCentral.setListaProp(lista);
-        panelCentral.aplicarTemas(lista);
+        panelCentral.setListaProp(filtrarPropiedad());
+        panelCentral.aplicarTemas(filtrarPropiedad());
     }//GEN-LAST:event_jLabelAplicarFiltrosMouseClicked
 
     private void jLabelLimpiarFiltrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLimpiarFiltrosMouseClicked
@@ -250,6 +246,7 @@ public class PanelLateral extends javax.swing.JPanel {
                 
                 if (prop.getPrecioTasadoPropiedad()>=intPrecioDesde && prop.getPrecioTasadoPropiedad()<=intPrecioHasta) {
                     listaFiltrada.add(prop);
+                    System.out.println("Propiedad Filtrada");
                 } 
             }  
         }
