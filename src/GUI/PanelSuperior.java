@@ -1,7 +1,9 @@
 
 package GUI;
 
+import GUI_VISTAS.PanelGestionPropiedad;
 import GUI.Componentes.TemaPanelSuperior;
+import javax.swing.JPanel;
 
 
 public class PanelSuperior extends javax.swing.JPanel {
@@ -26,9 +28,8 @@ public class PanelSuperior extends javax.swing.JPanel {
 
         jPanelSuperior = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelUsuario = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1280, 100));
 
@@ -40,19 +41,17 @@ public class PanelSuperior extends javax.swing.JPanel {
         jLabel1.setText("LOGO");
         jPanelSuperior.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 19, 200, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        btnBuscar.setText("boton buscar");
+        jPanelSuperior.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, 106, 29));
+
+        jLabelUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/IMG/Loginuser.png"))); // NOI18N
+        jLabelUsuario.setText("USUARIO");
+        jLabelUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelUsuarioMouseClicked(evt);
             }
         });
-        jPanelSuperior.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 283, 20));
-
-        btnBuscar.setText("boton buscar");
-        jPanelSuperior.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, 106, 29));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/IMG/Loginuser.png"))); // NOI18N
-        jLabel4.setText("USUARIO");
-        jPanelSuperior.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 40, -1, -1));
+        jPanelSuperior.add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -66,17 +65,21 @@ public class PanelSuperior extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jLabelUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelUsuarioMouseClicked
+        PanelGestionPropiedad panelGestion = new PanelGestionPropiedad();
+        panelGestion.setSize(220, 635);
+        panelGestion.setLocation(0, 0);
+       
+        
+        
+    }//GEN-LAST:event_jLabelUsuarioMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnBuscar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelSuperior;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     public void aplicarTemas() {
@@ -84,6 +87,13 @@ public class PanelSuperior extends javax.swing.JPanel {
         // aplicarPanel ES PUBLIC POR ESO SE PUEDE INVOCAR
         temaPanelSuperior.aplicarPanel(jPanelSuperior,btnBuscar);
         
+    }
+    
+    public void recibePanel(JPanel panel,JPanel panel2){
+        panel.removeAll();
+        panel.add(panel);
+        panel.revalidate();
+        panel.repaint();
     }
 
 }
