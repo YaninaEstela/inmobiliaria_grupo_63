@@ -28,7 +28,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         contenido = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        btnPropiedad = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -54,15 +54,15 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
 
         jPanel1.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 1037, 635));
 
-        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Gestion Propiedad");
-        jLabel1.setOpaque(true);
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPropiedad.setBackground(new java.awt.Color(204, 204, 204));
+        btnPropiedad.setText("Gestion Propiedad");
+        btnPropiedad.setOpaque(true);
+        btnPropiedad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                btnPropiedadMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 240, 50));
+        jPanel1.add(btnPropiedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 240, 50));
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Gestion Contratos");
@@ -93,7 +93,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void btnPropiedadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPropiedadMouseClicked
         PanelGestionPropiedad panelGestion = new PanelGestionPropiedad();
         panelGestion.setSize(1037, 635); //SE ABRE LA PÁGINA HOME
         panelGestion.setLocation(0, 0);
@@ -101,7 +101,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         contenido.add(panelGestion);
         contenido.revalidate();
         contenido.repaint();
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_btnPropiedadMouseClicked
 
     /**
      * @param args the command line arguments
@@ -139,8 +139,8 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnPropiedad;
     private javax.swing.JPanel contenido;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

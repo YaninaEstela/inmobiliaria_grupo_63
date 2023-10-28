@@ -30,17 +30,28 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     Propiedad propiedad = new Propiedad();
     PropietarioData propietarioData = new PropietarioData();
     Propietario propietario = new Propietario();
-    private DefaultTableModel modeloTabla = new DefaultTableModel() {
-        public boolean isCellEditable(int fila, int columna) {
-            return false;
-        }
-    };
+    BuscarPropietario buscaPropietario = new BuscarPropietario();
+    private DefaultTableModel modeloTablaPropiedades = new DefaultTableModel() {
+    public boolean isCellEditable(int fila, int columna) {
+        return false;
+    }
+};
 
+private DefaultTableModel modeloTablaPropietarios = new DefaultTableModel() {
+    public boolean isCellEditable(int fila, int columna) {
+        return false;
+    }
+};
+
+    
     public PanelGestionPropiedad() {
         initComponents();
         armarCabecera();
+        armarCabeceraPropietario();
         cargarTablaPropiedad();
+        cargarTablapropietario();
         listarPropietarioComboBox();
+        
     }
 
     /**
@@ -78,19 +89,23 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jComboBoxPropietario = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jLabelPropietario = new javax.swing.JLabel();
+        jTextFieldIDpropietario = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnEliminar = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTablePropietario = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Propietario");
+        jLabel1.setText("ID Propietario");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 80, 26));
 
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Departamento", "Casa", "PH", "Oficina", "Local", "Galpon" }));
@@ -169,13 +184,22 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jLabel10.setText("Descripcion");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 110, 26));
 
-        jPanel2.add(jComboBoxPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 170, 30));
+        jPanel2.add(jComboBoxPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 100, 30));
 
         jLabel11.setText("Buscar");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 60, 30));
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 60, 30));
 
-        jLabelPropietario.setOpaque(true);
-        jPanel2.add(jLabelPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 50, 30));
+        jTextFieldIDpropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIDpropietarioActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldIDpropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 60, 40));
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -193,7 +217,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 23, 631, 411));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 40, 680, 210));
 
         btnEliminar.setBackground(new java.awt.Color(255, 51, 51));
         btnEliminar.setText("Desactivar Propiedad");
@@ -203,7 +227,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
                 btnEliminarMouseClicked(evt);
             }
         });
-        jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 146, 43));
+        jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 146, 43));
 
         btnLimpiar.setBackground(new java.awt.Color(102, 204, 0));
         btnLimpiar.setText("Limpiar Todo");
@@ -213,7 +237,28 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
                 btnLimpiarMouseClicked(evt);
             }
         });
-        jPanel3.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 240, 43));
+        jPanel3.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 240, 43));
+
+        jLabel12.setText("Propietario");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+
+        jTablePropietario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTablePropietario);
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 680, 170));
+
+        jLabel13.setText("Propiedad");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -268,6 +313,18 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldZonaActionPerformed
 
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+       
+        buscaPropietario.setVisible(true);
+        buscaPropietario.setLocationRelativeTo(null);
+        
+        
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jTextFieldIDpropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDpropietarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIDpropietarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnEliminar;
@@ -282,6 +339,8 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -290,15 +349,17 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelPropietario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePropietario;
     private javax.swing.JTextArea jTextAreaDescrip;
     private javax.swing.JTextField jTextFieldDireccion;
+    private javax.swing.JTextField jTextFieldIDpropietario;
     private javax.swing.JTextField jTextFieldPrecio;
     private javax.swing.JTextField jTextFieldSup;
     private javax.swing.JTextField jTextFieldZona;
@@ -307,7 +368,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private void agregarPropiedad() {
         // Instanciar un objeto alumno y setea los parametros con los datos de los textField
         // Ademas valida todos los datos y captura excepciones.
-
+       
         Propiedad nuevoPropiedad = new Propiedad();
 
         boolean[] propiedadRelleno = {false, false, false, false, false, false, false, false, false,false};
@@ -386,28 +447,11 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Debe ingresar Descripcion");
                 propiedadRelleno[8] = false;
             }
-            if (validacionComboBox(jComboBoxPropietario)) {
-                String selectedItem = jComboBoxPropietario.getSelectedItem().toString();
-                 String[] parts = selectedItem.split(" - ");
-                if (parts.length == 2) {
-                    int idPropietario = Integer.parseInt(parts[0].trim());
-                     Propietario propietarioSeleccionado = propietarioData.buscarPropietarioPorId(idPropietario);
-
-  
-
-                    if (propietarioSeleccionado != null) {
-                        nuevoPropiedad.setPropietario(propietarioSeleccionado);
-                        propiedadRelleno[9] = true;
-                    } else {
-                        JOptionPane.showMessageDialog(this, "No se pudo encontrar el propietario con el ID especificado.");
-                        propiedadRelleno[9] = false;
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Error al obtener el ID del propietario");
-                    propiedadRelleno[9] = false;
-                }
+            if (validacionTextField1(jTextFieldIDpropietario)) {
+                nuevoPropiedad.setSuperficiePropiedad(Integer.parseInt(jTextFieldIDpropietario.getText()));
+                propiedadRelleno[9] = true;
             } else {
-                JOptionPane.showMessageDialog(this, "Debe seleccionar un propietario");
+                JOptionPane.showMessageDialog(this, "Debe ingresar IDpropietario");
                 propiedadRelleno[9] = false;
             }
 //            propiedadRelleno.setEstadoAlumno(true);
@@ -453,20 +497,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jComboBoxPropietario.addItem(item);
     }
 
-      jComboBoxPropietario.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedItem = (String) jComboBoxPropietario.getSelectedItem();
-                if (selectedItem != null) {
-                    // Extrae el ID del elemento seleccionado
-                    String[] parts = selectedItem.split(" - ");
-                    if (parts.length == 2) {
-                        String id = parts[0];
-                        jLabelPropietario.setText("ID: " + id);
-                    }
-                }
-            }
-        });
+     
 }
 
     private boolean validacionTextField1(JTextField jtf) {
@@ -512,27 +543,27 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     }
 
     public void armarCabecera() {
-        modeloTabla.addColumn("ID");
-        modeloTabla.addColumn("ID propietario");
-        modeloTabla.addColumn("Tipo");
-        modeloTabla.addColumn("Precio");
-        modeloTabla.addColumn("Zona");
-        modeloTabla.addColumn("Sup. m ");
-        modeloTabla.addColumn("Direccion");
-        modeloTabla.addColumn("Disp.");
-        modeloTabla.addColumn("Ambientes");
-        modeloTabla.addColumn("baños");
-        modeloTabla.addColumn("Amueblado");
-        modeloTabla.addColumn("Descripcion");
-        modeloTabla.addColumn("Estado");
-        jTable1.setModel(modeloTabla);
+        modeloTablaPropiedades.addColumn("ID");
+        modeloTablaPropiedades.addColumn("ID propietario");
+        modeloTablaPropiedades.addColumn("Tipo");
+        modeloTablaPropiedades.addColumn("Precio");
+        modeloTablaPropiedades.addColumn("Zona");
+        modeloTablaPropiedades.addColumn("Sup. m ");
+        modeloTablaPropiedades.addColumn("Direccion");
+        modeloTablaPropiedades.addColumn("Disp.");
+        modeloTablaPropiedades.addColumn("Ambientes");
+        modeloTablaPropiedades.addColumn("baños");
+        modeloTablaPropiedades.addColumn("Amueblado");
+        modeloTablaPropiedades.addColumn("Descripcion");
+        modeloTablaPropiedades.addColumn("Estado");
+        jTable1.setModel(modeloTablaPropiedades);
         jTable1.sizeColumnsToFit(1);
     }
 
     private void cargarTablaPropiedad() {
         borrarFilas();
         for (Propiedad propiedad : propiedadData.listarPropiedades()) {
-            modeloTabla.addRow(new Object[]{
+            modeloTablaPropiedades.addRow(new Object[]{
                 propiedad.getIdPropiedad(),
                 propiedad.getPropietario().getIdPropietario(),
                 propiedad.getTipoPropiedad(),
@@ -553,8 +584,42 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     public void borrarFilas() {
         int f = jTable1.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
         for (; f >= 0; f--) {
-            modeloTabla.removeRow(f);
+            modeloTablaPropiedades.removeRow(f);
         }
     }
+    public void borrarFilas2() {
+        int f = jTable1.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaPropietarios.removeRow(f);
+        }
+    }
+  private void armarCabeceraPropietario() {
 
+       modeloTablaPropietarios.addColumn("ID");
+       modeloTablaPropietarios.addColumn("Nombre");
+        modeloTablaPropietarios.addColumn("Apellido");
+        modeloTablaPropietarios.addColumn("DNI");
+        modeloTablaPropietarios.addColumn("Domicilio ");
+        modeloTablaPropietarios.addColumn("Tel.");
+        modeloTablaPropietarios.addColumn("Estado");
+
+        jTablePropietario.setModel(modeloTablaPropietarios);
+
+    }
+
+    private void cargarTablapropietario() {
+        borrarFilas();
+        for (Propietario propietario : propietarioData.listarPropietarios()) {
+            modeloTablaPropietarios.addRow(new Object[]{
+                propietario.getIdPropietario(),
+                propietario.getNombrePropietario(),
+                propietario.getApellidoPropietario(),
+                propietario.getDniPropietario(),
+                propietario.getDomicilioPropietario(),
+                propietario.getTelefonoPropietario(),
+                propietario.isEstadoPropietario()
+                   
+            });
+        }
+    }  
 }
