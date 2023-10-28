@@ -9,6 +9,8 @@ import AccesoDatos.PropietarioData;
 import Entidades.Propiedad;
 import Entidades.Propietario;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import javax.swing.BorderFactory;
@@ -38,7 +40,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         initComponents();
         armarCabecera();
         cargarTablaPropiedad();
-        listarPropietario();
+        listarPropietarioComboBox();
     }
 
     /**
@@ -75,6 +77,8 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         btnModificar = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jComboBoxPropietario = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        jLabelPropietario = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -90,31 +94,35 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 80, 26));
 
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Departamento", "Casa", "PH", "Oficina", "Local", "Galpon" }));
-        jPanel2.add(jComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, -1));
+        jPanel2.add(jComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 40));
 
         jLabel2.setText("Tipo Propiedad");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 26));
-
-        jTextFieldPrecio.setText("jTextField1");
-        jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 200, -1));
+        jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 200, 30));
 
         jLabel3.setText("Precio");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 110, 26));
 
-        jTextFieldZona.setText("jTextField2");
-        jPanel2.add(jTextFieldZona, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
+        jTextFieldZona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldZonaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldZona, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, 30));
 
         jLabel4.setText("Zona");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 110, 26));
-
-        jTextFieldSup.setText("jTextField3");
-        jPanel2.add(jTextFieldSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 210, -1));
+        jPanel2.add(jTextFieldSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 212, 210, 30));
 
         jLabel5.setText("Superficie");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, 26));
 
-        jTextFieldDireccion.setText("jTextField4");
-        jPanel2.add(jTextFieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 210, -1));
+        jTextFieldDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDireccionActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 262, 210, 30));
 
         jLabel6.setText("Direccion");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 110, 26));
@@ -161,7 +169,13 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jLabel10.setText("Descripcion");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 110, 26));
 
-        jPanel2.add(jComboBoxPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 280, -1));
+        jPanel2.add(jComboBoxPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 170, 30));
+
+        jLabel11.setText("Buscar");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 60, 30));
+
+        jLabelPropietario.setOpaque(true);
+        jPanel2.add(jLabelPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 50, 30));
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -246,6 +260,14 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         agregarPropiedad();
     }//GEN-LAST:event_btnGuardarMouseClicked
 
+    private void jTextFieldDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDireccionActionPerformed
+
+    private void jTextFieldZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldZonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldZonaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnEliminar;
@@ -259,6 +281,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBoxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -267,6 +290,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelPropietario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -286,7 +310,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
 
         Propiedad nuevoPropiedad = new Propiedad();
 
-        boolean[] propiedadRelleno = {false, false, false, false, false, false, false, false, false};
+        boolean[] propiedadRelleno = {false, false, false, false, false, false, false, false, false,false};
 
         try {
             if (validacionComboBox(jComboBoxTipo)) {
@@ -354,25 +378,49 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Debe ingresar un si esta Amueblado");
                 propiedadRelleno[7] = false;
             }
-            
-            
-             if (validacionTextArea(jTextAreaDescrip)) {
+
+            if (validacionTextArea(jTextAreaDescrip)) {
                 nuevoPropiedad.setDescripcionPropiedad(jTextAreaDescrip.getText());
                 propiedadRelleno[8] = true;
             } else {
-                JOptionPane.showMessageDialog(this, "Debe ingresar una Zona");
+                JOptionPane.showMessageDialog(this, "Debe ingresar Descripcion");
                 propiedadRelleno[8] = false;
             }
+            if (validacionComboBox(jComboBoxPropietario)) {
+                String selectedItem = jComboBoxPropietario.getSelectedItem().toString();
+                 String[] parts = selectedItem.split(" - ");
+                if (parts.length == 2) {
+                    int idPropietario = Integer.parseInt(parts[0].trim());
+                     Propietario propietarioSeleccionado = propietarioData.buscarPropietarioPorId(idPropietario);
+
+  
+
+                    if (propietarioSeleccionado != null) {
+                        nuevoPropiedad.setPropietario(propietarioSeleccionado);
+                        propiedadRelleno[9] = true;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No se pudo encontrar el propietario con el ID especificado.");
+                        propiedadRelleno[9] = false;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al obtener el ID del propietario");
+                    propiedadRelleno[9] = false;
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar un propietario");
+                propiedadRelleno[9] = false;
+            }
 //            propiedadRelleno.setEstadoAlumno(true);
-            if (propiedadRelleno[0] == true &&
-                propiedadRelleno[1] == true &&
-                propiedadRelleno[2] == true &&
-                propiedadRelleno[3] == true &&
-                propiedadRelleno[4] == true &&
-                propiedadRelleno[5] == true &&
-                propiedadRelleno[6] == true &&
-                propiedadRelleno[7] == true &&
-                propiedadRelleno[8] == true) {
+            if (propiedadRelleno[0] == true
+                    && propiedadRelleno[1] == true
+                    && propiedadRelleno[2] == true
+                    && propiedadRelleno[3] == true
+                    && propiedadRelleno[4] == true
+                    && propiedadRelleno[5] == true
+                    && propiedadRelleno[6] == true
+                    && propiedadRelleno[7] == true
+                    && propiedadRelleno[8] == true
+                    && propiedadRelleno[9] == true) {
                 propiedadData.guardarPropiedad(nuevoPropiedad);
                 limpiarTextFields();
             }
@@ -380,7 +428,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Ingrese el Precio correctamente");
             jTextFieldPrecio.setText("");
             validacionTextField1(jTextFieldPrecio);
-        
+
         } finally {
             cargarTablaPropiedad();
         }
@@ -398,16 +446,28 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         limpiarTextFields();
 //        btnEliminar.setVisible(false);
     }
-    
-    private void listarPropietario(){
-        for(Propietario propietario : propietarioData.listarPropietarios() ){
-             jComboBoxPropietario.addItem(propietario.getIdPropietario() + " - " +
-                                          propietario.getNombrePropietario() + " - " +
-                                          propietario.getApellidoPropietario());
+
+    private void listarPropietarioComboBox() {
+    for (Propietario propietario : propietarioData.listarPropietarios()) {
+        String item = propietario.getIdPropietario() + " - " + propietario.getNombrePropietario() + " - " + propietario.getApellidoPropietario();
+        jComboBoxPropietario.addItem(item);
     }
-        
-            
-    }
+
+      jComboBoxPropietario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedItem = (String) jComboBoxPropietario.getSelectedItem();
+                if (selectedItem != null) {
+                    // Extrae el ID del elemento seleccionado
+                    String[] parts = selectedItem.split(" - ");
+                    if (parts.length == 2) {
+                        String id = parts[0];
+                        jLabelPropietario.setText("ID: " + id);
+                    }
+                }
+            }
+        });
+}
 
     private boolean validacionTextField1(JTextField jtf) {
         if (jtf.getText().isEmpty()) {

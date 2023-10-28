@@ -96,12 +96,15 @@ public class Propietario {
         this.estadoPropietario = estadoPropietario;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Propietario{" + "idPropietario=" + idPropietario + ", nombrePropietario=" + nombrePropietario + ", apellidoPropietario=" + apellidoPropietario + ", dniPropietario=" + dniPropietario + ", domicilioPropietario=" + domicilioPropietario + ", telefonoPropietario=" + telefonoPropietario + ", estadoPropietario=" + estadoPropietario + '}';
+//    }
+    
     @Override
-    public String toString() {
-        return "Propietario{" + "idPropietario=" + idPropietario + ", nombrePropietario=" + nombrePropietario + ", apellidoPropietario=" + apellidoPropietario + ", dniPropietario=" + dniPropietario + ", domicilioPropietario=" + domicilioPropietario + ", telefonoPropietario=" + telefonoPropietario + ", estadoPropietario=" + estadoPropietario + '}';
-    }
-    
-    
+public String toString() {
+    return getIdPropietario() + " - " + getNombrePropietario() + " - " + getApellidoPropietario();
+}
     
     
     

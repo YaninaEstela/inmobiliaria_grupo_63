@@ -29,6 +29,9 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         contenido = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,13 +54,30 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
 
         jPanel1.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 1037, 635));
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Gestion Propiedad");
+        jLabel1.setOpaque(true);
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 240, 50));
+
+        jLabel2.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("Gestion Contratos");
+        jLabel2.setOpaque(true);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 240, 50));
+
+        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("Gestion Propietario");
+        jLabel3.setOpaque(true);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 240, 50));
+
+        jLabel4.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel4.setText("Gestion Inquilino");
+        jLabel4.setOpaque(true);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 240, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,6 +141,9 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
