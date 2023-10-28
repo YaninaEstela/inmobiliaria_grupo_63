@@ -30,47 +30,92 @@ public class PropiedadData {
      
      // MÉTODO GUARDAR PROPIEDAD
      
-     public void guardarPropiedad(Propiedad propiedad){
-         
-         String sql = "INSERT INTO propiedad (idPropietario, tipoPropiedad, precioTasadoPropiedad, zonaPropiedad,"
-                 + " superficiePropiedad, direccionPropiedad, disponibilidadPropiedad,"
-                 + " cantidadAmbientes, cantidadBanios, amueblado, descripcionPropiedad, estadoPropiedad)"
-                 + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" ;
-         
-        try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            
+//     public void guardarPropiedad(Propiedad propiedad){
+//         
+//         String sql = "INSERT INTO propiedad (idPropietario, tipoPropiedad, precioTasadoPropiedad, zonaPropiedad,"
+//                 + " superficiePropiedad, direccionPropiedad, disponibilidadPropiedad,"
+//                 + " cantidadAmbientes, cantidadBanios, amueblado, descripcionPropiedad, estadoPropiedad)"
+//                 + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" ;
+//         
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            
+//            ps.setInt(1, propiedad.getPropietario().getIdPropietario());
+//            // propietario ES UN ATRIBUTO DE LA CLASE Propiedad POR ESO VA propiedad.getPropietario() Y DE AHÍ EXTRAE EL ID
+//            ps.setString(2, propiedad.getTipoPropiedad());
+//            ps.setDouble(3, propiedad.getPrecioTasadoPropiedad());
+//            ps.setString(4, propiedad.getZonaPropiedad());
+//            ps.setDouble(5, propiedad.getSuperficiePropiedad());
+//            ps.setString(6, propiedad.getDireccionPropiedad());
+//            ps.setBoolean(7, propiedad.isDisponibilidadPropiedad());
+//            ps.setInt(8, propiedad.getCantidadAmbientes());
+//            ps.setInt(9, propiedad.getCantidadBanios());
+//            ps.setBoolean(10, propiedad.isAmueblado());
+//            ps.setString(11, propiedad.getDescripcionPropiedad());
+//            ps.setBoolean(12, propiedad.isEstadoPropiedad());
+//            
+//            ps.executeUpdate();
+//             
+//            ResultSet rs = ps.getGeneratedKeys(); 
+//             
+//            if(rs.next()){ 
+//                propiedad.setIdPropiedad(rs.getInt(1)); 
+//                JOptionPane.showMessageDialog(null, "Propiedad guardada");
+//            }
+//            ps.close();
+//            
+//            
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propiedad");
+//        }          
+//     }
+//     
+    
+   public void guardarPropiedad(Propiedad propiedad) {
+    String sql = "INSERT INTO propiedad (idPropietario, tipoPropiedad, precioTasadoPropiedad, zonaPropiedad,"
+            + " superficiePropiedad, direccionPropiedad, disponibilidadPropiedad,"
+            + " cantidadAmbientes, cantidadBanios, amueblado, descripcionPropiedad, estadoPropiedad)"
+            + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+        if (propiedad.getPropietario() != null) {
             ps.setInt(1, propiedad.getPropietario().getIdPropietario());
-            // propietario ES UN ATRIBUTO DE LA CLASE Propiedad POR ESO VA propiedad.getPropietario() Y DE AHÍ EXTRAE EL ID
-            ps.setString(2, propiedad.getTipoPropiedad());
-            ps.setDouble(3, propiedad.getPrecioTasadoPropiedad());
-            ps.setString(4, propiedad.getZonaPropiedad());
-            ps.setDouble(5, propiedad.getSuperficiePropiedad());
-            ps.setString(6, propiedad.getDireccionPropiedad());
-            ps.setBoolean(7, propiedad.isDisponibilidadPropiedad());
-            ps.setInt(8, propiedad.getCantidadAmbientes());
-            ps.setInt(9, propiedad.getCantidadBanios());
-            ps.setBoolean(10, propiedad.isAmueblado());
-            ps.setString(11, propiedad.getDescripcionPropiedad());
-            ps.setBoolean(12, propiedad.isEstadoPropiedad());
-            
-            ps.executeUpdate();
-             
-            ResultSet rs = ps.getGeneratedKeys(); 
-             
-            if(rs.next()){ 
-                propiedad.setIdPropiedad(rs.getInt(1)); 
-                JOptionPane.showMessageDialog(null, "Propiedad guardada");
-            }
-            ps.close();
-            
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propiedad");
-        }          
-     }
-     
-     // MÉTODO MODIFICAR PROPIEDAD
+        } else {
+            // Trata el caso en que el propietario sea null (puede ser una excepción o un valor predeterminado)
+            // ps.setInt(1, valorPredeterminado);
+        }
+        
+        ps.setString(2, propiedad.getTipoPropiedad());
+        ps.setDouble(3, propiedad.getPrecioTasadoPropiedad());
+        ps.setString(4, propiedad.getZonaPropiedad());
+        ps.setDouble(5, propiedad.getSuperficiePropiedad());
+        ps.setString(6, propiedad.getDireccionPropiedad());
+        ps.setBoolean(7, propiedad.isDisponibilidadPropiedad());
+        ps.setInt(8, propiedad.getCantidadAmbientes());
+        ps.setInt(9, propiedad.getCantidadBanios());
+        ps.setBoolean(10, propiedad.isAmueblado());
+        ps.setString(11, propiedad.getDescripcionPropiedad());
+        ps.setBoolean(12, propiedad.isEstadoPropiedad());
+
+        ps.executeUpdate();
+
+        ResultSet rs = ps.getGeneratedKeys();
+
+        if (rs.next()) {
+            propiedad.setIdPropiedad(rs.getInt(1));
+            JOptionPane.showMessageDialog(null, "Propiedad guardada");
+        }
+        ps.close();
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propiedad");
+    }
+}  
+
+
+// MÉTODO MODIFICAR PROPIEDAD
      
      public void modificarPropiedad(Propiedad propiedad){
          

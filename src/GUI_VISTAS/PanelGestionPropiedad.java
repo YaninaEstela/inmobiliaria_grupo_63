@@ -346,7 +346,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldIDpropietarioActionPerformed
 
     private void jTablePropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePropietarioMouseClicked
-        // TODO add your handling code here:
+        cargarTextField();
     }//GEN-LAST:event_jTablePropietarioMouseClicked
 
 
@@ -399,6 +399,13 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         boolean[] propiedadRelleno = {false, false, false, false, false, false, false, false, false, false};
 
         try {
+             if (validacionTextField1(jTextFieldIDpropietario)) {
+                nuevoPropiedad.setSuperficiePropiedad(Integer.parseInt(jTextFieldIDpropietario.getText()));
+                propiedadRelleno[9] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar IDpropietario");
+                propiedadRelleno[9] = false;
+            }
             if (validacionComboBox(jComboBoxTipo)) {
                 nuevoPropiedad.setTipoPropiedad(jComboBoxTipo.getSelectedItem().toString());// LE SETEAS EL NOMBRE QUE LO EXTRAES DEL TEXTFIELD
                 propiedadRelleno[0] = true;
@@ -472,13 +479,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Debe ingresar Descripcion");
                 propiedadRelleno[8] = false;
             }
-            if (validacionTextField1(jTextFieldIDpropietario)) {
-                nuevoPropiedad.setSuperficiePropiedad(Integer.parseInt(jTextFieldIDpropietario.getText()));
-                propiedadRelleno[9] = true;
-            } else {
-                JOptionPane.showMessageDialog(this, "Debe ingresar IDpropietario");
-                propiedadRelleno[9] = false;
-            }
+           
 //            propiedadRelleno.setEstadoAlumno(true);
             if (propiedadRelleno[0] == true
                     && propiedadRelleno[1] == true
