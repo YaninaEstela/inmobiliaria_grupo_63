@@ -4,17 +4,17 @@
  */
 package GUI_VISTAS;
 
+import themes.ThemaCC;
+
 /**
  *
  * @author crist
  */
 public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MenuPrincipalInmobiliaria
-     */
+    ThemaCC temaCC = new ThemaCC();
     public MenuPrincipalInmobiliaria() {
         initComponents();
+        themaColorCC();
     }
 
     /**
@@ -26,17 +26,19 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelFondo = new javax.swing.JPanel();
         contenido = new javax.swing.JPanel();
         btnPropiedad = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        btnContratos = new javax.swing.JLabel();
+        btnPropietario = new javax.swing.JLabel();
+        btnInquilino = new javax.swing.JLabel();
+        separador = new javax.swing.JPanel();
+        btnMenu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         contenido.setBackground(new java.awt.Color(204, 204, 204));
         contenido.setPreferredSize(new java.awt.Dimension(1037, 635));
@@ -52,7 +54,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
             .addGap(0, 635, Short.MAX_VALUE)
         );
 
-        jPanel1.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 1037, 635));
+        jPanelFondo.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 1037, 635));
 
         btnPropiedad.setBackground(new java.awt.Color(204, 204, 204));
         btnPropiedad.setText("Gestion Propiedad");
@@ -62,46 +64,77 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
                 btnPropiedadMouseClicked(evt);
             }
         });
-        jPanel1.add(btnPropiedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 240, 50));
+        jPanelFondo.add(btnPropiedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 240, 50));
 
-        jLabel2.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("Gestion Contratos");
-        jLabel2.setOpaque(true);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 240, 50));
+        btnContratos.setBackground(new java.awt.Color(204, 204, 204));
+        btnContratos.setText("Gestion Contratos");
+        btnContratos.setOpaque(true);
+        jPanelFondo.add(btnContratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 240, 50));
 
-        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Gestion Propietario");
-        jLabel3.setOpaque(true);
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 240, 50));
+        btnPropietario.setBackground(new java.awt.Color(204, 204, 204));
+        btnPropietario.setText("Gestion Propietario");
+        btnPropietario.setOpaque(true);
+        jPanelFondo.add(btnPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 240, 50));
 
-        jLabel4.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel4.setText("Gestion Inquilino");
-        jLabel4.setOpaque(true);
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 240, 50));
+        btnInquilino.setBackground(new java.awt.Color(204, 204, 204));
+        btnInquilino.setText("Gestion Inquilino");
+        btnInquilino.setOpaque(true);
+        btnInquilino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInquilinoMouseClicked(evt);
+            }
+        });
+        jPanelFondo.add(btnInquilino, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 240, 50));
+
+        javax.swing.GroupLayout separadorLayout = new javax.swing.GroupLayout(separador);
+        separador.setLayout(separadorLayout);
+        separadorLayout.setHorizontalGroup(
+            separadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+        separadorLayout.setVerticalGroup(
+            separadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        jPanelFondo.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 220, 10));
+
+        btnMenu.setText("Menu ");
+        jPanelFondo.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPropiedadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPropiedadMouseClicked
-        PanelGestionPropiedad panelGestion = new PanelGestionPropiedad();
-        panelGestion.setSize(1037, 635); //SE ABRE LA PÁGINA HOME
-        panelGestion.setLocation(0, 0);
+        PanelGestionPropiedad gestionPropietario = new PanelGestionPropiedad();
+        gestionPropietario.setSize(1037, 635); //SE ABRE LA PÁGINA HOME
+        gestionPropietario.setLocation(0, 0);
         contenido.removeAll();
-        contenido.add(panelGestion);
+        contenido.add(gestionPropietario);
         contenido.revalidate();
         contenido.repaint();
     }//GEN-LAST:event_btnPropiedadMouseClicked
+
+    private void btnInquilinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInquilinoMouseClicked
+        GestionInquilino gestionInquilino = new GestionInquilino();
+         gestionInquilino.setSize(1037, 635); //SE ABRE LA PÁGINA HOME
+         gestionInquilino.setLocation(0, 0);
+        contenido.removeAll();
+        contenido.add(gestionInquilino);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_btnInquilinoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -139,11 +172,17 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnContratos;
+    private javax.swing.JLabel btnInquilino;
+    private javax.swing.JLabel btnMenu;
     private javax.swing.JLabel btnPropiedad;
+    private javax.swing.JLabel btnPropietario;
     private javax.swing.JPanel contenido;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelFondo;
+    private javax.swing.JPanel separador;
     // End of variables declaration//GEN-END:variables
+public void themaColorCC(){
+ temaCC.CobreTheme(jPanelFondo,btnMenu,separador,btnPropiedad,btnPropietario,btnInquilino,btnContratos);
+}
+
 }

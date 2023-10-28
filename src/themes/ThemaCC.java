@@ -24,37 +24,34 @@ public class ThemaCC {
 
     // COMIENZO THEMA CIEN_BLUE   
     
-    public void CobreTheme(JPanel panelPrincipal, JPanel panelMenu, JLabel lblLibreria, JPanel separador, JLabel btnPrincipal, JLabel btnPrestamos, JLabel btnDevoluciones, JLabel btnUsuarios, JLabel btnReportes, JLabel btnLibros) {
-        setPanelBackground(panelPrincipal, Color.decode("#FFFFFF"));
-        setPanelBackground(panelMenu, Color.decode("#6a462d"));
+    public void CobreTheme(JPanel panelPrincipal, JLabel btnFiltros, JPanel separador, JLabel btnGestionPropiedad, JLabel btnGestionPropietario,JLabel btnGestionInquilino, JLabel btnGestionContratos) {
+        setPanelBackground(panelPrincipal, Color.decode("#3f6885"));
+//      setPanelBackground(panelMenu, Color.decode("#6a462d"));
         setSeparatorBackground(separador, Color.decode("#ffffff"));
-        setButtonStyles(lblLibreria, "Libreria");
-        setButtonStyles(btnPrincipal, "  Principal");
-        setButtonStyles(btnPrestamos, "  Prestamos");
-        setButtonStyles(btnDevoluciones, "  Devoluciones");
-        setButtonStyles(btnUsuarios, "  Usuarios");
-        setButtonStyles(btnLibros, "  Libros");
-        setButtonStyles(btnReportes, "  Reportes");
-        setButtonTextPosition(lblLibreria, SwingConstants.CENTER, SwingConstants.CENTER);
-        setButtonTextPosition(btnPrincipal, SwingConstants.LEFT, SwingConstants.CENTER);
-        setButtonTextPosition(btnPrestamos, SwingConstants.LEFT, SwingConstants.CENTER);
-        setButtonTextPosition(btnDevoluciones, SwingConstants.LEFT, SwingConstants.CENTER);
-        setButtonTextPosition(btnUsuarios, SwingConstants.LEFT, SwingConstants.CENTER);
-        setButtonTextPosition(btnLibros, SwingConstants.LEFT, SwingConstants.CENTER);
-        setButtonTextPosition(btnReportes, SwingConstants.LEFT, SwingConstants.CENTER);
-        setButtonFontType(lblLibreria);
-        setButtonFontType(btnPrincipal);
-        setButtonFontType(btnPrestamos);
-        setButtonFontType(btnDevoluciones);
-        setButtonFontType(btnUsuarios);
-        setButtonFontType(btnLibros);
-        setButtonFontType(btnReportes);
-        setButtonMovement(btnPrincipal);
-        setButtonMovement(btnPrestamos);
-        setButtonMovement(btnDevoluciones);
-        setButtonMovement(btnUsuarios);
-        setButtonMovement(btnLibros);
-        setButtonMovement(btnReportes);
+        setButtonStyles(btnFiltros, "Filtros");
+        setButtonStyles(btnGestionPropiedad, "Gestion Propiedad");
+         setButtonStyles(btnGestionPropietario, "Gestion Propietario");
+        setButtonStyles(btnGestionInquilino, "  Gestion Inquilino");
+        setButtonStyles(btnGestionContratos, " Gestion Contratos");
+        
+        setButtonTextPosition(btnFiltros, SwingConstants.CENTER, SwingConstants.CENTER);
+        setButtonTextPosition(btnGestionPropiedad, SwingConstants.LEFT, SwingConstants.CENTER);
+         setButtonTextPosition(btnGestionPropietario, SwingConstants.LEFT, SwingConstants.CENTER);
+        setButtonTextPosition(btnGestionInquilino, SwingConstants.LEFT, SwingConstants.CENTER);
+        setButtonTextPosition(btnGestionContratos, SwingConstants.LEFT, SwingConstants.CENTER);
+        
+        setButtonFontType(btnFiltros);
+        setButtonFontType(btnGestionPropiedad);
+        setButtonFontType(btnGestionPropietario);
+        setButtonFontType(btnGestionInquilino);
+        setButtonFontType(btnGestionContratos);
+        
+        setButtonMovement(btnFiltros);
+        setButtonMovement(btnGestionPropiedad);
+        setButtonMovement(btnGestionPropietario);
+        setButtonMovement(btnGestionInquilino);
+        setButtonMovement(btnGestionContratos);
+      
     }
  private void setPanelBackground(JPanel panel, Color color) {
         panel.setBackground(color);
@@ -63,18 +60,18 @@ public class ThemaCC {
         separator.setBackground(color);
     }
   private void setButtonStyles(JLabel label, String text) {
-        label.setBackground(Color.decode("#925c33"));
-        label.setForeground(Color.decode("#4f3624"));
+        label.setBackground(Color.decode("#084d6e"));
+        label.setForeground(Color.decode("#ffffff"));
 
         label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                label.setBackground(Color.decode("#4f3624"));
+                label.setBackground(Color.decode("#66849c"));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                label.setBackground(Color.decode("#925c33"));
+                label.setBackground(Color.decode("#084d6e"));
             }
         });
 
@@ -95,7 +92,7 @@ public class ThemaCC {
         label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                label.setBackground(Color.decode("#8d6e5a"));
+                label.setBackground(Color.decode("#66849c"));
                 Point location = label.getLocation();
                 int w = label.getWidth();
                 int h = label.getHeight();
@@ -106,7 +103,7 @@ public class ThemaCC {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                label.setBackground(Color.decode("#925c33"));
+                label.setBackground(Color.decode("#084d6e"));
                 int w = label.getWidth();
                 int h = label.getHeight();
                 Point location = label.getLocation();
