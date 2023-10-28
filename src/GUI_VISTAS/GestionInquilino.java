@@ -4,17 +4,32 @@
  */
 package GUI_VISTAS;
 
+import AccesoDatos.InquilinoData;
+import Entidades.Inquilino;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author crist
  */
 public class GestionInquilino extends javax.swing.JPanel {
-
-    /**
-     * Creates new form GestionInquilino
-     */
+    InquilinoData inquilinoData = new InquilinoData();
+    DefaultTableModel modeloTablaInquilino = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+    DefaultTableModel modeloTablaInquilinoInactivo = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
     public GestionInquilino() {
         initComponents();
+        armarCabeceraInquilino();
+        cargarTablaInquilinoInactivos();
+        cargarTablaInquilinoActivos();
     }
 
     /**
@@ -30,9 +45,9 @@ public class GestionInquilino extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         btnEliminar1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableInquilinosInactivos = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableInquilinosActivos = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -68,7 +83,7 @@ public class GestionInquilino extends javax.swing.JPanel {
         });
         jPanel2.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 250, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableInquilinosInactivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -79,11 +94,11 @@ public class GestionInquilino extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableInquilinosInactivos);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 690, 210));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableInquilinosActivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -94,7 +109,7 @@ public class GestionInquilino extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTableInquilinosActivos);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 690, 210));
 
@@ -111,18 +126,33 @@ public class GestionInquilino extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(140, 161, 180));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tipo");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, 24));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Nombre");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 28, -1, 24));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Apellido");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, 24));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("DNI");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, 24));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Detalle");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, 24));
 
@@ -233,11 +263,82 @@ public class GestionInquilino extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableInquilinosActivos;
+    private javax.swing.JTable jTableInquilinosInactivos;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+public void armarCabeceraInquilino() {
+        modeloTablaInquilino.addColumn("ID");
+        modeloTablaInquilino.addColumn("Nombre");
+        modeloTablaInquilino.addColumn("Apellido");
+        modeloTablaInquilino.addColumn("DNI");
+        modeloTablaInquilino.addColumn("Detalle");
+        modeloTablaInquilino.addColumn("Tipo");
+       jTableInquilinosActivos.setModel(modeloTablaInquilino);
+        jTableInquilinosInactivos.setModel(modeloTablaInquilino);
+//        jTablePropiedad.sizeColumnsToFit(1);
+    }
+private void cargarTablaInquilinoActivos() {
+        borrarFilasActivos();
+        ArrayList <Inquilino>inquilinosActivos = new ArrayList<>();
+        for(Inquilino inqActivos: inquilinoData.listarInquilinos()){
+          if(inqActivos.isEstadoInquilino()){
+              inquilinosActivos.add(inqActivos);
+          }  
+        }
+        for (Inquilino inquilino : inquilinosActivos) {
+            modeloTablaInquilino.addRow(new Object[]{
+                inquilino.getIdInquilino(),
+                inquilino.getNombreInquilino(),
+                inquilino.getApellidoInquilino(),
+                inquilino.getDniInquilino(),
+                inquilino.getDetalleInquilino(),
+                inquilino.getTipoInquilino()
+               
+            });
+        }
+    }
+
+    public void borrarFilasActivos() {
+        int f = jTableInquilinosActivos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaInquilino.removeRow(f);
+        }
+    }
+    
+    private void cargarTablaInquilinoInactivos() {
+        borrarFilasInactivos();
+        ArrayList <Inquilino>inquilinosInactivos = new ArrayList<>();
+        for(Inquilino inqInactivos: inquilinoData.listarInquilinos()){
+          if(!inqInactivos.isEstadoInquilino()){
+              System.out.println(inqInactivos);
+              inquilinosInactivos.add(inqInactivos);
+              
+          }  
+        }
+        for (Inquilino inquilino : inquilinosInactivos) {
+            modeloTablaInquilinoInactivo.addRow(new Object[]{
+                inquilino.getIdInquilino(),
+                inquilino.getNombreInquilino(),
+                inquilino.getApellidoInquilino(),
+                inquilino.getDniInquilino(),
+                inquilino.getDetalleInquilino(),
+                inquilino.getTipoInquilino()
+               
+            });
+        }
+    }
+
+    public void borrarFilasInactivos() {
+        int f = jTableInquilinosInactivos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaInquilinoInactivo.removeRow(f);
+        }
+    }
+
 }
+
+

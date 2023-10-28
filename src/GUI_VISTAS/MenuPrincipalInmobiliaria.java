@@ -69,6 +69,11 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         btnContratos.setBackground(new java.awt.Color(204, 204, 204));
         btnContratos.setText("Gestion Contratos");
         btnContratos.setOpaque(true);
+        btnContratos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnContratosMouseClicked(evt);
+            }
+        });
         jPanelFondo.add(btnContratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 240, 50));
 
         btnPropietario.setBackground(new java.awt.Color(204, 204, 204));
@@ -97,7 +102,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        jPanelFondo.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 220, 10));
+        jPanelFondo.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 220, 10));
 
         btnMenu.setText("Menu ");
         jPanelFondo.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
@@ -135,6 +140,16 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         contenido.revalidate();
         contenido.repaint();
     }//GEN-LAST:event_btnInquilinoMouseClicked
+
+    private void btnContratosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContratosMouseClicked
+        GestionContrato gestionContratos = new GestionContrato();
+        gestionContratos.setSize(1037, 635); //SE ABRE LA PÁGINA HOME
+        gestionContratos.setLocation(0, 0);
+        contenido.removeAll();
+        contenido.add(gestionContratos);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_btnContratosMouseClicked
 
     /**
      * @param args the command line arguments

@@ -55,7 +55,7 @@ public class ContratoData {
              ps.setInt(2, contrato.getPropiedad().getIdPropiedad());
              ps.setDate(3,Date.valueOf(contrato.getFechaInicio()));
              ps.setDate(4, Date.valueOf(contrato.getFechaFinal()));
-             ps.setDate(5, Date.valueOf(contrato.getFechaRealizacion()));
+             ps.setDate(5, Date.valueOf(LocalDate.now()));
              ps.setBoolean(6, contrato.isEstadoContrato());
             
              ps.executeUpdate();
