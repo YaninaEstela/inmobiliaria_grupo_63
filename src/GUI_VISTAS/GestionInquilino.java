@@ -28,6 +28,7 @@ public class GestionInquilino extends javax.swing.JPanel {
     public GestionInquilino() {
         initComponents();
         armarCabeceraInquilino();
+        armarCabeceraInquilinoInc();
         cargarTablaInquilinoInactivos();
         cargarTablaInquilinoActivos();
     }
@@ -278,9 +279,20 @@ public void armarCabeceraInquilino() {
         modeloTablaInquilino.addColumn("Detalle");
         modeloTablaInquilino.addColumn("Tipo");
        jTableInquilinosActivos.setModel(modeloTablaInquilino);
-        jTableInquilinosInactivos.setModel(modeloTablaInquilino);
+       
 //        jTablePropiedad.sizeColumnsToFit(1);
     }
+public void armarCabeceraInquilinoInc() {
+        modeloTablaInquilinoInactivo.addColumn("ID");
+        modeloTablaInquilinoInactivo.addColumn("Nombre");
+        modeloTablaInquilinoInactivo.addColumn("Apellido");
+        modeloTablaInquilinoInactivo.addColumn("DNI");
+        modeloTablaInquilinoInactivo.addColumn("Detalle");
+        modeloTablaInquilinoInactivo.addColumn("Tipo");
+       jTableInquilinosInactivos.setModel(modeloTablaInquilinoInactivo);
+//        jTablePropiedad.sizeColumnsToFit(1);
+    }
+
 private void cargarTablaInquilinoActivos() {
         borrarFilasActivos();
         ArrayList <Inquilino>inquilinosActivos = new ArrayList<>();
@@ -300,6 +312,7 @@ private void cargarTablaInquilinoActivos() {
                
             });
         }
+         
     }
 
     public void borrarFilasActivos() {
