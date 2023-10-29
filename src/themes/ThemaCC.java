@@ -28,7 +28,7 @@ public class ThemaCC {
         setPanelBackground(panelPrincipal, Color.decode("#3f6885"));
 //      setPanelBackground(panelMenu, Color.decode("#6a462d"));
         setSeparatorBackground(separador, Color.decode("#ffffff"));
-        setButtonStyles(btnFiltros, "Filtros");
+        setButtonStyles(btnFiltros, "Menu");
         setButtonStyles(btnGestionPropiedad, "Gestion Propiedad");
          setButtonStyles(btnGestionPropietario, "Gestion Propietario");
         setButtonStyles(btnGestionInquilino, "  Gestion Inquilino");
