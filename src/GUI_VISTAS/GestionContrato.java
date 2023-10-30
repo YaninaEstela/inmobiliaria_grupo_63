@@ -4,10 +4,7 @@
  */
 package GUI_VISTAS;
 
-/**
- *
- * @author crist
- */
+
 public class GestionContrato extends javax.swing.JPanel {
 
     /**
