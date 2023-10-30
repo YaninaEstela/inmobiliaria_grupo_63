@@ -40,7 +40,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         jPanelFondo.setBackground(new java.awt.Color(255, 255, 255));
         jPanelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        contenido.setBackground(new java.awt.Color(204, 204, 204));
+        contenido.setBackground(new java.awt.Color(246, 246, 246));
         contenido.setPreferredSize(new java.awt.Dimension(1037, 635));
 
         javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);

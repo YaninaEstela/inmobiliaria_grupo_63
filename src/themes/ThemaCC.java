@@ -25,7 +25,7 @@ public class ThemaCC {
     // COMIENZO THEMA CIEN_BLUE   
     
     public void CobreTheme(JPanel panelPrincipal, JLabel btnFiltros, JPanel separador, JLabel btnGestionPropiedad, JLabel btnGestionPropietario,JLabel btnGestionInquilino, JLabel btnGestionContratos) {
-        setPanelBackground(panelPrincipal, Color.decode("#3f6885"));
+        setPanelBackground(panelPrincipal, Color.decode("#f6f6f6"));
 //      setPanelBackground(panelMenu, Color.decode("#6a462d"));
         setSeparatorBackground(separador, Color.decode("#ffffff"));
         setButtonStyles(btnFiltros, "Menu");
@@ -60,18 +60,18 @@ public class ThemaCC {
         separator.setBackground(color);
     }
   private void setButtonStyles(JLabel label, String text) {
-        label.setBackground(Color.decode("#084d6e"));
+        label.setBackground(Color.decode("#9d9d9d"));
         label.setForeground(Color.decode("#ffffff"));
 
         label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                label.setBackground(Color.decode("#66849c"));
+                label.setBackground(Color.decode("#737373"));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                label.setBackground(Color.decode("#084d6e"));
+                label.setBackground(Color.decode("#9d9d9d"));
             }
         });
 
@@ -92,7 +92,7 @@ public class ThemaCC {
         label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                label.setBackground(Color.decode("#66849c"));
+                label.setBackground(Color.decode("#737373"));
                 Point location = label.getLocation();
                 int w = label.getWidth();
                 int h = label.getHeight();
@@ -103,7 +103,7 @@ public class ThemaCC {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                label.setBackground(Color.decode("#084d6e"));
+                label.setBackground(Color.decode("#9d9d9d"));
                 int w = label.getWidth();
                 int h = label.getHeight();
                 Point location = label.getLocation();
