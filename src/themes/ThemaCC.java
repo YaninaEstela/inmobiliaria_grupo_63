@@ -24,33 +24,36 @@ public class ThemaCC {
 
     // COMIENZO THEMA CIEN_BLUE   
     
-    public void CobreTheme(JPanel panelPrincipal, JLabel btnFiltros, JPanel separador, JLabel btnGestionPropiedad, JLabel btnGestionPropietario,JLabel btnGestionInquilino, JLabel btnGestionContratos) {
+    public void CobreTheme(JPanel panelPrincipal, JLabel btnFiltros, JPanel separador, JLabel btnGestionPropiedad, JLabel btnGestionPropietario,JLabel btnGestionInquilino, JLabel btnGestionContratos,JLabel btnHome) {
         setPanelBackground(panelPrincipal, Color.decode("#f6f6f6"));
 //      setPanelBackground(panelMenu, Color.decode("#6a462d"));
-        setSeparatorBackground(separador, Color.decode("#ffffff"));
+        setSeparatorBackground(separador, Color.decode("#9d9d9d"));
         setButtonStyles(btnFiltros, "Menu");
         setButtonStyles(btnGestionPropiedad, "Gestion Propiedad");
          setButtonStyles(btnGestionPropietario, "Gestion Propietario");
         setButtonStyles(btnGestionInquilino, "  Gestion Inquilino");
         setButtonStyles(btnGestionContratos, " Gestion Contratos");
+        setButtonStyles(btnHome, " Home");
         
         setButtonTextPosition(btnFiltros, SwingConstants.CENTER, SwingConstants.CENTER);
         setButtonTextPosition(btnGestionPropiedad, SwingConstants.LEFT, SwingConstants.CENTER);
          setButtonTextPosition(btnGestionPropietario, SwingConstants.LEFT, SwingConstants.CENTER);
         setButtonTextPosition(btnGestionInquilino, SwingConstants.LEFT, SwingConstants.CENTER);
         setButtonTextPosition(btnGestionContratos, SwingConstants.LEFT, SwingConstants.CENTER);
+        setButtonTextPosition(btnHome, SwingConstants.LEFT, SwingConstants.CENTER);
         
         setButtonFontType(btnFiltros);
         setButtonFontType(btnGestionPropiedad);
         setButtonFontType(btnGestionPropietario);
         setButtonFontType(btnGestionInquilino);
         setButtonFontType(btnGestionContratos);
-        
+        setButtonFontType(btnHome);
 //        setButtonMovement(btnFiltros);
         setButtonMovement(btnGestionPropiedad);
         setButtonMovement(btnGestionPropietario);
         setButtonMovement(btnGestionInquilino);
         setButtonMovement(btnGestionContratos);
+        setButtonMovement(btnHome);
       
     }
  private void setPanelBackground(JPanel panel, Color color) {
@@ -98,7 +101,7 @@ public class ThemaCC {
                 int h = label.getHeight();
                 int newX = location.x - 1;
                 int newY = location.y - 1;
-                label.setBounds(newX, newY, w + 6, h + 6);
+                label.setBounds(newX, newY, w + 2, h + 2);
             }
 
             @Override
@@ -109,7 +112,7 @@ public class ThemaCC {
                 Point location = label.getLocation();
                 int newX = location.x + 1;
                 int newY = location.y + 1;
-                label.setBounds(newX, newY, w - 6, h - 6);
+                label.setBounds(newX, newY, w - 2, h - 2);
             }
         });
     }

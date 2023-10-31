@@ -9,6 +9,7 @@ import AccesoDatos.PropietarioData;
 import Entidades.Propiedad;
 import Entidades.Propietario;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
@@ -169,6 +170,12 @@ public class ModificarPropiedad extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Tipo Propiedad");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 110, 26));
+
+        jTextFieldPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldPrecioKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 80, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -185,6 +192,17 @@ public class ModificarPropiedad extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Zona");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 110, 26));
+
+        jTextFieldSup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldSupMouseClicked(evt);
+            }
+        });
+        jTextFieldSup.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSupKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 90, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -302,6 +320,9 @@ public class ModificarPropiedad extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldBuscarXDniKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldBuscarXDniKeyTyped(evt);
+            }
         });
         jPanel2.add(jTextFieldBuscarXDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 110, 30));
 
@@ -376,6 +397,61 @@ public class ModificarPropiedad extends javax.swing.JFrame {
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void jTextFieldPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrecioKeyTyped
+      char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9') && c != '.') {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (c == '.' && jTextFieldPrecio.getText().contains(".")) {
+            evt.consume(); // Evita más de un punto decimal
+        }
+
+        if (jTextFieldPrecio.getText().length() >= 20) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_jTextFieldPrecioKeyTyped
+
+    private void jTextFieldSupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSupMouseClicked
+      
+    
+    }//GEN-LAST:event_jTextFieldSupMouseClicked
+
+    private void jTextFieldSupKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSupKeyTyped
+       char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9') && c != '.') {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (c == '.' && jTextFieldPrecio.getText().contains(".")) {
+            evt.consume(); // Evita más de un punto decimal
+        }
+
+        if (jTextFieldSup.getText().length() >= 20) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_jTextFieldSupKeyTyped
+
+    private void jTextFieldBuscarXDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscarXDniKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < '0' || c > '9') && c != '.') {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (c == '.' && jTextFieldPrecio.getText().contains(".")) {
+            evt.consume(); // Evita más de un punto decimal
+        }
+
+        if (jTextFieldBuscarXDni.getText().length() >= 8) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_jTextFieldBuscarXDniKeyTyped
 
     /**
      * @param args the command line arguments

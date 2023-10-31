@@ -9,6 +9,7 @@ import AccesoDatos.PropietarioData;
 import Entidades.Propiedad;
 import Entidades.Propietario;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -122,6 +123,12 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Tipo Propiedad");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 26));
+
+        jTextFieldPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldPrecioKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 80, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -138,6 +145,12 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Zona");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 110, 26));
+
+        jTextFieldSup.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSupKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 70, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -180,7 +193,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jTextAreaDescrip.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescrip);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 290, 50));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 290, 50));
 
         btnGuardar.setBackground(new java.awt.Color(0, 119, 35));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -197,7 +210,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Descripcion");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 110, 26));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 110, 20));
 
         btnModificar.setBackground(new java.awt.Color(51, 51, 255));
         btnModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -266,6 +279,9 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jTextFieldbuscaXDni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldbuscaXDniKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldbuscaXDniKeyTyped(evt);
             }
         });
         jPanel2.add(jTextFieldbuscaXDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 110, 30));
@@ -426,7 +442,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         agregarPropiedad();
         cargarTablaPropiedadesActivas();
         cargarTablaPropiedadesInactivas();
-        
+
     }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void jTextFieldDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDireccionActionPerformed
@@ -440,6 +456,56 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private void jTextFieldbuscaXDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldbuscaXDniKeyReleased
         cargarTablaPropietarios(buscarPropietarioXDni());
     }//GEN-LAST:event_jTextFieldbuscaXDniKeyReleased
+
+    private void jTextFieldPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrecioKeyTyped
+        char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9') && c != '.') {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (c == '.' && jTextFieldPrecio.getText().contains(".")) {
+            evt.consume(); // Evita más de un punto decimal
+        }
+
+        if (jTextFieldPrecio.getText().length() >= 20) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_jTextFieldPrecioKeyTyped
+
+    private void jTextFieldSupKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSupKeyTyped
+        char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9') && c != '.') {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (c == '.' && jTextFieldPrecio.getText().contains(".")) {
+            evt.consume(); // Evita más de un punto decimal
+        }
+
+        if (jTextFieldSup.getText().length() >= 20) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_jTextFieldSupKeyTyped
+
+    private void jTextFieldbuscaXDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldbuscaXDniKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < '0' || c > '9') && c != '.') {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (c == '.' && jTextFieldPrecio.getText().contains(".")) {
+            evt.consume(); // Evita más de un punto decimal
+        }
+
+        if (jTextFieldbuscaXDni.getText().length() >= 8) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_jTextFieldbuscaXDniKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -574,7 +640,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Debe ingresar Descripcion");
                 propiedadRelleno[8] = false;
             }
-             nuevoPropiedad.setEstadoPropiedad(true);
+            nuevoPropiedad.setEstadoPropiedad(true);
 //            propiedadRelleno.setEstadoAlumno(true);
             if (propiedadRelleno[0] == true
                     && propiedadRelleno[1] == true
@@ -607,11 +673,12 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
         }
-       
+
         limpiarTextFields();
 //        btnEliminar.setVisible(false);
     }
-   private void activacionLogicaPropiedad() {
+
+    private void activacionLogicaPropiedad() {
         int filaSeleccionada = jTablePropiedaesInactivas.getSelectedRow();
         if (filaSeleccionada != -1) { // SI HAY UNA FILA SELECCIONADA ENTRA AL CONDICIONAL
             int idPropiedad = (Integer) jTablePropiedaesInactivas.getValueAt(filaSeleccionada, 0); // TRAES EL VALOR DE LA FILA SELECCIONADA
@@ -619,10 +686,11 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
         }
-        
+
         limpiarTextFields();
 //        btnEliminar.setVisible(false);
     }
+
     private boolean validacionTextField1(JTextField jtf) {
         if (jtf.getText().isEmpty()) {
             jtf.setBorder(BorderFactory.createLineBorder(Color.decode("#aa4356")));
@@ -805,7 +873,6 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
 //            });
 //        }
 //    }
-
     public void cargarTextField() {
         int filaSeleccionada = jTablePropietario.getSelectedRow();
         if (filaSeleccionada != -1) {
@@ -813,7 +880,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
             jTextFieldIDpropietario.setText(id + "");
         }
     }
-    
+
     public ArrayList<Propietario> buscarPropietarioXDni() {
         ArrayList<Propietario> listaPropietario = new ArrayList<>();
         borrarFilasXDni();
@@ -833,7 +900,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
             modeloTablaPropietarios.removeRow(f);
         }
     }
-    
+
     public void cargarTablaPropietarios(ArrayList<Propietario> list) {
 
         for (Propietario propietario : list) {
