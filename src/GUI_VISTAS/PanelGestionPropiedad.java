@@ -493,13 +493,11 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
 
     private void jTextFieldbuscaXDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldbuscaXDniKeyTyped
         char c = evt.getKeyChar();
-        if ((c < '0' || c > '9') && c != '.') {
+        if ((c < '0' || c > '9')  ) {
             evt.consume(); // Evita caracteres no válidos
         }
 
-        if (c == '.' && jTextFieldPrecio.getText().contains(".")) {
-            evt.consume(); // Evita más de un punto decimal
-        }
+       
 
         if (jTextFieldbuscaXDni.getText().length() >= 8) {
             evt.consume(); // Evita que se ingresen más de 20 caracteres
