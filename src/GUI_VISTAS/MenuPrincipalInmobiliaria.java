@@ -79,6 +79,11 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         btnPropietario.setBackground(new java.awt.Color(204, 204, 204));
         btnPropietario.setText("Gestion Propietario");
         btnPropietario.setOpaque(true);
+        btnPropietario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPropietarioMouseClicked(evt);
+            }
+        });
         jPanelFondo.add(btnPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 240, 50));
 
         btnInquilino.setBackground(new java.awt.Color(204, 204, 204));
@@ -105,7 +110,8 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         jPanelFondo.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 220, 10));
 
         btnMenu.setText("Menu ");
-        jPanelFondo.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
+        btnMenu.setOpaque(true);
+        jPanelFondo.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 136, 240, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,6 +156,16 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         contenido.revalidate();
         contenido.repaint();
     }//GEN-LAST:event_btnContratosMouseClicked
+
+    private void btnPropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPropietarioMouseClicked
+        GestionPropietario gestionPropietario= new  GestionPropietario();
+        gestionPropietario.setSize(1037, 635); //SE ABRE LA PÁGINA HOME
+        gestionPropietario.setLocation(0, 0);
+        contenido.removeAll();
+        contenido.add(gestionPropietario);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_btnPropietarioMouseClicked
 
     /**
      * @param args the command line arguments

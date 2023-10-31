@@ -57,7 +57,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         armarCabeceraPropiedadesInactivas();
         cargarTablaPropiedadesInactivas();
         armarCabeceraPropietario();
-        cargarTablapropietario();
+        cargarTablaPropietarios(propietarioData.listarPropietarios());
 
     }
 
@@ -72,7 +72,6 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jComboBoxTipo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldPrecio = new javax.swing.JTextField();
@@ -98,6 +97,9 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTablePropietario = new javax.swing.JTable();
         jTextFieldIDpropietario = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jTextFieldbuscaXDni = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablePropiedadesActivas = new javax.swing.JTable();
@@ -114,84 +116,71 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(200, 200, 200));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Propietario");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 80, 26));
-
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Departamento", "Casa", "PH", "Oficina", "Local", "Galpon" }));
-        jPanel2.add(jComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 110, 30));
+        jPanel2.add(jComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 110, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tipo Propiedad");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 26));
-        jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 80, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 26));
+        jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 80, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Precio");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 110, 26));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 110, 26));
 
         jTextFieldZona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldZonaActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextFieldZona, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 110, 30));
+        jPanel2.add(jTextFieldZona, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 110, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Zona");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 110, 26));
-        jPanel2.add(jTextFieldSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 90, 30));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 110, 26));
+        jPanel2.add(jTextFieldSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 70, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Superficie");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 110, 26));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 110, 26));
 
         jTextFieldDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDireccionActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextFieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 250, 30));
+        jPanel2.add(jTextFieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 110, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Direccion");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 110, 26));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 110, 26));
 
         jComboBoxAmue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "SI", "NO" }));
-        jPanel2.add(jComboBoxAmue, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 70, -1));
+        jPanel2.add(jComboBoxAmue, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 70, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Ambientes");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, 26));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 80, 26));
 
         jComboBoxAmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "1", "2", "3", "4" }));
-        jPanel2.add(jComboBoxAmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 70, -1));
+        jPanel2.add(jComboBoxAmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 70, -1));
 
         jComboBoxBanio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "1", "2", "3", "4" }));
-        jPanel2.add(jComboBoxBanio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 70, -1));
+        jPanel2.add(jComboBoxBanio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 70, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Baños");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 110, 26));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 50, 26));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Amueblado");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 80, 26));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 80, 26));
 
         jTextAreaDescrip.setColumns(20);
         jTextAreaDescrip.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescrip);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 290, 50));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 290, 50));
 
         btnGuardar.setBackground(new java.awt.Color(0, 119, 35));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -207,9 +196,8 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 310, 43));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Descripcion");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 110, 26));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 110, 26));
 
         btnModificar.setBackground(new java.awt.Color(51, 51, 255));
         btnModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -224,7 +212,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         });
         jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 310, 43));
 
-        btnLimpiar.setBackground(new java.awt.Color(0, 119, 35));
+        btnLimpiar.setBackground(new java.awt.Color(76, 40, 130));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -255,7 +243,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(jTablePropietario);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 300, 100));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 300, 100));
 
         jTextFieldIDpropietario.setEditable(false);
         jTextFieldIDpropietario.setBackground(new java.awt.Color(200, 200, 200));
@@ -268,7 +256,23 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
                 jTextFieldIDpropietarioActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextFieldIDpropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 40, 30));
+        jPanel2.add(jTextFieldIDpropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 40, 30));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Buscar.png"))); // NOI18N
+        jLabel14.setText("Propietario DNI");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 150, 26));
+
+        jTextFieldbuscaXDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldbuscaXDniKeyReleased(evt);
+            }
+        });
+        jPanel2.add(jTextFieldbuscaXDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 110, 30));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Gestion  Propiedad");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 230, 30));
 
         jPanel3.setBackground(new java.awt.Color(200, 200, 200));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -302,12 +306,10 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 680, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Propiedades Desactivadas");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Propiedades Activadas");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
@@ -422,6 +424,9 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         agregarPropiedad();
+        cargarTablaPropiedadesActivas();
+        cargarTablaPropiedadesInactivas();
+        
     }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void jTextFieldDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDireccionActionPerformed
@@ -431,6 +436,10 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private void jTextFieldZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldZonaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldZonaActionPerformed
+
+    private void jTextFieldbuscaXDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldbuscaXDniKeyReleased
+        cargarTablaPropietarios(buscarPropietarioXDni());
+    }//GEN-LAST:event_jTextFieldbuscaXDniKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -448,6 +457,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -472,6 +482,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldPrecio;
     private javax.swing.JTextField jTextFieldSup;
     private javax.swing.JTextField jTextFieldZona;
+    private javax.swing.JTextField jTextFieldbuscaXDni;
     // End of variables declaration//GEN-END:variables
 
     private void agregarPropiedad() {
@@ -563,7 +574,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Debe ingresar Descripcion");
                 propiedadRelleno[8] = false;
             }
-
+             nuevoPropiedad.setEstadoPropiedad(true);
 //            propiedadRelleno.setEstadoAlumno(true);
             if (propiedadRelleno[0] == true
                     && propiedadRelleno[1] == true
@@ -781,9 +792,51 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
 
     }
 
-    private void cargarTablapropietario() {
+//    private void cargarTablapropietario() {
+//
+//        for (Propietario propietario : propietarioData.listarPropietarios()) {
+//            modeloTablaPropietarios.addRow(new Object[]{
+//                propietario.getIdPropietario(),
+//                propietario.getNombrePropietario(),
+//                propietario.getApellidoPropietario(),
+//                propietario.getDniPropietario(), //                propietario.getDomicilioPropietario(),
+//            //                propietario.getTelefonoPropietario(),
+//            //                propietario.isEstadoPropietario()
+//            });
+//        }
+//    }
 
-        for (Propietario propietario : propietarioData.listarPropietarios()) {
+    public void cargarTextField() {
+        int filaSeleccionada = jTablePropietario.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            int id = (Integer) jTablePropietario.getValueAt(filaSeleccionada, 0);
+            jTextFieldIDpropietario.setText(id + "");
+        }
+    }
+    
+    public ArrayList<Propietario> buscarPropietarioXDni() {
+        ArrayList<Propietario> listaPropietario = new ArrayList<>();
+        borrarFilasXDni();
+        for (Propietario pro : propietarioData.listarPropietarios()) {
+            if (String.valueOf(pro.getDniPropietario()).startsWith(jTextFieldbuscaXDni.getText())) {
+                listaPropietario.add(pro);
+
+            }
+        }
+
+        return listaPropietario;
+    }
+
+    public void borrarFilasXDni() {
+        int f = jTablePropietario.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaPropietarios.removeRow(f);
+        }
+    }
+    
+    public void cargarTablaPropietarios(ArrayList<Propietario> list) {
+
+        for (Propietario propietario : list) {
             modeloTablaPropietarios.addRow(new Object[]{
                 propietario.getIdPropietario(),
                 propietario.getNombrePropietario(),
@@ -792,14 +845,6 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
             //                propietario.getTelefonoPropietario(),
             //                propietario.isEstadoPropietario()
             });
-        }
-    }
-
-    public void cargarTextField() {
-        int filaSeleccionada = jTablePropietario.getSelectedRow();
-        if (filaSeleccionada != -1) {
-            int id = (Integer) jTablePropietario.getValueAt(filaSeleccionada, 0);
-            jTextFieldIDpropietario.setText(id + "");
         }
     }
 }

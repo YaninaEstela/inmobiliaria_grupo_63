@@ -46,7 +46,7 @@ public class ThemaCC {
         setButtonFontType(btnGestionInquilino);
         setButtonFontType(btnGestionContratos);
         
-        setButtonMovement(btnFiltros);
+//        setButtonMovement(btnFiltros);
         setButtonMovement(btnGestionPropiedad);
         setButtonMovement(btnGestionPropietario);
         setButtonMovement(btnGestionInquilino);
