@@ -4,19 +4,40 @@
  */
 package GUI_VISTAS;
 
+import AccesoDatos.PropietarioData;
+import Entidades.Propietario;
+import java.awt.Color;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author crist
  */
 public class GestionPropietario extends javax.swing.JPanel {
-
-    /**
-     * Creates new form GestionPropietario
-     */
+     PropietarioData propietarioData = new PropietarioData();
+     Propietario propietario = new Propietario();
+    DefaultTableModel modeloTablaPropietariosActivos = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+    DefaultTableModel modeloTablaPropietariosInactivos = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
     public GestionPropietario() {
         initComponents();
+        armarCabeceraPropietariosInactivos();
+        cargarTablaPropietariosInactivos();
+        armarCabeceraPropietariosActivos();
+        cargarTablaPropietariosActivos();
     }
 
     /**
@@ -46,15 +67,15 @@ public class GestionPropietario extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        btnEliminar1 = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePropietariosInactivos = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTablePropietariosActivos = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(246, 246, 246));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(200, 200, 200));
@@ -134,14 +155,24 @@ public class GestionPropietario extends javax.swing.JPanel {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Limpiar Todo");
         jLabel6.setOpaque(true);
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 270, 50));
 
         btnModificar.setBackground(new java.awt.Color(51, 51, 255));
         btnModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnModificar.setText("Guardar Modificaciones");
+        btnModificar.setText(" Modificaciones");
         btnModificar.setOpaque(true);
+        btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModificarMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 270, 50));
 
         jLabel7.setBackground(new java.awt.Color(0, 119, 35));
@@ -150,6 +181,11 @@ public class GestionPropietario extends javax.swing.JPanel {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Agregar Propietario");
         jLabel7.setOpaque(true);
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 270, 50));
 
         jTextFieldDomicilio.addActionListener(new java.awt.event.ActionListener() {
@@ -172,20 +208,20 @@ public class GestionPropietario extends javax.swing.JPanel {
         jLabel10.setText("Propietarios Inactivos");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, 24));
 
-        btnEliminar1.setBackground(new java.awt.Color(223, 0, 0));
-        btnEliminar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnEliminar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnEliminar1.setText("Desactivar Propietario");
-        btnEliminar1.setOpaque(true);
-        btnEliminar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEliminar.setBackground(new java.awt.Color(223, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnEliminar.setText("Desactivar Propietario");
+        btnEliminar.setOpaque(true);
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminar1MouseClicked(evt);
+                btnEliminarMouseClicked(evt);
             }
         });
-        jPanel2.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 250, 50));
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 690, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePropietariosInactivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -196,11 +232,11 @@ public class GestionPropietario extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTablePropietariosInactivos);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 690, 210));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePropietariosActivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -211,7 +247,7 @@ public class GestionPropietario extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTablePropietariosActivos);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 690, 210));
 
@@ -221,7 +257,12 @@ public class GestionPropietario extends javax.swing.JPanel {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Activar Propietario");
         jLabel8.setOpaque(true);
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 250, 50));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 690, 50));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Propietarios Activos");
@@ -257,9 +298,11 @@ public class GestionPropietario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTelefonoActionPerformed
 
-    private void btnEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminar1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminar1MouseClicked
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        eliminacionLogicaPropietario();
+        cargarTablaPropietariosInactivos();
+        cargarTablaPropietariosActivos();
+    }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void jTextFieldDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDomicilioActionPerformed
         // TODO add your handling code here:
@@ -303,15 +346,36 @@ public class GestionPropietario extends javax.swing.JPanel {
         }
 
        
-        if (jTextFieldDNI.getText().length() >= 11) {
-            evt.consume(); // Evita que se ingresen más de 20 caracteres
+        if (jTextFieldTelefono.getText().length() >= 11) {
+            evt.consume(); 
             Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_jTextFieldTelefonoKeyTyped
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        activacionLogicaPropietario();
+        cargarTablaPropietariosInactivos();
+        cargarTablaPropietariosActivos();
+        
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        agregarPropietario();
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        limpiarTextFields();
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
+        ModificarPropietario modProp = new ModificarPropietario();
+        modProp.setVisible(true);
+        modProp.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnModificarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnEliminar1;
+    private javax.swing.JLabel btnEliminar;
     private javax.swing.JLabel btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -329,12 +393,216 @@ public class GestionPropietario extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTablePropietariosActivos;
+    private javax.swing.JTable jTablePropietariosInactivos;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldDNI;
     private javax.swing.JTextField jTextFieldDomicilio;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldTelefono;
     // End of variables declaration//GEN-END:variables
+public void armarCabeceraPropietariosActivos() {
+         modeloTablaPropietariosActivos.addColumn("ID");
+         modeloTablaPropietariosActivos.addColumn("Nombre");
+         modeloTablaPropietariosActivos.addColumn("Apellido");
+         modeloTablaPropietariosActivos.addColumn("DNI");
+         modeloTablaPropietariosActivos.addColumn("Domicilio");
+         modeloTablaPropietariosActivos.addColumn("Telefono");
+       jTablePropietariosActivos.setModel( modeloTablaPropietariosActivos);
+       
+//        jTablePropiedad.sizeColumnsToFit(1);
+    }
+public void armarCabeceraPropietariosInactivos() {
+        modeloTablaPropietariosInactivos.addColumn("ID");
+        modeloTablaPropietariosInactivos.addColumn("Nombre");
+        modeloTablaPropietariosInactivos.addColumn("Apellido");
+        modeloTablaPropietariosInactivos.addColumn("DNI");
+        modeloTablaPropietariosInactivos.addColumn("Domicilio");
+        modeloTablaPropietariosInactivos.addColumn("Telefono");
+       jTablePropietariosInactivos.setModel(modeloTablaPropietariosInactivos);
+//        jTablePropiedad.sizeColumnsToFit(1);
+    }
+
+  public void cargarTablaPropietariosActivos(){
+     borrarFilasActivos();
+     
+     ArrayList <Propietario>propietariosActivos = new ArrayList<>();
+        for(Propietario propietarioActivo: propietarioData.listarPropietarios()){
+          if(propietarioActivo.isEstadoPropietario()){
+              propietariosActivos .add(propietarioActivo);
+              
+          }  
+        }
+        
+          for (Propietario propietario : propietariosActivos) {
+            modeloTablaPropietariosActivos.addRow(new Object[]{
+                propietario.getIdPropietario(),
+                propietario.getNombrePropietario(),
+                propietario.getApellidoPropietario(),
+                propietario.getDniPropietario(),
+                propietario.getDomicilioPropietario(),
+                propietario.getTelefonoPropietario()
+               
+            });
+        }
+  }
+  
+  public void borrarFilasActivos() {
+        int f = jTablePropietariosActivos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaPropietariosActivos.removeRow(f);
+        }
+    }
+  
+  public void cargarTablaPropietariosInactivos(){
+     borrarFilasInactivos();
+     
+     ArrayList <Propietario>propietariosInactivos = new ArrayList<>();
+        for(Propietario propietarioInactivo: propietarioData.listarPropietarios()){
+          if(!propietarioInactivo.isEstadoPropietario()){
+              propietariosInactivos .add(propietarioInactivo);
+              
+          }  
+        }
+        
+          for (Propietario propietario : propietariosInactivos) {
+            modeloTablaPropietariosInactivos.addRow(new Object[]{
+                propietario.getIdPropietario(),
+                propietario.getNombrePropietario(),
+                propietario.getApellidoPropietario(),
+                propietario.getDniPropietario(),
+                propietario.getDomicilioPropietario(),
+                propietario.getTelefonoPropietario()
+               
+            });
+        }
+  }
+  
+  public void borrarFilasInactivos() {
+        int f = jTablePropietariosInactivos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaPropietariosInactivos.removeRow(f);
+        }
+    }
+  
+   private void activacionLogicaPropietario() {
+        int filaSeleccionada = jTablePropietariosInactivos.getSelectedRow();
+        if (filaSeleccionada != -1) { // SI HAY UNA FILA SELECCIONADA ENTRA AL CONDICIONAL
+            int idPropietario = (Integer) jTablePropietariosInactivos.getValueAt(filaSeleccionada, 0); // TRAES EL VALOR DE LA FILA SELECCIONADA
+            propietarioData.cambiarEstadoPropietario(idPropietario);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
+        }
+    }
+    
+    private void eliminacionLogicaPropietario() {
+        int filaSeleccionada = jTablePropietariosActivos.getSelectedRow();
+        if (filaSeleccionada != -1) { // SI HAY UNA FILA SELECCIONADA ENTRA AL CONDICIONAL
+            int idPropietario = (Integer) jTablePropietariosActivos.getValueAt(filaSeleccionada, 0); // TRAES EL VALOR DE LA FILA SELECCIONADA
+            propietarioData.cambiarEstadoPropietario(idPropietario);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
+        }
+
+//        limpiarTextFields();
+//        btnEliminar.setVisible(false);
+    }
+    
+    private void agregarPropietario(){
+        Propietario propietario = new Propietario();
+        
+        boolean[] propietarioRelleno ={false,false,false,false,false};
+        
+        try{
+           
+            if (validacionTextField1(jTextFieldNombre)) {
+                propietario.setNombrePropietario(jTextFieldNombre.getText());
+                propietarioRelleno[0] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar Nombre Propietario");
+                propietarioRelleno[0] = false;
+            }
+            
+             if (validacionTextField1(jTextFieldApellido)) {
+                propietario.setApellidoPropietario(jTextFieldApellido.getText());
+                propietarioRelleno[1] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar Apellido Propietario");
+                propietarioRelleno[1] = false;
+            }
+           
+             if (validacionTextField1(jTextFieldDNI)) {
+                propietario.setDniPropietario(Integer.parseInt(jTextFieldDNI.getText()));
+                propietarioRelleno[2] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar DNI");
+                propietarioRelleno[2] = false;
+            }
+             
+            if (validacionTextField1(jTextFieldDomicilio)) {
+                propietario.setDomicilioPropietario(jTextFieldDomicilio.getText());
+                propietarioRelleno[3] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar Domicilio Propietario");
+                propietarioRelleno[3] = false;
+            }
+            
+            if (validacionTextField1(jTextFieldTelefono)) {
+                propietario.setTelefonoPropietario(Integer.parseInt(jTextFieldTelefono.getText()));
+                propietarioRelleno[4] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un Telefono Propietario");
+               propietarioRelleno[4] = false;
+            }
+            
+            propietario.setEstadoPropietario(true);
+            
+            if(propietarioRelleno[0] == true
+             &&propietarioRelleno[1] == true
+             &&propietarioRelleno[2] == true
+             &&propietarioRelleno[3] == true
+             &&propietarioRelleno[4] == true ){
+             propietarioData.guardarPropietario(propietario);
+            }
+            
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese el Dni correctamente");
+            jTextFieldDNI.setText("");
+            validacionTextField1(jTextFieldDNI);
+
+        } finally {
+            cargarTablaPropietariosActivos();
+            limpiarTextFields();
+        }
+    }
+    
+    private boolean validacionTextField1(JTextField jtf) {
+        if (jtf.getText().isEmpty()) {
+            jtf.setBorder(BorderFactory.createLineBorder(Color.decode("#aa4356")));
+            return false;
+        } else {
+            jtf.setBorder(null);
+            return true;
+        }
+    }
+    
+     private boolean validacionComboBox(JComboBox cbx) {
+        if (cbx.getSelectedItem().equals("-")) {
+            cbx.setBorder(BorderFactory.createLineBorder(Color.decode("#aa4356")));
+            return false;
+        } else {
+            cbx.setBorder(null);
+            return true;
+        }
+    }
+     
+      private void limpiarTextFields() {
+        jTextFieldNombre.setText("");
+        jTextFieldApellido.setText("");
+        jTextFieldDNI.setText("");
+        jTextFieldDomicilio.setText("");
+        jTextFieldTelefono.setText("");
+        
+    }
 }
+

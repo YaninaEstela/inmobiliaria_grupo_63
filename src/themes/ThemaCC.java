@@ -25,13 +25,13 @@ public class ThemaCC {
     // COMIENZO THEMA CIEN_BLUE   
     
     public void CobreTheme(JPanel panelPrincipal, JLabel btnFiltros, JPanel separador, JLabel btnGestionPropiedad, JLabel btnGestionPropietario,JLabel btnGestionInquilino, JLabel btnGestionContratos,JLabel btnHome) {
-        setPanelBackground(panelPrincipal, Color.decode("#f6f6f6"));
+        setPanelBackground(panelPrincipal, Color.decode("#ffffff"));
 //      setPanelBackground(panelMenu, Color.decode("#6a462d"));
         setSeparatorBackground(separador, Color.decode("#9d9d9d"));
         setButtonStyles(btnFiltros, "Menu");
-        setButtonStyles(btnGestionPropiedad, "Gestion Propiedad");
-         setButtonStyles(btnGestionPropietario, "Gestion Propietario");
-        setButtonStyles(btnGestionInquilino, "  Gestion Inquilino");
+        setButtonStyles(btnGestionPropiedad, " Gestion Propiedad");
+         setButtonStyles(btnGestionPropietario, " Gestion Propietario");
+        setButtonStyles(btnGestionInquilino, " Gestion Inquilino");
         setButtonStyles(btnGestionContratos, " Gestion Contratos");
         setButtonStyles(btnHome, " Home");
         
@@ -87,7 +87,7 @@ public class ThemaCC {
     }
 
     private void setButtonFontType(JLabel label) {
-        Font font = new Font("Tw Cen Mt Condensed Extra Bold", Font.BOLD, 30);
+        Font font = new Font("Tw Cen Mt Condensed Extra Bold", Font.BOLD, 25);
         label.setFont(font);
     }
 
