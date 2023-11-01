@@ -199,7 +199,18 @@ public class GestionContrato extends javax.swing.JPanel {
                 jTextFieldFechaInicioActionPerformed(evt);
             }
         });
+        jTextFieldFechaInicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldFechaInicioKeyTyped(evt);
+            }
+        });
         jPanel3.add(jTextFieldFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 80, 30));
+
+        jTextFieldFechaFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldFechaFinalKeyTyped(evt);
+            }
+        });
         jPanel3.add(jTextFieldFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 80, 30));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -426,6 +437,46 @@ public class GestionContrato extends javax.swing.JPanel {
             Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_jTextFieldPrecioConsolidadoKeyTyped
+
+    private void jTextFieldFechaInicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFechaInicioKeyTyped
+        // TODO add your handling code here:
+        
+        char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9') && c != '-') {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (c == '-' && jTextFieldFechaInicio.getText().contains("-"+"-")) {
+            evt.consume(); // Evita más de un punto decimal
+        }
+
+        if (jTextFieldFechaInicio.getText().length() >= 10) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+        
+    }//GEN-LAST:event_jTextFieldFechaInicioKeyTyped
+
+    private void jTextFieldFechaFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFechaFinalKeyTyped
+        // TODO add your handling code here:
+        
+         char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9') && c != '-') {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (c == '-' && jTextFieldFechaFinal.getText().contains("-"+"-")) {
+            evt.consume(); // Evita más de un punto decimal
+        }
+
+        if (jTextFieldFechaFinal.getText().length() >= 10) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+        
+    }//GEN-LAST:event_jTextFieldFechaFinalKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
