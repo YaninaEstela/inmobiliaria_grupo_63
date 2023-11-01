@@ -33,7 +33,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     Propiedad propiedad = new Propiedad();
     PropietarioData propietarioData = new PropietarioData();
     Propietario propietario = new Propietario();
-    BuscarPropietario buscaPropietario = new BuscarPropietario();
+    
 
     DefaultTableModel modeloTablaPropiedadesActivas = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
@@ -109,7 +109,6 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         btnEliminar = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTablePropiedaesInactivas = new javax.swing.JTable();
         btnActivarPropiedad = new javax.swing.JLabel();
@@ -331,16 +330,6 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         jLabel13.setText("Propiedades Activadas");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Buscar");
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
-            }
-        });
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 580, 60, 30));
-
         jTablePropiedaesInactivas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -407,14 +396,6 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         cargarTablaPropiedadesActivas();
         cargarTablaPropiedadesInactivas();
     }//GEN-LAST:event_btnEliminarMouseClicked
-
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-
-        buscaPropietario.setVisible(true);
-        buscaPropietario.setLocationRelativeTo(null);
-
-
-    }//GEN-LAST:event_jLabel11MouseClicked
 
     private void btnActivarPropiedadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActivarPropiedadMouseClicked
         activacionLogicaPropiedad();
@@ -520,7 +501,6 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBoxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;

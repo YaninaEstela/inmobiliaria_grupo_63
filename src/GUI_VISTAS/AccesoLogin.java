@@ -7,6 +7,7 @@ package GUI_VISTAS;
 import AccesoDatos.LoginData;
 import Entidades.Login;
 import java.awt.Color;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -159,6 +160,11 @@ LoginData loginData = null;
                 passContraseniaMouseExited(evt);
             }
         });
+        passContrasenia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                passContraseniaKeyTyped(evt);
+            }
+        });
         jPanel3.add(passContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 250, 40));
 
         textUsuario.setBackground(new java.awt.Color(255, 243, 219));
@@ -172,6 +178,11 @@ LoginData loginData = null;
         textUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 textUsuarioMouseExited(evt);
+            }
+        });
+        textUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textUsuarioKeyTyped(evt);
             }
         });
         jPanel3.add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 250, 40));
@@ -323,6 +334,27 @@ LoginData loginData = null;
     private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
         jLabel17.setBackground(Color.decode("#DF0000"));
     }//GEN-LAST:event_jLabel17MouseExited
+
+    private void textUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textUsuarioKeyTyped
+         char c = evt.getKeyChar();
+        if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
+        if(textUsuario.getText().length()>=15){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_textUsuarioKeyTyped
+
+    private void passContraseniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passContraseniaKeyTyped
+       char c = evt.getKeyChar();
+        if ((c < '0' || c > '9') ) {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (passContrasenia.getText().length() >= 4) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_passContraseniaKeyTyped
 
     /**
      * @param args the command line arguments

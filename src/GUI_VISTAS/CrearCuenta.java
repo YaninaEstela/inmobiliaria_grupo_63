@@ -7,6 +7,7 @@ package GUI_VISTAS;
 import AccesoDatos.LoginData;
 import Entidades.Login;
 import java.awt.Color;
+import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -103,6 +104,11 @@ LoginData liginData = new LoginData();
                 jPasswordFieldMouseExited(evt);
             }
         });
+        jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPasswordFieldKeyTyped(evt);
+            }
+        });
         jPanel3.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 250, 40));
 
         jTextFieldUsuario.setBackground(new java.awt.Color(255, 243, 219));
@@ -116,6 +122,11 @@ LoginData liginData = new LoginData();
         jTextFieldUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jTextFieldUsuarioMouseExited(evt);
+            }
+        });
+        jTextFieldUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldUsuarioKeyTyped(evt);
             }
         });
         jPanel3.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 250, 40));
@@ -212,6 +223,27 @@ LoginData liginData = new LoginData();
         crearCuenta();
         this.dispose();
     }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void jPasswordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < '0' || c > '9') ) {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (jPasswordField.getText().length() >= 4) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_jPasswordFieldKeyTyped
+
+    private void jTextFieldUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioKeyTyped
+          char c = evt.getKeyChar();
+        if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
+        if(jTextFieldUsuario.getText().length()>=15){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_jTextFieldUsuarioKeyTyped
 
     
 //    public static void main(String args[]) {
