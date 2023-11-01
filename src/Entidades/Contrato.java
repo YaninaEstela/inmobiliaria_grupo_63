@@ -13,20 +13,22 @@ public class Contrato {
     private LocalDate fechaFinal;
     private LocalDate fechaRealizacion;
     private boolean estadoContrato;
+    private double precioConsolidado;
 
     public Contrato() {
     }
 
-    public Contrato(Inquilino inquilino, Propiedad propiedad, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, boolean estadoContrato) {
+    public Contrato(Inquilino inquilino, Propiedad propiedad, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, boolean estadoContrato,double precioConsolidado) {
         this.inquilino = inquilino;
         this.propiedad = propiedad;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
         this.fechaRealizacion = fechaRealizacion;
         this.estadoContrato = estadoContrato;
+        this.precioConsolidado =precioConsolidado;
     }
 
-    public Contrato(int idContrato, Inquilino inquilino, Propiedad propiedad, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, boolean estadoContrato) {
+    public Contrato(int idContrato, Inquilino inquilino, Propiedad propiedad, LocalDate fechaInicio, LocalDate fechaFinal, LocalDate fechaRealizacion, boolean estadoContrato,double precioConsolidado) {
         this.idContrato = idContrato;
         this.inquilino = inquilino;
         this.propiedad = propiedad;
@@ -34,6 +36,15 @@ public class Contrato {
         this.fechaFinal = fechaFinal;
         this.fechaRealizacion = fechaRealizacion;
         this.estadoContrato = estadoContrato;
+        this.precioConsolidado =precioConsolidado;
+    }
+
+    public double getPrecioConsolidado() {
+        return precioConsolidado;
+    }
+
+    public void setPrecioConsolidado(double precioConsolidado) {
+        this.precioConsolidado = precioConsolidado;
     }
 
     public int getIdContrato() {

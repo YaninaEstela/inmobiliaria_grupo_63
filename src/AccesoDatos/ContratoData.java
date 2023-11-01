@@ -45,8 +45,8 @@ public class ContratoData {
     public void guardarContrato(Contrato contrato){
         
         String sql = "INSERT INTO contrato (idInquilino, idPropiedad,"
-                + "fechaInicio, fechaFinal, fechaRealizacion, estadoContrato)"
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+                + "fechaInicio, fechaFinal, fechaRealizacion, estadoContrato,precioConsolidado)"
+                + "VALUES (?, ?, ?, ?, ?, ?,?)";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -57,6 +57,7 @@ public class ContratoData {
              ps.setDate(4, Date.valueOf(contrato.getFechaFinal()));
              ps.setDate(5, Date.valueOf(LocalDate.now()));
              ps.setBoolean(6, contrato.isEstadoContrato());
+             ps.setDouble(7, contrato.getPrecioConsolidado());
             
              ps.executeUpdate();
              
@@ -76,7 +77,7 @@ public class ContratoData {
     public void modificarContrato(Contrato contrato){
         
         String sql = "UPDATE contrato SET idInquilino=?, idPropiedad=?, "
-                + "fechaInicio=?, fechaFinal=?, fechaRealizacion=?, estadoContrato=? "
+                + "fechaInicio=?, fechaFinal=?, fechaRealizacion=?, estadoContrato=?, precioConsolidado=? "
                 + "WHERE idContrato=? ";
         
         try {
@@ -89,7 +90,7 @@ public class ContratoData {
             ps.setDate(5, Date.valueOf(contrato.getFechaRealizacion()));
             ps.setBoolean(6, contrato.isEstadoContrato());
             ps.setInt(7, contrato.getIdContrato());
-            
+            ps.setDouble(8, contrato.getPrecioConsolidado());
             int exito = ps.executeUpdate(); 
             
             if (exito==1) {
@@ -105,21 +106,21 @@ public class ContratoData {
     
     public void cambiarEstadoContrato(int idContrato) {
          
-         String sql = "UPDATE contrato SET estadoContrato=? WHERE idContrato=? ";
+         String sql = "DELETE FROM contrato   WHERE idContrato=? ";
          
          Contrato contrato = buscarContratoPorId(idContrato);
          
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setBoolean(1, !contrato.isEstadoContrato());
-            ps.setInt(2, idContrato);
+           
+            ps.setInt(1, idContrato);
              
             int exito = ps.executeUpdate(); 
             
             if (exito==1) {
                 if(contrato.isEstadoContrato()){
-                    JOptionPane.showMessageDialog(null,"Contrato desactivado");
+                    JOptionPane.showMessageDialog(null,"Contrato Cancelado");
                 }else{
                     JOptionPane.showMessageDialog(null,"Contrato activado");
                 }
@@ -134,7 +135,7 @@ public class ContratoData {
     public Contrato buscarContratoPorId(int idContrato){
         
         String sql = "SELECT idInquilino, idPropiedad,"
-                 + " fechaInicio, fechaFinal, fechaRealizacion, estadoContrato"
+                 + " fechaInicio, fechaFinal, fechaRealizacion, estadoContrato,precioConsolidado"
                  + " FROM contrato"
                  + " WHERE idContrato=?";
         
@@ -156,7 +157,7 @@ public class ContratoData {
                  contrato.setFechaFinal((resultado.getDate("fechaFinal").toLocalDate()));
                  contrato.setFechaRealizacion((resultado.getDate("fechaRealizacion").toLocalDate()));
                  contrato.setEstadoContrato(resultado.getBoolean("estadoContrato"));
-                 
+                 contrato.setPrecioConsolidado(resultado.getDouble("precioConsolidado"));
              }else{
                 JOptionPane.showMessageDialog(null,"No existe un contrato con ese id");
             }
@@ -189,7 +190,7 @@ public class ContratoData {
                 contrato.setFechaFinal((resultado.getDate("fechaFinal").toLocalDate()));
                 contrato.setFechaRealizacion((resultado.getDate("fechaRealizacion").toLocalDate()));
                 contrato.setEstadoContrato(resultado.getBoolean("estadoContrato"));
-             
+                contrato.setPrecioConsolidado(resultado.getDouble("precioConsolidado"));
                 listaContratos.add(contrato);   
             }
             ps.close();
@@ -224,7 +225,7 @@ public class ContratoData {
                 contrato.setFechaFinal((resultado.getDate("fechaFinal").toLocalDate()));
                 contrato.setFechaRealizacion((resultado.getDate("fechaRealizacion").toLocalDate()));
                 contrato.setEstadoContrato(resultado.getBoolean("estadoContrato"));
-             
+                contrato.setPrecioConsolidado(resultado.getDouble("precioConsolidado"));
                 listaContratosPorInquilino.add(contrato);   
             }
             ps.close();
@@ -259,7 +260,7 @@ public class ContratoData {
                 contrato.setFechaFinal((resultado.getDate("fechaFinal").toLocalDate()));
                 contrato.setFechaRealizacion((resultado.getDate("fechaRealizacion").toLocalDate()));
                 contrato.setEstadoContrato(resultado.getBoolean("estadoContrato"));
-             
+                contrato.setPrecioConsolidado(resultado.getDouble("precioConsolidado"));
                 listaContratosPorPropiedad.add(contrato);   
             }
             ps.close();

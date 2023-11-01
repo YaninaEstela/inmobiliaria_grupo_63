@@ -308,4 +308,31 @@ public class PropiedadData {
         }
         return listaPropiedadesPorPropietario;
      }
+     
+      public void cambiarDisponibilidad(int idPropiedad) {
+         
+         String sql = "UPDATE propiedad SET disponibilidadPropiedad=? WHERE idPropiedad=? ";
+         
+         Propiedad propiedad = buscarPropiedadPorId(idPropiedad);
+         
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setBoolean(1, !propiedad.isDisponibilidadPropiedad());
+            ps.setInt(2, idPropiedad);
+             
+            int exito = ps.executeUpdate(); 
+            
+            if (exito==1) {
+                if(propiedad.isDisponibilidadPropiedad()){
+                    JOptionPane.showMessageDialog(null,"Propiedad Alquilada");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Propiedad Disponible");
+                }
+            }      
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla propiedad");
+        }
+         
+     }
 }

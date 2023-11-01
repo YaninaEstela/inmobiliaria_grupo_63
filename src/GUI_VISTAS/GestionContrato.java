@@ -4,14 +4,61 @@
  */
 package GUI_VISTAS;
 
+import AccesoDatos.ContratoData;
+import AccesoDatos.InquilinoData;
+import AccesoDatos.PropiedadData;
+import AccesoDatos.PropietarioData;
+import Entidades.Contrato;
+import Entidades.Inquilino;
+import Entidades.Propiedad;
+import Entidades.Propietario;
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class GestionContrato extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GestionContrato
-     */
+    InquilinoData inquilinoData = new InquilinoData();
+    PropietarioData propietarioData = new PropietarioData();
+    PropiedadData propiedadData = new PropiedadData();
+    ContratoData contratoData = new ContratoData();
+
+    DefaultTableModel modeloTablaInquilino = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+
+    DefaultTableModel modeloTablaPropiedadesActivas = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+
+    DefaultTableModel modeloTablaContratos = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+
     public GestionContrato() {
         initComponents();
+        armarCabeceraInquilino();
+        cargarTablaInquilinoActivos(inquilinoData.listarInquilinos());
+
+        armarCabeceraPropiedadesActivas();
+        cargarTablaPropiedadesActivas(propiedadData.listarPropiedades());
+
+        armarCabeceraTablaContratos();
+        cargarTablaContratos(contratoData.listarContratos());
+
+        fechaActual();
     }
 
     /**
@@ -29,25 +76,34 @@ public class GestionContrato extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldIDInquilino = new javax.swing.JTextField();
+        jTextFieldIDPropiedad = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        btnModificar = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        btnAgregarContrato = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldPrecioConsolidado = new javax.swing.JTextField();
+        jTextFieldFechaInicio = new javax.swing.JTextField();
+        jTextFieldFechaFinal = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTextFieldFechaActual = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnEliminar1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableContratos = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
+        jTablePropiedadesActivas = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTableInquilinosActivos = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jTextFieldBuscarInquilinoXDni = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jTextFieldBuscarXDomicilio = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(246, 246, 246));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -57,71 +113,116 @@ public class GestionContrato extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("ID Inquilino");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 28, -1, 24));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 24));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("ID Propiedad");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, 24));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, 24));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Fecha Inicio");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, 24));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 24));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Fecha Finalizacion");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, 24));
+        jLabel5.setText("Fecha Actual");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 24));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldIDInquilino.setEditable(false);
+        jTextFieldIDInquilino.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextFieldIDInquilino.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldIDInquilino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldIDInquilinoActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 210, 30));
+        jPanel3.add(jTextFieldIDInquilino, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 40, 30));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldIDPropiedad.setEditable(false);
+        jTextFieldIDPropiedad.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextFieldIDPropiedad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldIDPropiedad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextFieldIDPropiedadActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 210, 30));
+        jPanel3.add(jTextFieldIDPropiedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 40, 30));
 
-        jLabel6.setBackground(new java.awt.Color(0, 119, 35));
+        jLabel6.setBackground(new java.awt.Color(76, 40, 130));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Limpiar Todo");
         jLabel6.setOpaque(true);
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 270, 50));
 
-        btnModificar.setBackground(new java.awt.Color(51, 51, 255));
-        btnModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnModificar.setText("Guardar Modificaciones");
-        btnModificar.setOpaque(true);
-        jPanel3.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 270, 50));
-
-        jLabel7.setBackground(new java.awt.Color(0, 119, 35));
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Agregar  Contrato");
-        jLabel7.setOpaque(true);
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 270, 50));
+        btnAgregarContrato.setBackground(new java.awt.Color(0, 119, 35));
+        btnAgregarContrato.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAgregarContrato.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarContrato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAgregarContrato.setText("Agregar  Contrato");
+        btnAgregarContrato.setOpaque(true);
+        btnAgregarContrato.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarContratoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarContratoMouseEntered(evt);
+            }
+        });
+        jPanel3.add(btnAgregarContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 270, 50));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Precio Consolidado");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 140, 24));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 140, 24));
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldPrecioConsolidado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jTextFieldPrecioConsolidadoActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 80, 30));
+        jTextFieldPrecioConsolidado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldPrecioConsolidadoKeyTyped(evt);
+            }
+        });
+        jPanel3.add(jTextFieldPrecioConsolidado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 80, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 620));
+        jTextFieldFechaInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldFechaInicioActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextFieldFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 80, 30));
+        jPanel3.add(jTextFieldFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 80, 30));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setText("Fecha Finalizacion");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 24));
+
+        jTextFieldFechaActual.setEditable(false);
+        jTextFieldFechaActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldFechaActualActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextFieldFechaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 80, 30));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Gestion Contratos");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 30));
+
+        jLabel16.setText("AAAA-mm-DD");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 90, 40));
+
+        jLabel17.setText("AAAA-mm-DD");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 90, 40));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 620));
 
         jPanel2.setBackground(new java.awt.Color(200, 200, 200));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -130,16 +231,16 @@ public class GestionContrato extends javax.swing.JPanel {
         btnEliminar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnEliminar1.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnEliminar1.setText("Desactivar Contrato");
+        btnEliminar1.setText("Cancelar Contrato");
         btnEliminar1.setOpaque(true);
         btnEliminar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminar1MouseClicked(evt);
             }
         });
-        jPanel2.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 250, 50));
+        jPanel2.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 700, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableContratos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -150,11 +251,11 @@ public class GestionContrato extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableContratos);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 700, 210));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePropiedadesActivas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -165,19 +266,16 @@ public class GestionContrato extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jTablePropiedadesActivas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePropiedadesActivasMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTablePropiedadesActivas);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 310, 210));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 410, 210));
 
-        jLabel8.setBackground(new java.awt.Color(0, 119, 35));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Activar Contrato");
-        jLabel8.setOpaque(true);
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 560, 250, 50));
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableInquilinosActivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -188,9 +286,14 @@ public class GestionContrato extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jTableInquilinosActivos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableInquilinosActivosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTableInquilinosActivos);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 310, 210));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, 210));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Contratos");
@@ -198,11 +301,40 @@ public class GestionContrato extends javax.swing.JPanel {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Inquilinos");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 24));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 80, 24));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Propiedades");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 90, 24));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 90, 24));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Buscar.png"))); // NOI18N
+        jLabel14.setText("Propiedad x Domicilio");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 200, 26));
+
+        jTextFieldBuscarInquilinoXDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldBuscarInquilinoXDniActionPerformed(evt);
+            }
+        });
+        jTextFieldBuscarInquilinoXDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldBuscarInquilinoXDniKeyReleased(evt);
+            }
+        });
+        jPanel2.add(jTextFieldBuscarInquilinoXDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 140, 30));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Buscar.png"))); // NOI18N
+        jLabel15.setText("Inquilino x DNI");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 26));
+
+        jTextFieldBuscarXDomicilio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldBuscarXDomicilioKeyReleased(evt);
+            }
+        });
+        jPanel2.add(jTextFieldBuscarXDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 180, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 750, 620));
 
@@ -218,36 +350,99 @@ public class GestionContrato extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldIDInquilinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDInquilinoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldIDInquilinoActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextFieldIDPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDPropiedadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextFieldIDPropiedadActionPerformed
 
     private void btnEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminar1MouseClicked
-        // TODO add your handling code here:
+        eliminacionLogicaPropiedad();
+        cargarTablaContratos(contratoData.listarContratos());
     }//GEN-LAST:event_btnEliminar1MouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jTextFieldPrecioConsolidadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioConsolidadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_jTextFieldPrecioConsolidadoActionPerformed
+
+    private void jTextFieldFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaInicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFechaInicioActionPerformed
+
+    private void jTextFieldFechaActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFechaActualActionPerformed
+
+    private void jTextFieldBuscarInquilinoXDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscarInquilinoXDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBuscarInquilinoXDniActionPerformed
+
+    private void jTextFieldBuscarInquilinoXDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscarInquilinoXDniKeyReleased
+        cargarTablaInquilinoActivos(buscarInquilinoXDni());
+    }//GEN-LAST:event_jTextFieldBuscarInquilinoXDniKeyReleased
+
+    private void jTableInquilinosActivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableInquilinosActivosMouseClicked
+        cargarIDInquilino();
+    }//GEN-LAST:event_jTableInquilinosActivosMouseClicked
+
+    private void jTextFieldBuscarXDomicilioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscarXDomicilioKeyReleased
+        cargarTablaPropiedadesActivas(buscarPorDireccion());
+    }//GEN-LAST:event_jTextFieldBuscarXDomicilioKeyReleased
+
+    private void jTablePropiedadesActivasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePropiedadesActivasMouseClicked
+        cargarIDPropiedad();
+    }//GEN-LAST:event_jTablePropiedadesActivasMouseClicked
+
+    private void btnAgregarContratoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarContratoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarContratoMouseEntered
+
+    private void btnAgregarContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarContratoMouseClicked
+        agregarContrato();
+        cargarTablaPropiedadesActivas(propiedadData.listarPropiedades());
+    }//GEN-LAST:event_btnAgregarContratoMouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        limpiarTextFields();
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jTextFieldPrecioConsolidadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrecioConsolidadoKeyTyped
+        char c = evt.getKeyChar();
+
+        if ((c < '0' || c > '9') && c != '.') {
+            evt.consume(); // Evita caracteres no válidos
+        }
+
+        if (c == '.' && jTextFieldPrecioConsolidado.getText().contains(".")) {
+            evt.consume(); // Evita más de un punto decimal
+        }
+
+        if (jTextFieldPrecioConsolidado.getText().length() >= 20) {
+            evt.consume(); // Evita que se ingresen más de 20 caracteres
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_jTextFieldPrecioConsolidadoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnAgregarContrato;
     private javax.swing.JLabel btnEliminar1;
-    private javax.swing.JLabel btnModificar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -255,11 +450,297 @@ public class GestionContrato extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable jTableContratos;
+    private javax.swing.JTable jTableInquilinosActivos;
+    private javax.swing.JTable jTablePropiedadesActivas;
+    private javax.swing.JTextField jTextFieldBuscarInquilinoXDni;
+    private javax.swing.JTextField jTextFieldBuscarXDomicilio;
+    private javax.swing.JTextField jTextFieldFechaActual;
+    private javax.swing.JTextField jTextFieldFechaFinal;
+    private javax.swing.JTextField jTextFieldFechaInicio;
+    private javax.swing.JTextField jTextFieldIDInquilino;
+    private javax.swing.JTextField jTextFieldIDPropiedad;
+    private javax.swing.JTextField jTextFieldPrecioConsolidado;
     // End of variables declaration//GEN-END:variables
+public void armarCabeceraInquilino() {
+        modeloTablaInquilino.addColumn("ID");
+        modeloTablaInquilino.addColumn("Nombre");
+        modeloTablaInquilino.addColumn("Apellido");
+        modeloTablaInquilino.addColumn("DNI");
+//        modeloTablaInquilino.addColumn("Detalle");
+//        modeloTablaInquilino.addColumn("Tipo");
+        jTableInquilinosActivos.setModel(modeloTablaInquilino);
+
+    }
+
+    private void cargarTablaInquilinoActivos(ArrayList<Inquilino> list) {
+        borrarFilasActivos();
+        ArrayList<Inquilino> inquilinosActivos = new ArrayList<>();
+        for (Inquilino inqActivos : list) {
+            if (inqActivos.isEstadoInquilino()) {
+                inquilinosActivos.add(inqActivos);
+            }
+        }
+        for (Inquilino inquilino : inquilinosActivos) {
+            modeloTablaInquilino.addRow(new Object[]{
+                inquilino.getIdInquilino(),
+                inquilino.getNombreInquilino(),
+                inquilino.getApellidoInquilino(),
+                inquilino.getDniInquilino()
+//                inquilino.getDetalleInquilino(),
+//                inquilino.getTipoInquilino()
+
+            });
+        }
+
+    }
+
+    public void borrarFilasActivos() {
+        int f = jTableInquilinosActivos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaInquilino.removeRow(f);
+        }
+    }
+
+    public ArrayList<Inquilino> buscarInquilinoXDni() {
+        ArrayList<Inquilino> listaInquilino = new ArrayList<>();
+        borrarFilasXDni();
+        for (Inquilino inq : inquilinoData.listarInquilinos()) {
+            if (String.valueOf(inq.getDniInquilino()).startsWith(jTextFieldBuscarInquilinoXDni.getText())) {
+                listaInquilino.add(inq);
+
+            }
+        }
+
+        return listaInquilino;
+    }
+
+    public void borrarFilasXDni() {
+        int f = jTableInquilinosActivos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaInquilino.removeRow(f);
+        }
+    }
+
+    public void cargarIDInquilino() {
+        int filaSeleccionada = jTableInquilinosActivos.getSelectedRow();
+        int id = (Integer) jTableInquilinosActivos.getValueAt(filaSeleccionada, 0);
+        jTextFieldIDInquilino.setText(id + "");
+    }
+
+    public void armarCabeceraPropiedadesActivas() {
+        modeloTablaPropiedadesActivas.addColumn("ID");
+        modeloTablaPropiedadesActivas.addColumn("ID propietario");
+        modeloTablaPropiedadesActivas.addColumn("Tipo");
+        modeloTablaPropiedadesActivas.addColumn("Precio");
+        modeloTablaPropiedadesActivas.addColumn("Zona");
+//        modeloTablaPropiedadesActivas.addColumn("Sup. m ");
+        modeloTablaPropiedadesActivas.addColumn("Direccion");
+//        modeloTablaPropiedadesActivas.addColumn("Disp.");
+//        modeloTablaPropiedadesActivas.addColumn("Ambientes");
+//        modeloTablaPropiedadesActivas.addColumn("baños");
+//        modeloTablaPropiedadesActivas.addColumn("Amueblado");
+//        modeloTablaPropiedadesActivas.addColumn("Descripcion");
+//        modeloTablaPropiedadesActivas.addColumn("Estado");
+        jTablePropiedadesActivas.setModel(modeloTablaPropiedadesActivas);
+
+    }
+
+    private void cargarTablaPropiedadesActivas(ArrayList<Propiedad> list) {
+        borrarFilasActivas();
+        ArrayList<Propiedad> propiedadesActivas = new ArrayList<>();
+        for (Propiedad propActivas : list) {
+            if (propActivas.isEstadoPropiedad() && propActivas.isDisponibilidadPropiedad()) {
+                propiedadesActivas.add(propActivas);
+            }
+        }
+        for (Propiedad propiedad : propiedadesActivas) {
+            modeloTablaPropiedadesActivas.addRow(new Object[]{
+                propiedad.getIdPropiedad(),
+                propiedad.getPropietario().getIdPropietario(),
+                propiedad.getTipoPropiedad(),
+                propiedad.getPrecioTasadoPropiedad(),
+                propiedad.getZonaPropiedad(),
+                //                propiedad.getSuperficiePropiedad(),
+                propiedad.getDireccionPropiedad()
+//                propiedad.isDisponibilidadPropiedad(),
+//                propiedad.getCantidadAmbientes(),
+//                propiedad.getCantidadBanios(),
+//                propiedad.isAmueblado(),
+//                propiedad.getDescripcionPropiedad(),
+//                propiedad.isEstadoPropiedad()
+            });
+        }
+
+    }
+
+    public void borrarFilasActivas() {
+        int f = jTablePropiedadesActivas.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaPropiedadesActivas.removeRow(f);
+        }
+    }
+
+    public ArrayList<Propiedad> buscarPorDireccion() {
+        ArrayList<Propiedad> listaProp = new ArrayList<>();
+        for (Propiedad pro : propiedadData.listarPropiedades()) {
+            if (pro.getDireccionPropiedad().toLowerCase().startsWith(jTextFieldBuscarXDomicilio.getText().toLowerCase())) {
+                listaProp.add(pro);
+
+            }
+        }
+
+        return listaProp;
+    }
+
+    public void cargarIDPropiedad() {
+        int filaSeleccionada = jTablePropiedadesActivas.getSelectedRow();
+        int id = (Integer) jTablePropiedadesActivas.getValueAt(filaSeleccionada, 0);
+        jTextFieldIDPropiedad.setText(id + "");
+    }
+
+    public void armarCabeceraTablaContratos() {
+        modeloTablaContratos.addColumn("ID Contrato");
+        modeloTablaContratos.addColumn("Fecha Contrato");
+        modeloTablaContratos.addColumn("Comienzo");
+        modeloTablaContratos.addColumn("finalizacion");
+        modeloTablaContratos.addColumn("ID Inquilino");
+        modeloTablaContratos.addColumn("ID Propiedad");
+        modeloTablaContratos.addColumn("Precio Consolidado");
+        jTableContratos.setModel(modeloTablaContratos);
+    }
+
+    public void cargarTablaContratos(ArrayList<Contrato> list) {
+        borrarFilasContratos();
+
+        for (Contrato contrato : list) {
+            if (contrato.isEstadoContrato()) {
+                modeloTablaContratos.addRow(new Object[]{
+                    contrato.getIdContrato(),
+                    contrato.getFechaRealizacion(),
+                    contrato.getFechaInicio(),
+                    contrato.getFechaFinal(),
+                    contrato.getInquilino().getIdInquilino(),
+                    contrato.getPropiedad().getIdPropiedad(),
+                    contrato.getPrecioConsolidado()
+
+                });
+            }
+        }
+    }
+
+    public void borrarFilasContratos() {
+        int f = jTableContratos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
+            modeloTablaContratos.removeRow(f);
+        }
+    }
+
+    public void fechaActual() {
+        jTextFieldFechaActual.setText(LocalDate.now().toString());
+
+    }
+
+    public void agregarContrato() {
+        Contrato contrato = new Contrato();
+        
+        boolean[] contratoRelleno = {false, false, false, false, false, false};
+        try {
+            if (validacionTextField1(jTextFieldIDInquilino)) {
+                contrato.setInquilino(inquilinoData.buscarInquilinoPorId(Integer.parseInt(jTextFieldIDInquilino.getText())));
+                contratoRelleno[0] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar id de la tabla Inquilino");
+                contratoRelleno[0] = false;
+            }
+
+            if (validacionTextField1(jTextFieldIDPropiedad)) {
+                contrato.setPropiedad(propiedadData.buscarPropiedadPorId(Integer.parseInt(jTextFieldIDPropiedad.getText())));
+                contratoRelleno[1] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar id de la tabla Propiedad");
+                contratoRelleno[1] = false;
+            }
+
+            if (validacionTextField1(jTextFieldFechaActual)) {
+                contrato.setFechaRealizacion(LocalDate.parse(jTextFieldFechaActual.getText()));
+                contratoRelleno[2] = true;
+            } else {
+//                JOptionPane.showMessageDialog(this, "Debe ingresar Nombre Propietario");
+                contratoRelleno[2] = false;
+            }
+            if (validacionTextField1(jTextFieldFechaInicio)) {
+                contrato.setFechaInicio(LocalDate.parse(jTextFieldFechaInicio.getText()));
+                contratoRelleno[3] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar Fecha con su Formato Correctamente");
+                contratoRelleno[3] = false;
+            }
+
+            if (validacionTextField1(jTextFieldFechaFinal)) {
+                contrato.setFechaFinal(LocalDate.parse(jTextFieldFechaFinal.getText()));
+                contratoRelleno[4] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar Fecha con su Formato Correctamente");
+                contratoRelleno[4] = false;
+            }
+
+            if (validacionTextField1(jTextFieldPrecioConsolidado)) {
+                contrato.setPrecioConsolidado(Double.parseDouble(jTextFieldPrecioConsolidado.getText()));
+                contratoRelleno[5] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un Precio Consolidado");
+                contratoRelleno[5] = false;
+            }
+            contrato.setEstadoContrato(true);
+
+            if (contratoRelleno[0] == true
+                    && contratoRelleno[1] == true
+                    && contratoRelleno[2] == true
+                    && contratoRelleno[3] == true
+                    && contratoRelleno[4] == true
+                    && contratoRelleno[5]) {
+                contratoData.guardarContrato(contrato);
+                propiedadData.cambiarDisponibilidad(Integer.parseInt(jTextFieldIDPropiedad.getText()));
+                limpiarTextFields();
+            }
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese correctamente la fecha");
+
+        } finally {
+            cargarTablaContratos(contratoData.listarContratos());
+        }
+    }
+
+    private boolean validacionTextField1(JTextField jtf) {
+        if (jtf.getText().isEmpty()) {
+            jtf.setBorder(BorderFactory.createLineBorder(Color.decode("#aa4356")));
+            return false;
+        } else {
+            jtf.setBorder(null);
+            return true;
+        }
+    }
+
+    public void limpiarTextFields() {
+        jTextFieldIDInquilino.setText("");
+        jTextFieldIDPropiedad.setText("");
+        jTextFieldFechaInicio.setText("");
+        jTextFieldFechaFinal.setText("");
+        jTextFieldPrecioConsolidado.setText("");
+    }
+
+    private void eliminacionLogicaPropiedad() {
+        int filaSeleccionada = jTableContratos.getSelectedRow();
+        if (filaSeleccionada != -1) { // SI HAY UNA FILA SELECCIONADA ENTRA AL CONDICIONAL
+            int idContrato = (Integer) jTableContratos.getValueAt(filaSeleccionada, 0); // TRAES EL VALOR DE LA FILA SELECCIONADA
+            contratoData.cambiarEstadoContrato(idContrato);
+            propiedadData.cambiarDisponibilidad((Integer) jTableContratos.getValueAt(filaSeleccionada, 5));
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
+        }
+        cargarTablaPropiedadesActivas(propiedadData.listarPropiedades());
+        limpiarTextFields();
+//        btnEliminar.setVisible(false);
+    }
 }

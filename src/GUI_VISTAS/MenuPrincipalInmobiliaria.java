@@ -44,6 +44,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         btnMenu = new javax.swing.JLabel();
         btnHome = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -111,14 +112,14 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         separador.setLayout(separadorLayout);
         separadorLayout.setHorizontalGroup(
             separadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 230, Short.MAX_VALUE)
         );
         separadorLayout.setVerticalGroup(
             separadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanelFondo.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 220, 10));
+        jPanelFondo.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 230, 5));
 
         btnMenu.setText("Menu ");
         btnMenu.setOpaque(true);
@@ -138,6 +139,19 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Diseño sin título.png"))); // NOI18N
         jPanelFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 250, 70));
+
+        btnSalir.setBackground(new java.awt.Color(223, 0, 0));
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSalir.setText("Salir");
+        btnSalir.setOpaque(true);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+        });
+        jPanelFondo.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 688, 240, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,6 +217,10 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         contenido.repaint();
     }//GEN-LAST:event_btnHomeMouseClicked
 
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnSalirMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -245,6 +263,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
     private javax.swing.JLabel btnMenu;
     private javax.swing.JLabel btnPropiedad;
     private javax.swing.JLabel btnPropietario;
+    private javax.swing.JLabel btnSalir;
     private javax.swing.JPanel contenido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanelFondo;
