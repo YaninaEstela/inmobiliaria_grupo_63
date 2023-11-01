@@ -21,9 +21,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import themes.ButtonsColor;
 
 public class GestionContrato extends javax.swing.JPanel {
-
+    ButtonsColor buttons = new ButtonsColor();
     InquilinoData inquilinoData = new InquilinoData();
     PropietarioData propietarioData = new PropietarioData();
     PropiedadData propiedadData = new PropiedadData();
@@ -59,6 +60,7 @@ public class GestionContrato extends javax.swing.JPanel {
         cargarTablaContratos(contratoData.listarContratos());
 
         fechaActual();
+        colors();
     }
 
     /**
@@ -78,7 +80,7 @@ public class GestionContrato extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jTextFieldIDInquilino = new javax.swing.JTextField();
         jTextFieldIDPropiedad = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelLimpiarTodo = new javax.swing.JLabel();
         btnAgregarContrato = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jTextFieldPrecioConsolidado = new javax.swing.JTextField();
@@ -147,18 +149,18 @@ public class GestionContrato extends javax.swing.JPanel {
         });
         jPanel3.add(jTextFieldIDPropiedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 40, 30));
 
-        jLabel6.setBackground(new java.awt.Color(76, 40, 130));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Limpiar Todo");
-        jLabel6.setOpaque(true);
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelLimpiarTodo.setBackground(new java.awt.Color(41, 32, 14));
+        jLabelLimpiarTodo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelLimpiarTodo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLimpiarTodo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLimpiarTodo.setText("Limpiar Todo");
+        jLabelLimpiarTodo.setOpaque(true);
+        jLabelLimpiarTodo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                jLabelLimpiarTodoMouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 270, 50));
+        jPanel3.add(jLabelLimpiarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 260, 50));
 
         btnAgregarContrato.setBackground(new java.awt.Color(0, 119, 35));
         btnAgregarContrato.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -404,9 +406,9 @@ public class GestionContrato extends javax.swing.JPanel {
         cargarTablaPropiedadesActivas(propiedadData.listarPropiedades());
     }//GEN-LAST:event_btnAgregarContratoMouseClicked
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void jLabelLimpiarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLimpiarTodoMouseClicked
         limpiarTextFields();
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_jLabelLimpiarTodoMouseClicked
 
     private void jTextFieldPrecioConsolidadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrecioConsolidadoKeyTyped
         char c = evt.getKeyChar();
@@ -442,8 +444,8 @@ public class GestionContrato extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelLimpiarTodo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -742,5 +744,11 @@ public void armarCabeceraInquilino() {
         cargarTablaPropiedadesActivas(propiedadData.listarPropiedades());
         limpiarTextFields();
 //        btnEliminar.setVisible(false);
+    }
+    
+    public void colors(){
+        buttons.setButtonStylesGreen(btnAgregarContrato);
+        buttons.setButtonStylesRed(btnEliminar1);
+        buttons.setButtonStylesDorado(jLabelLimpiarTodo);
     }
 }

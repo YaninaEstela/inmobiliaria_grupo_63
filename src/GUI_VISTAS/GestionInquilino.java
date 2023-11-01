@@ -17,12 +17,14 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import themes.ButtonsColor;
 
 /**
  *
  * @author crist
  */
 public class GestionInquilino extends javax.swing.JPanel {
+    ButtonsColor buttons = new ButtonsColor();
     InquilinoData inquilinoData = new InquilinoData();
     PropietarioData propietarioData = new PropietarioData();
     DefaultTableModel modeloTablaInquilino = new DefaultTableModel() {
@@ -41,6 +43,7 @@ public class GestionInquilino extends javax.swing.JPanel {
         armarCabeceraInquilinoInc();
         cargarTablaInquilinoInactivos();
         cargarTablaInquilinoActivos();
+        colors();
     }
 
     /**
@@ -602,6 +605,13 @@ private void cargarTablaInquilinoActivos() {
         jTextFieldDetalle.setText("");
         jComboBoxTipo.setSelectedIndex(0);
         
+    }
+       public void colors(){
+        buttons.setButtonStylesGreen(jLabel7);   
+        buttons.setButtonStylesGreen(jLabel8);
+        buttons.setButtonStylesRed(btnEliminar1);
+        buttons.setButtonStylesDorado(btnLimpiarTodo);
+        buttons.setButtonStylesBlue(btnModificar);
     }
    
 }

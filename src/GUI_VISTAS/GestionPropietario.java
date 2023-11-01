@@ -14,14 +14,17 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import themes.ButtonsColor;
 
 /**
  *
  * @author crist
  */
 public class GestionPropietario extends javax.swing.JPanel {
-     PropietarioData propietarioData = new PropietarioData();
-     Propietario propietario = new Propietario();
+
+    ButtonsColor buttons = new ButtonsColor();
+    PropietarioData propietarioData = new PropietarioData();
+    Propietario propietario = new Propietario();
     DefaultTableModel modeloTablaPropietariosActivos = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -32,12 +35,14 @@ public class GestionPropietario extends javax.swing.JPanel {
             return false;
         }
     };
+
     public GestionPropietario() {
         initComponents();
         armarCabeceraPropietariosInactivos();
         cargarTablaPropietariosInactivos();
         armarCabeceraPropietariosActivos();
         cargarTablaPropietariosActivos();
+        colors();
     }
 
     /**
@@ -310,29 +315,32 @@ public class GestionPropietario extends javax.swing.JPanel {
 
     private void jTextFieldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyTyped
         char c = evt.getKeyChar();
-            if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
-            if(jTextFieldNombre.getText().length()>=15){
-              evt.consume();
-              Toolkit.getDefaultToolkit().beep();
-           }
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+        if (jTextFieldNombre.getText().length() >= 15) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_jTextFieldNombreKeyTyped
 
     private void jTextFieldApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoKeyTyped
         char c = evt.getKeyChar();
-            if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
-            if(jTextFieldApellido.getText().length()>=15){
-              evt.consume();
-              Toolkit.getDefaultToolkit().beep();
-           }
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+        if (jTextFieldApellido.getText().length() >= 15) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_jTextFieldApellidoKeyTyped
 
     private void jTextFieldDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDNIKeyTyped
-          char c = evt.getKeyChar();
-        if ((c < '0' || c > '9') ) {
+        char c = evt.getKeyChar();
+        if ((c < '0' || c > '9')) {
             evt.consume(); // Evita caracteres no válidos
         }
 
-       
         if (jTextFieldDNI.getText().length() >= 8) {
             evt.consume(); // Evita que se ingresen más de 20 caracteres
             Toolkit.getDefaultToolkit().beep();
@@ -340,14 +348,13 @@ public class GestionPropietario extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldDNIKeyTyped
 
     private void jTextFieldTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoKeyTyped
-         char c = evt.getKeyChar();
-        if ((c < '0' || c > '9') ) {
+        char c = evt.getKeyChar();
+        if ((c < '0' || c > '9')) {
             evt.consume(); // Evita caracteres no válidos
         }
 
-       
         if (jTextFieldTelefono.getText().length() >= 11) {
-            evt.consume(); 
+            evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_jTextFieldTelefonoKeyTyped
@@ -356,7 +363,7 @@ public class GestionPropietario extends javax.swing.JPanel {
         activacionLogicaPropietario();
         cargarTablaPropietariosInactivos();
         cargarTablaPropietariosActivos();
-        
+
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -402,39 +409,40 @@ public class GestionPropietario extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldTelefono;
     // End of variables declaration//GEN-END:variables
 public void armarCabeceraPropietariosActivos() {
-         modeloTablaPropietariosActivos.addColumn("ID");
-         modeloTablaPropietariosActivos.addColumn("Nombre");
-         modeloTablaPropietariosActivos.addColumn("Apellido");
-         modeloTablaPropietariosActivos.addColumn("DNI");
-         modeloTablaPropietariosActivos.addColumn("Domicilio");
-         modeloTablaPropietariosActivos.addColumn("Telefono");
-       jTablePropietariosActivos.setModel( modeloTablaPropietariosActivos);
-       
+        modeloTablaPropietariosActivos.addColumn("ID");
+        modeloTablaPropietariosActivos.addColumn("Nombre");
+        modeloTablaPropietariosActivos.addColumn("Apellido");
+        modeloTablaPropietariosActivos.addColumn("DNI");
+        modeloTablaPropietariosActivos.addColumn("Domicilio");
+        modeloTablaPropietariosActivos.addColumn("Telefono");
+        jTablePropietariosActivos.setModel(modeloTablaPropietariosActivos);
+
 //        jTablePropiedad.sizeColumnsToFit(1);
     }
-public void armarCabeceraPropietariosInactivos() {
+
+    public void armarCabeceraPropietariosInactivos() {
         modeloTablaPropietariosInactivos.addColumn("ID");
         modeloTablaPropietariosInactivos.addColumn("Nombre");
         modeloTablaPropietariosInactivos.addColumn("Apellido");
         modeloTablaPropietariosInactivos.addColumn("DNI");
         modeloTablaPropietariosInactivos.addColumn("Domicilio");
         modeloTablaPropietariosInactivos.addColumn("Telefono");
-       jTablePropietariosInactivos.setModel(modeloTablaPropietariosInactivos);
+        jTablePropietariosInactivos.setModel(modeloTablaPropietariosInactivos);
 //        jTablePropiedad.sizeColumnsToFit(1);
     }
 
-  public void cargarTablaPropietariosActivos(){
-     borrarFilasActivos();
-     
-     ArrayList <Propietario>propietariosActivos = new ArrayList<>();
-        for(Propietario propietarioActivo: propietarioData.listarPropietarios()){
-          if(propietarioActivo.isEstadoPropietario()){
-              propietariosActivos .add(propietarioActivo);
-              
-          }  
+    public void cargarTablaPropietariosActivos() {
+        borrarFilasActivos();
+
+        ArrayList<Propietario> propietariosActivos = new ArrayList<>();
+        for (Propietario propietarioActivo : propietarioData.listarPropietarios()) {
+            if (propietarioActivo.isEstadoPropietario()) {
+                propietariosActivos.add(propietarioActivo);
+
+            }
         }
-        
-          for (Propietario propietario : propietariosActivos) {
+
+        for (Propietario propietario : propietariosActivos) {
             modeloTablaPropietariosActivos.addRow(new Object[]{
                 propietario.getIdPropietario(),
                 propietario.getNombrePropietario(),
@@ -442,30 +450,30 @@ public void armarCabeceraPropietariosInactivos() {
                 propietario.getDniPropietario(),
                 propietario.getDomicilioPropietario(),
                 propietario.getTelefonoPropietario()
-               
+
             });
         }
-  }
-  
-  public void borrarFilasActivos() {
+    }
+
+    public void borrarFilasActivos() {
         int f = jTablePropietariosActivos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
         for (; f >= 0; f--) {
             modeloTablaPropietariosActivos.removeRow(f);
         }
     }
-  
-  public void cargarTablaPropietariosInactivos(){
-     borrarFilasInactivos();
-     
-     ArrayList <Propietario>propietariosInactivos = new ArrayList<>();
-        for(Propietario propietarioInactivo: propietarioData.listarPropietarios()){
-          if(!propietarioInactivo.isEstadoPropietario()){
-              propietariosInactivos .add(propietarioInactivo);
-              
-          }  
+
+    public void cargarTablaPropietariosInactivos() {
+        borrarFilasInactivos();
+
+        ArrayList<Propietario> propietariosInactivos = new ArrayList<>();
+        for (Propietario propietarioInactivo : propietarioData.listarPropietarios()) {
+            if (!propietarioInactivo.isEstadoPropietario()) {
+                propietariosInactivos.add(propietarioInactivo);
+
+            }
         }
-        
-          for (Propietario propietario : propietariosInactivos) {
+
+        for (Propietario propietario : propietariosInactivos) {
             modeloTablaPropietariosInactivos.addRow(new Object[]{
                 propietario.getIdPropietario(),
                 propietario.getNombrePropietario(),
@@ -473,19 +481,19 @@ public void armarCabeceraPropietariosInactivos() {
                 propietario.getDniPropietario(),
                 propietario.getDomicilioPropietario(),
                 propietario.getTelefonoPropietario()
-               
+
             });
         }
-  }
-  
-  public void borrarFilasInactivos() {
+    }
+
+    public void borrarFilasInactivos() {
         int f = jTablePropietariosInactivos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
         for (; f >= 0; f--) {
             modeloTablaPropietariosInactivos.removeRow(f);
         }
     }
-  
-   private void activacionLogicaPropietario() {
+
+    private void activacionLogicaPropietario() {
         int filaSeleccionada = jTablePropietariosInactivos.getSelectedRow();
         if (filaSeleccionada != -1) { // SI HAY UNA FILA SELECCIONADA ENTRA AL CONDICIONAL
             int idPropietario = (Integer) jTablePropietariosInactivos.getValueAt(filaSeleccionada, 0); // TRAES EL VALOR DE LA FILA SELECCIONADA
@@ -494,7 +502,7 @@ public void armarCabeceraPropietariosInactivos() {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
         }
     }
-    
+
     private void eliminacionLogicaPropietario() {
         int filaSeleccionada = jTablePropietariosActivos.getSelectedRow();
         if (filaSeleccionada != -1) { // SI HAY UNA FILA SELECCIONADA ENTRA AL CONDICIONAL
@@ -507,14 +515,14 @@ public void armarCabeceraPropietariosInactivos() {
 //        limpiarTextFields();
 //        btnEliminar.setVisible(false);
     }
-    
-    private void agregarPropietario(){
+
+    private void agregarPropietario() {
         Propietario propietario = new Propietario();
-        
-        boolean[] propietarioRelleno ={false,false,false,false,false};
-        
-        try{
-           
+
+        boolean[] propietarioRelleno = {false, false, false, false, false};
+
+        try {
+
             if (validacionTextField1(jTextFieldNombre)) {
                 propietario.setNombrePropietario(jTextFieldNombre.getText());
                 propietarioRelleno[0] = true;
@@ -522,23 +530,23 @@ public void armarCabeceraPropietariosInactivos() {
                 JOptionPane.showMessageDialog(this, "Debe ingresar Nombre Propietario");
                 propietarioRelleno[0] = false;
             }
-            
-             if (validacionTextField1(jTextFieldApellido)) {
+
+            if (validacionTextField1(jTextFieldApellido)) {
                 propietario.setApellidoPropietario(jTextFieldApellido.getText());
                 propietarioRelleno[1] = true;
             } else {
                 JOptionPane.showMessageDialog(this, "Debe ingresar Apellido Propietario");
                 propietarioRelleno[1] = false;
             }
-           
-             if (validacionTextField1(jTextFieldDNI)) {
+
+            if (validacionTextField1(jTextFieldDNI)) {
                 propietario.setDniPropietario(Integer.parseInt(jTextFieldDNI.getText()));
                 propietarioRelleno[2] = true;
             } else {
                 JOptionPane.showMessageDialog(this, "Debe ingresar DNI");
                 propietarioRelleno[2] = false;
             }
-             
+
             if (validacionTextField1(jTextFieldDomicilio)) {
                 propietario.setDomicilioPropietario(jTextFieldDomicilio.getText());
                 propietarioRelleno[3] = true;
@@ -546,26 +554,26 @@ public void armarCabeceraPropietariosInactivos() {
                 JOptionPane.showMessageDialog(this, "Debe ingresar Domicilio Propietario");
                 propietarioRelleno[3] = false;
             }
-            
+
             if (validacionTextField1(jTextFieldTelefono)) {
                 propietario.setTelefonoPropietario(Integer.parseInt(jTextFieldTelefono.getText()));
                 propietarioRelleno[4] = true;
             } else {
                 JOptionPane.showMessageDialog(this, "Debe ingresar un Telefono Propietario");
-               propietarioRelleno[4] = false;
+                propietarioRelleno[4] = false;
             }
-            
+
             propietario.setEstadoPropietario(true);
-            
-            if(propietarioRelleno[0] == true
-             &&propietarioRelleno[1] == true
-             &&propietarioRelleno[2] == true
-             &&propietarioRelleno[3] == true
-             &&propietarioRelleno[4] == true ){
-             propietarioData.guardarPropietario(propietario);
+
+            if (propietarioRelleno[0] == true
+                    && propietarioRelleno[1] == true
+                    && propietarioRelleno[2] == true
+                    && propietarioRelleno[3] == true
+                    && propietarioRelleno[4] == true) {
+                propietarioData.guardarPropietario(propietario);
             }
-            
-        }catch (NumberFormatException e) {
+
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese el Dni correctamente");
             jTextFieldDNI.setText("");
             validacionTextField1(jTextFieldDNI);
@@ -575,7 +583,7 @@ public void armarCabeceraPropietariosInactivos() {
             limpiarTextFields();
         }
     }
-    
+
     private boolean validacionTextField1(JTextField jtf) {
         if (jtf.getText().isEmpty()) {
             jtf.setBorder(BorderFactory.createLineBorder(Color.decode("#aa4356")));
@@ -585,8 +593,8 @@ public void armarCabeceraPropietariosInactivos() {
             return true;
         }
     }
-    
-     private boolean validacionComboBox(JComboBox cbx) {
+
+    private boolean validacionComboBox(JComboBox cbx) {
         if (cbx.getSelectedItem().equals("-")) {
             cbx.setBorder(BorderFactory.createLineBorder(Color.decode("#aa4356")));
             return false;
@@ -595,14 +603,22 @@ public void armarCabeceraPropietariosInactivos() {
             return true;
         }
     }
-     
-      private void limpiarTextFields() {
+
+    private void limpiarTextFields() {
         jTextFieldNombre.setText("");
         jTextFieldApellido.setText("");
         jTextFieldDNI.setText("");
         jTextFieldDomicilio.setText("");
         jTextFieldTelefono.setText("");
-        
+
+    }
+
+    public void colors() {
+        buttons.setButtonStylesGreen(jLabel7);
+        buttons.setButtonStylesGreen(jLabel8);
+        buttons.setButtonStylesRed(btnEliminar);
+
+        buttons.setButtonStylesDorado(jLabel6);
+        buttons.setButtonStylesBlue(btnModificar);
     }
 }
-

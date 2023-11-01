@@ -16,13 +16,14 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import themes.ButtonsColor;
 
 /**
  *
  * @author crist
  */
 public class ModificarInquilino extends javax.swing.JFrame {
-
+    ButtonsColor buttons = new ButtonsColor();
     InquilinoData inquilinoData = new InquilinoData();
     PropietarioData propietarioData = new PropietarioData();
     DefaultTableModel modeloTablaInquilino = new DefaultTableModel() {
@@ -36,6 +37,7 @@ public class ModificarInquilino extends javax.swing.JFrame {
         armarCabeceraInquilino();
         
         cargarTablaInquilino(inquilinoData.listarInquilinos());
+        colors();
         
         
     }
@@ -210,7 +212,7 @@ public class ModificarInquilino extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableInquilinos);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 690, 480));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 690, 460));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -228,7 +230,7 @@ public class ModificarInquilino extends javax.swing.JFrame {
                 btnSalirMouseClicked(evt);
             }
         });
-        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 740, 38));
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 740, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Buscar.png"))); // NOI18N
@@ -604,5 +606,13 @@ public void armarCabeceraInquilino() {
         for (; f >= 0; f--) {
             modeloTablaInquilino.removeRow(f);
         }
+    }
+    
+    public void colors() {
+        
+        buttons.setButtonStylesGreen(btnModificarInquilino);
+        buttons.setButtonStylesRed(btnSalir);
+        buttons.setButtonStylesDorado(btnLimpiarTodo);
+        
     }
 }

@@ -21,13 +21,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import themes.ButtonsColor;
 
 /**
  *
  * @author crist
  */
 public class PanelGestionPropiedad extends javax.swing.JPanel {
-
+    ButtonsColor buttons = new ButtonsColor();
     PropiedadData propiedadData = new PropiedadData();
     Propiedad propiedad = new Propiedad();
     PropietarioData propietarioData = new PropietarioData();
@@ -59,6 +60,7 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
         cargarTablaPropiedadesInactivas();
         armarCabeceraPropietario();
         cargarTablaPropietarios(propietarioData.listarPropietarios());
+        colors();
 
     }
 
@@ -911,5 +913,14 @@ public class PanelGestionPropiedad extends javax.swing.JPanel {
             //                propietario.isEstadoPropietario()
             });
         }
+    }
+    
+    public void colors() {
+        buttons.setButtonStylesGreen(btnGuardar);
+        buttons.setButtonStylesGreen(btnActivarPropiedad);
+        buttons.setButtonStylesRed(btnEliminar);
+
+        buttons.setButtonStylesDorado(btnLimpiar);
+        buttons.setButtonStylesBlue(btnModificar);
     }
 }

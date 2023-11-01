@@ -33,7 +33,7 @@ public class Home extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(246, 246, 246));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel2.setBackground(new java.awt.Color(255, 243, 219));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Diseño sin título.png"))); // NOI18N

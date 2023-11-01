@@ -27,7 +27,7 @@ public class ThemaCC {
     public void CobreTheme(JPanel panelPrincipal, JLabel btnFiltros, JPanel separador, JLabel btnGestionPropiedad, JLabel btnGestionPropietario,JLabel btnGestionInquilino, JLabel btnGestionContratos,JLabel btnHome) {
         setPanelBackground(panelPrincipal, Color.decode("#ffffff"));
 //      setPanelBackground(panelMenu, Color.decode("#6a462d"));
-        setSeparatorBackground(separador, Color.decode("#9d9d9d"));
+        setSeparatorBackground(separador, Color.decode("#C39717"));
         setButtonStyles(btnFiltros, "Menu");
         setButtonStyles(btnGestionPropiedad, " Gestion Propiedad");
          setButtonStyles(btnGestionPropietario, " Gestion Propietario");
@@ -63,18 +63,18 @@ public class ThemaCC {
         separator.setBackground(color);
     }
   private void setButtonStyles(JLabel label, String text) {
-        label.setBackground(Color.decode("#9d9d9d"));
+        label.setBackground(Color.decode("#C39717"));
         label.setForeground(Color.decode("#ffffff"));
 
         label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                label.setBackground(Color.decode("#737373"));
+                label.setBackground(Color.decode("#29200e"));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                label.setBackground(Color.decode("#9d9d9d"));
+                label.setBackground(Color.decode("#C39717"));
             }
         });
 
@@ -95,7 +95,7 @@ public class ThemaCC {
         label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                label.setBackground(Color.decode("#737373"));
+                label.setBackground(Color.decode("#29200e"));
                 Point location = label.getLocation();
                 int w = label.getWidth();
                 int h = label.getHeight();
@@ -106,7 +106,7 @@ public class ThemaCC {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                label.setBackground(Color.decode("#9d9d9d"));
+                label.setBackground(Color.decode("#C39717"));
                 int w = label.getWidth();
                 int h = label.getHeight();
                 Point location = label.getLocation();

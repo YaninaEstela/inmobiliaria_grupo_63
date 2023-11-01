@@ -13,23 +13,28 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import themes.ButtonsColor;
 
 /**
  *
  * @author crist
  */
 public class ModificarPropietario extends javax.swing.JFrame {
-      PropietarioData propietarioData = new PropietarioData();
-      Propietario propietario = new Propietario();
+
+    ButtonsColor buttons = new ButtonsColor();
+    PropietarioData propietarioData = new PropietarioData();
+    Propietario propietario = new Propietario();
     DefaultTableModel modeloTablaPropietarios = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
         }
     };
+
     public ModificarPropietario() {
         initComponents();
         armarCabeceraPropietarios();
         cargarTablaPropietarios(propietarioData.listarPropietarios());
+        colors();
     }
 
     /**
@@ -272,7 +277,7 @@ public class ModificarPropietario extends javax.swing.JFrame {
 
     private void jTextFieldDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDNIKeyTyped
         char c = evt.getKeyChar();
-        if ((c < '0' || c > '9') ) {
+        if ((c < '0' || c > '9')) {
             evt.consume(); // Evita caracteres no válidos
         }
 
@@ -288,8 +293,10 @@ public class ModificarPropietario extends javax.swing.JFrame {
 
     private void jTextFieldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyTyped
         char c = evt.getKeyChar();
-        if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
-        if(jTextFieldNombre.getText().length()>=15){
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+        if (jTextFieldNombre.getText().length() >= 15) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -301,8 +308,10 @@ public class ModificarPropietario extends javax.swing.JFrame {
 
     private void jTextFieldApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoKeyTyped
         char c = evt.getKeyChar();
-        if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
-        if(jTextFieldApellido.getText().length()>=15){
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+        if (jTextFieldApellido.getText().length() >= 15) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -314,7 +323,7 @@ public class ModificarPropietario extends javax.swing.JFrame {
 
     private void jTextFieldTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoKeyTyped
         char c = evt.getKeyChar();
-        if ((c < '0' || c > '9') ) {
+        if ((c < '0' || c > '9')) {
             evt.consume(); // Evita caracteres no válidos
         }
 
@@ -345,12 +354,12 @@ public class ModificarPropietario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldBuscarPropietarioXDniKeyReleased
 
     private void jTablePropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePropietarioMouseClicked
-       cargarTextField();
+        cargarTextField();
     }//GEN-LAST:event_jTablePropietarioMouseClicked
 
     private void jTextFieldBuscarPropietarioXDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscarPropietarioXDniKeyTyped
         char c = evt.getKeyChar();
-        if ((c < '0' || c > '9') ) {
+        if ((c < '0' || c > '9')) {
             evt.consume(); // Evita caracteres no válidos
         }
 
@@ -420,22 +429,21 @@ public class ModificarPropietario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTelefono;
     // End of variables declaration//GEN-END:variables
 public void armarCabeceraPropietarios() {
-         modeloTablaPropietarios.addColumn("ID");
-         modeloTablaPropietarios.addColumn("Nombre");
-         modeloTablaPropietarios.addColumn("Apellido");
-         modeloTablaPropietarios.addColumn("DNI");
-         modeloTablaPropietarios.addColumn("Domicilio");
-         modeloTablaPropietarios.addColumn("Telefono");
-       jTablePropietario.setModel( modeloTablaPropietarios);
-       
+        modeloTablaPropietarios.addColumn("ID");
+        modeloTablaPropietarios.addColumn("Nombre");
+        modeloTablaPropietarios.addColumn("Apellido");
+        modeloTablaPropietarios.addColumn("DNI");
+        modeloTablaPropietarios.addColumn("Domicilio");
+        modeloTablaPropietarios.addColumn("Telefono");
+        jTablePropietario.setModel(modeloTablaPropietarios);
+
 //        jTablePropiedad.sizeColumnsToFit(1);
     }
-public void cargarTablaPropietarios(ArrayList<Propietario>list){
-     borrarFilas();
-     
-     
-        
-          for (Propietario propietario : list) {
+
+    public void cargarTablaPropietarios(ArrayList<Propietario> list) {
+        borrarFilas();
+
+        for (Propietario propietario : list) {
             modeloTablaPropietarios.addRow(new Object[]{
                 propietario.getIdPropietario(),
                 propietario.getNombrePropietario(),
@@ -443,28 +451,28 @@ public void cargarTablaPropietarios(ArrayList<Propietario>list){
                 propietario.getDniPropietario(),
                 propietario.getDomicilioPropietario(),
                 propietario.getTelefonoPropietario()
-               
+
             });
         }
-  }
+    }
 
-public void borrarFilas() {
+    public void borrarFilas() {
         int f = jTablePropietario.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
         for (; f >= 0; f--) {
             modeloTablaPropietarios.removeRow(f);
         }
     }
 
-private void limpiarTextFields() {
+    private void limpiarTextFields() {
         jTextFieldNombre.setText("");
         jTextFieldApellido.setText("");
         jTextFieldDNI.setText("");
         jTextFieldDomicilio.setText("");
         jTextFieldTelefono.setText("");
-        
+
     }
 
-public ArrayList<Propietario> buscarPropietarioXDni() {
+    public ArrayList<Propietario> buscarPropietarioXDni() {
         ArrayList<Propietario> listaPropietario = new ArrayList<>();
         borrarFilas();
         for (Propietario prop : propietarioData.listarPropietarios()) {
@@ -477,37 +485,36 @@ public ArrayList<Propietario> buscarPropietarioXDni() {
         return listaPropietario;
     }
 
-public void cargarTextField(){
-     int filaSeleccionada = jTablePropietario.getSelectedRow();
-            String nombre = jTablePropietario.getValueAt(filaSeleccionada, 1).toString();
-            jTextFieldNombre.setText(nombre + "");
-            
-            String apellido = jTablePropietario.getValueAt(filaSeleccionada, 2).toString();
-            jTextFieldApellido.setText(apellido + "");
-            
-            int dni = (Integer) jTablePropietario.getValueAt(filaSeleccionada, 3);
-            jTextFieldDNI.setText(dni + "");
-            
-            String domicilio = jTablePropietario.getValueAt(filaSeleccionada, 4).toString();
-            jTextFieldDomicilio.setText(domicilio + "");
-            
-            String telefono = jTablePropietario.getValueAt(filaSeleccionada, 5).toString();
-            jTextFieldTelefono.setText(telefono + "");
- }
+    public void cargarTextField() {
+        int filaSeleccionada = jTablePropietario.getSelectedRow();
+        String nombre = jTablePropietario.getValueAt(filaSeleccionada, 1).toString();
+        jTextFieldNombre.setText(nombre + "");
 
+        String apellido = jTablePropietario.getValueAt(filaSeleccionada, 2).toString();
+        jTextFieldApellido.setText(apellido + "");
 
-public void modificarPropietario(){
+        int dni = (Integer) jTablePropietario.getValueAt(filaSeleccionada, 3);
+        jTextFieldDNI.setText(dni + "");
+
+        String domicilio = jTablePropietario.getValueAt(filaSeleccionada, 4).toString();
+        jTextFieldDomicilio.setText(domicilio + "");
+
+        String telefono = jTablePropietario.getValueAt(filaSeleccionada, 5).toString();
+        jTextFieldTelefono.setText(telefono + "");
+    }
+
+    public void modificarPropietario() {
         int filaSeleccionada = jTablePropietario.getSelectedRow();
         Propietario propietario = new Propietario();
-       if (filaSeleccionada != -1) {
-       int idPropietario = (Integer) jTablePropietario.getValueAt(filaSeleccionada, 0);
-            
-            propietario =propietarioData.buscarPropietarioPorId(idPropietario); 
-      }
-        boolean[] propietarioRelleno ={false,false,false,false,false};
-        
-        try{
-           
+        if (filaSeleccionada != -1) {
+            int idPropietario = (Integer) jTablePropietario.getValueAt(filaSeleccionada, 0);
+
+            propietario = propietarioData.buscarPropietarioPorId(idPropietario);
+        }
+        boolean[] propietarioRelleno = {false, false, false, false, false};
+
+        try {
+
             if (validacionTextField1(jTextFieldNombre)) {
                 propietario.setNombrePropietario(jTextFieldNombre.getText());
                 propietarioRelleno[0] = true;
@@ -515,23 +522,23 @@ public void modificarPropietario(){
                 JOptionPane.showMessageDialog(this, "Debe ingresar Nombre Propietario");
                 propietarioRelleno[0] = false;
             }
-            
-             if (validacionTextField1(jTextFieldApellido)) {
+
+            if (validacionTextField1(jTextFieldApellido)) {
                 propietario.setApellidoPropietario(jTextFieldApellido.getText());
                 propietarioRelleno[1] = true;
             } else {
                 JOptionPane.showMessageDialog(this, "Debe ingresar Apellido Propietario");
                 propietarioRelleno[1] = false;
             }
-           
-             if (validacionTextField1(jTextFieldDNI)) {
+
+            if (validacionTextField1(jTextFieldDNI)) {
                 propietario.setDniPropietario(Integer.parseInt(jTextFieldDNI.getText()));
                 propietarioRelleno[2] = true;
             } else {
                 JOptionPane.showMessageDialog(this, "Debe ingresar DNI");
                 propietarioRelleno[2] = false;
             }
-             
+
             if (validacionTextField1(jTextFieldDomicilio)) {
                 propietario.setDomicilioPropietario(jTextFieldDomicilio.getText());
                 propietarioRelleno[3] = true;
@@ -539,26 +546,26 @@ public void modificarPropietario(){
                 JOptionPane.showMessageDialog(this, "Debe ingresar Domicilio Propietario");
                 propietarioRelleno[3] = false;
             }
-            
+
             if (validacionTextField1(jTextFieldTelefono)) {
                 propietario.setTelefonoPropietario(Integer.parseInt(jTextFieldTelefono.getText()));
                 propietarioRelleno[4] = true;
             } else {
                 JOptionPane.showMessageDialog(this, "Debe ingresar un Telefono Propietario");
-               propietarioRelleno[4] = false;
+                propietarioRelleno[4] = false;
             }
-            
+
             propietario.setEstadoPropietario(true);
-            
-            if(propietarioRelleno[0] == true
-             &&propietarioRelleno[1] == true
-             &&propietarioRelleno[2] == true
-             &&propietarioRelleno[3] == true
-             &&propietarioRelleno[4] == true ){
-             propietarioData.guardarPropietario(propietario);
+
+            if (propietarioRelleno[0] == true
+                    && propietarioRelleno[1] == true
+                    && propietarioRelleno[2] == true
+                    && propietarioRelleno[3] == true
+                    && propietarioRelleno[4] == true) {
+                propietarioData.guardarPropietario(propietario);
             }
-            
-        }catch (NumberFormatException e) {
+
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese el Dni correctamente");
             jTextFieldDNI.setText("");
             validacionTextField1(jTextFieldDNI);
@@ -567,8 +574,9 @@ public void modificarPropietario(){
             cargarTablaPropietarios(propietarioData.listarPropietarios());
             limpiarTextFields();
         }
-}
-private boolean validacionTextField1(JTextField jtf) {
+    }
+
+    private boolean validacionTextField1(JTextField jtf) {
         if (jtf.getText().isEmpty()) {
             jtf.setBorder(BorderFactory.createLineBorder(Color.decode("#aa4356")));
             return false;
@@ -576,6 +584,13 @@ private boolean validacionTextField1(JTextField jtf) {
             jtf.setBorder(null);
             return true;
         }
+    }
+    
+    public void colors() {
+        buttons.setButtonStylesGreen(btnModificarPropietario);
+        buttons.setButtonStylesRed(btnSalir);
+        buttons.setButtonStylesDorado(jLabel6);
+        
     }
 
 }

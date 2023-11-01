@@ -45,13 +45,15 @@ LoginData liginData = new LoginData();
         jLabel17 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(226, 240, 251));
+        jPanel3.setBackground(new java.awt.Color(255, 243, 219));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -67,7 +69,7 @@ LoginData liginData = new LoginData();
         jLabel12.setText("Usuario");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 136, 27));
 
-        jLabel15.setBackground(new java.awt.Color(90, 184, 233));
+        jLabel15.setBackground(new java.awt.Color(0, 119, 35));
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -88,7 +90,7 @@ LoginData liginData = new LoginData();
         });
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 230, 52));
 
-        jPasswordField.setBackground(new java.awt.Color(226, 240, 251));
+        jPasswordField.setBackground(new java.awt.Color(255, 243, 219));
         jPasswordField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jPasswordField.setBorder(null);
         jPasswordField.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -103,7 +105,7 @@ LoginData liginData = new LoginData();
         });
         jPanel3.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 250, 40));
 
-        jTextFieldUsuario.setBackground(new java.awt.Color(226, 240, 251));
+        jTextFieldUsuario.setBackground(new java.awt.Color(255, 243, 219));
         jTextFieldUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextFieldUsuario.setBorder(null);
         jTextFieldUsuario.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -120,7 +122,7 @@ LoginData liginData = new LoginData();
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 250, 10));
         jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 250, 10));
 
-        jLabel17.setBackground(new java.awt.Color(90, 184, 233));
+        jLabel17.setBackground(new java.awt.Color(223, 0, 0));
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -141,34 +143,20 @@ LoginData liginData = new LoginData();
         });
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 230, 52));
 
-        jPanel4.setBackground(new java.awt.Color(0, 140, 196));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 610, 350));
+
+        jPanel4.setBackground(new java.awt.Color(195, 151, 23));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Nuevo Usuario");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 35));
+        jLabel11.setText("Gestion Usuario");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 180, 35));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
-        );
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Diseño sin título.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 540));
 
@@ -177,36 +165,36 @@ LoginData liginData = new LoginData();
 
     private void jLabel15MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseMoved
         // TODO add your handling code here:
-        jLabel15.setBackground(Color.decode("#008cc4"));
+        jLabel15.setBackground(Color.decode("#143018"));
     }//GEN-LAST:event_jLabel15MouseMoved
 
     private void jLabel15MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseExited
         // TODO add your handling code here:
-        jLabel15.setBackground(Color.decode("#5AB8E9"));
+        jLabel15.setBackground(Color.decode("#007723"));
     }//GEN-LAST:event_jLabel15MouseExited
 
     private void jPasswordFieldMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMouseMoved
         // TODO add your handling code here:
-        jPasswordField.setBackground(Color.decode("#008cc4"));
+        jPasswordField.setBackground(Color.decode("#bc9b59"));
     }//GEN-LAST:event_jPasswordFieldMouseMoved
 
     private void jPasswordFieldMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMouseExited
         // TODO add your handling code here:
-        jPasswordField.setBackground(Color.decode("#E2F0FB"));
+        jPasswordField.setBackground(Color.decode("#FFF3DB"));
     }//GEN-LAST:event_jPasswordFieldMouseExited
 
     private void jTextFieldUsuarioMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioMouseMoved
         // TODO add your handling code here:
-        jTextFieldUsuario.setBackground(Color.decode("#008cc4"));
+        jTextFieldUsuario.setBackground(Color.decode("#bc9b59"));
     }//GEN-LAST:event_jTextFieldUsuarioMouseMoved
 
     private void jTextFieldUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioMouseExited
         // TODO add your handling code here:E2F0FB
-        jTextFieldUsuario.setBackground(Color.decode("#E2F0FB"));
+        jTextFieldUsuario.setBackground(Color.decode("#FFF3DB"));
     }//GEN-LAST:event_jTextFieldUsuarioMouseExited
 
     private void jLabel17MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseMoved
-        // TODO add your handling code here:
+       jLabel17.setBackground(Color.decode("#4a1508"));
 
     }//GEN-LAST:event_jLabel17MouseMoved
 
@@ -216,7 +204,7 @@ LoginData liginData = new LoginData();
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
-        // TODO add your handling code here:
+        jLabel17.setBackground(Color.decode("#DF0000"));
 
     }//GEN-LAST:event_jLabel17MouseExited
 
@@ -259,6 +247,7 @@ LoginData liginData = new LoginData();
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

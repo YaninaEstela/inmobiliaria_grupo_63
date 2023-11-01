@@ -34,6 +34,7 @@ LoginData loginData = null;
     private void initComponents() {
 
         jPanelLogin = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -47,6 +48,7 @@ LoginData loginData = null;
         jSeparator3 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,7 +56,28 @@ LoginData loginData = null;
         jPanelLogin.setPreferredSize(new java.awt.Dimension(850, 610));
         jPanelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(226, 240, 251));
+        jLabel17.setBackground(new java.awt.Color(223, 0, 0));
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Salir");
+        jLabel17.setOpaque(true);
+        jLabel17.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel17MouseMoved(evt);
+            }
+        });
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel17MouseExited(evt);
+            }
+        });
+        jPanelLogin.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, 230, 52));
+
+        jPanel3.setBackground(new java.awt.Color(255, 243, 219));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -102,7 +125,7 @@ LoginData loginData = null;
         });
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 90, -1));
 
-        jLabel15.setBackground(new java.awt.Color(90, 184, 233));
+        jLabel15.setBackground(new java.awt.Color(0, 119, 35));
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -123,7 +146,7 @@ LoginData loginData = null;
         });
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 230, 52));
 
-        passContrasenia.setBackground(new java.awt.Color(226, 240, 251));
+        passContrasenia.setBackground(new java.awt.Color(255, 243, 219));
         passContrasenia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         passContrasenia.setBorder(null);
         passContrasenia.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -138,7 +161,7 @@ LoginData loginData = null;
         });
         jPanel3.add(passContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 250, 40));
 
-        textUsuario.setBackground(new java.awt.Color(226, 240, 251));
+        textUsuario.setBackground(new java.awt.Color(255, 243, 219));
         textUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         textUsuario.setBorder(null);
         textUsuario.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -173,15 +196,18 @@ LoginData loginData = null;
 
         jPanelLogin.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 610, 350));
 
-        jPanel4.setBackground(new java.awt.Color(0, 140, 196));
+        jPanel4.setBackground(new java.awt.Color(195, 151, 23));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Login");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 146, 35));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 146, 35));
 
         jPanelLogin.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Diseño sin título.png"))); // NOI18N
+        jPanelLogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,9 +232,9 @@ LoginData loginData = null;
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
-//        ModificarCuenta modificar = new ModificarCuenta();
-//        modificar.setVisible(true);
-//        modificar.setLocationRelativeTo(null);
+        CrearCuenta modificar = new CrearCuenta();
+        modificar.setVisible(true);
+        modificar.setLocationRelativeTo(null);
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
@@ -218,7 +244,7 @@ LoginData loginData = null;
 
     private void jLabel15MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseMoved
         // TODO add your handling code here:
-        jLabel15.setBackground(Color.decode("#008cc4"));
+        jLabel15.setBackground(Color.decode("#143018"));
     }//GEN-LAST:event_jLabel15MouseMoved
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
@@ -228,27 +254,27 @@ LoginData loginData = null;
 
     private void jLabel15MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseExited
         // TODO add your handling code here:
-        jLabel15.setBackground(Color.decode("#5AB8E9"));
+        jLabel15.setBackground(Color.decode("#007723"));
     }//GEN-LAST:event_jLabel15MouseExited
 
     private void passContraseniaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passContraseniaMouseMoved
         // TODO add your handling code here:
-        passContrasenia.setBackground(Color.decode("#008cc4"));
+        passContrasenia.setBackground(Color.decode("#bc9b59"));
     }//GEN-LAST:event_passContraseniaMouseMoved
 
     private void passContraseniaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passContraseniaMouseExited
         // TODO add your handling code here:
-        passContrasenia.setBackground(Color.decode("#E2F0FB"));
+        passContrasenia.setBackground(Color.decode("#fff3db"));
     }//GEN-LAST:event_passContraseniaMouseExited
 
     private void textUsuarioMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textUsuarioMouseMoved
         // TODO add your handling code here:
-        textUsuario.setBackground(Color.decode("#008cc4"));
+        textUsuario.setBackground(Color.decode("#bc9b59"));
     }//GEN-LAST:event_textUsuarioMouseMoved
 
     private void textUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textUsuarioMouseExited
         // TODO add your handling code here:E2F0FB
-        textUsuario.setBackground(Color.decode("#E2F0FB"));
+        textUsuario.setBackground(Color.decode("#fff3db"));
     }//GEN-LAST:event_textUsuarioMouseExited
 
     private void jLabel16MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseExited
@@ -258,9 +284,9 @@ LoginData loginData = null;
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
-//        ModificarCuenta modificar = new ModificarCuenta();
-//        modificar.setVisible(true);
-//        modificar.setLocationRelativeTo(null);
+        CrearCuenta modificar = new CrearCuenta();
+        modificar.setVisible(true);
+        modificar.setLocationRelativeTo(null);
     }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jLabel16MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseMoved
@@ -284,6 +310,19 @@ LoginData loginData = null;
         // TODO add your handling code here:
         jLabel14.setForeground(Color.decode("#008CC4"));
     }//GEN-LAST:event_jLabel14MouseMoved
+
+    private void jLabel17MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseMoved
+        jLabel17.setBackground(Color.decode("#4a1508"));
+    }//GEN-LAST:event_jLabel17MouseMoved
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jLabel17MouseClicked
+
+    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
+        jLabel17.setBackground(Color.decode("#DF0000"));
+    }//GEN-LAST:event_jLabel17MouseExited
 
     /**
      * @param args the command line arguments
@@ -342,6 +381,7 @@ LoginData loginData = null;
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -349,6 +389,7 @@ LoginData loginData = null;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelLogin;

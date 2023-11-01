@@ -4,6 +4,7 @@
  */
 package GUI_VISTAS;
 
+import themes.ButtonsColor;
 import themes.ThemaCC;
 
 /**
@@ -12,6 +13,7 @@ import themes.ThemaCC;
  */
 public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
     ThemaCC temaCC = new ThemaCC();
+    ButtonsColor buttons = new ButtonsColor();
     public MenuPrincipalInmobiliaria() {
         initComponents();
         themaColorCC();
@@ -23,6 +25,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
         contenido.add(home);
         contenido.revalidate();
         contenido.repaint();
+        colors();
     }
 
     /**
@@ -123,7 +126,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
 
         btnMenu.setText("Menu ");
         btnMenu.setOpaque(true);
-        jPanelFondo.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 136, 240, 40));
+        jPanelFondo.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 240, 40));
 
         btnHome.setBackground(new java.awt.Color(204, 204, 204));
         btnHome.setText("Home");
@@ -151,7 +154,7 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
                 btnSalirMouseClicked(evt);
             }
         });
-        jPanelFondo.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 688, 240, 50));
+        jPanelFondo.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 700, 240, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -272,5 +275,11 @@ public class MenuPrincipalInmobiliaria extends javax.swing.JFrame {
 public void themaColorCC(){
  temaCC.CobreTheme(jPanelFondo,btnMenu,separador,btnPropiedad,btnPropietario,btnInquilino,btnContratos,btnHome);
 }
+
+public void colors() {
+       
+        buttons.setButtonStylesRed(btnSalir);
+
+    }
 
 }

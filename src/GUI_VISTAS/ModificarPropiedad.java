@@ -18,13 +18,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import themes.ButtonsColor;
 
 /**
  *
  * @author crist
  */
 public class ModificarPropiedad extends javax.swing.JFrame {
-
+    ButtonsColor buttons = new ButtonsColor();
     PropiedadData propiedadData = new PropiedadData();
     Propiedad propiedad = new Propiedad();
     PropietarioData propietarioData = new PropietarioData();
@@ -47,6 +48,7 @@ public class ModificarPropiedad extends javax.swing.JFrame {
         cargarTablaPropiedades(propiedadData.listarPropiedades());
         armarCabeceraPropietario();
         cargarTablaPropietarios(propietarioData.listarPropietarios());
+        colors();
 
     }
 
@@ -123,7 +125,7 @@ public class ModificarPropiedad extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTablePropiedades);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 640, 460));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 640, 450));
 
         btnSalir.setBackground(new java.awt.Color(223, 0, 0));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -872,5 +874,12 @@ private void armarCabecera() {
             //                propietario.isEstadoPropietario()
             });
         }
+    }
+    
+    public void colors() {
+        buttons.setButtonStylesGreen(btnGuardar);
+        buttons.setButtonStylesRed(btnSalir);
+        buttons.setButtonStylesDorado(btnLimpiar);
+        
     }
 }
